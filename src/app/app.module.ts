@@ -10,6 +10,7 @@ import { ConnexionComponent } from './connexion/connexion.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { ObjetComponent } from './objet/objet.component';
 import { MenuComponent } from './menu/menu.component';
+import { ProfilComponent } from './profil/profil.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { MenuComponent } from './menu/menu.component';
     ConnexionComponent,
     InscriptionComponent,
     ObjetComponent,
-    MenuComponent
+    MenuComponent,
+    ProfilComponent
   ],
   imports: [
     BrowserModule,

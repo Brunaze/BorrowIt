@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { ClientComponent } from './client/client.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { InscriptionComponent } from './inscription/inscription.component';
+import { ObjetComponent } from './objet/objet.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClientComponent,
     ConnexionComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    ObjetComponent
   ],
   imports: [
     BrowserModule,

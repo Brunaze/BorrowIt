@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'connexion', component: ConnexionComponent },
   { path: 'inscription', component: InscriptionComponent },
   { path: 'client', component: ClientComponent },
-  { path: 'Objet', component: ObjetComponent }
+  { path: 'objet', component: ObjetComponent },
   { path: 'profil', component: ProfilComponent }
 ];
 

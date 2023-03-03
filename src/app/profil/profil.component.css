@@ -1,0 +1,52 @@
+.gras{
+  font-weight: bold;
+    }
+
+.img{
+  width : 300px;
+  height : auto;
+  border-radius: 10%;
+  margin-top: 40px;
+  margin-left: 20px;
+  }
+  .card{
+  margin : auto;
+  width:35%;
+  }
+  .column {
+  float: left;
+  width: 30%;
+  }
+
+  .identifiant{
+  margin-top : 70px;
+  }
+  .deroule{
+  margin-left:10px;
+  margin-right: 10px;
+  }
+  h4{
+  line-height: 2;
+  }
+  .moins{
+  color:red;
+  margin-left: 10px;
+  }
+  .plus{
+  color : rgb(34, 194, 34);
+  margin-left: 10px;
+  }
+  button{
+  position : relative;
+  background-color: rgb(199, 154, 154);
+  top: -190px;
+  left: 170px;
+  font-size: small;
+  border-radius: 10px;
+  }
+
+  .basPage{
+  margin-top : 10px;
+  margin-bottom: 30px;
+  margin-left : 10px;
+  }

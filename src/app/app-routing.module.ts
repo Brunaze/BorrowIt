@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { ClientComponent } from './client/client.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { InscriptionComponent } from './inscription/inscription.component';
+import { ProfilComponent } from './profil/profil.component';
 
 const routes: Routes = [
   { path: 'connexion', component: ConnexionComponent },
   { path: 'inscription', component: InscriptionComponent },
-  { path: 'client', component: ClientComponent }
+  { path: 'client', component: ClientComponent },
+  { path: 'profil', component: ProfilComponent }
 ];
 
 @NgModule({

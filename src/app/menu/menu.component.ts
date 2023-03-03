@@ -29,6 +29,7 @@ export class MenuComponent implements OnInit {
         this.user = data;
         if (this.user != null) {
           this.authService.setUserConnect(this.user);
+          window.location.reload();
         } else {
           this.msgErr = 'Identifiant ou mot de passe incorrect';
         }

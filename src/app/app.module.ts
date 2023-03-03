@@ -11,6 +11,7 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { ObjetComponent } from './objet/objet.component';
 import { MenuComponent } from './menu/menu.component';
 import { ProfilComponent } from './profil/profil.component';
+import { StarRatingComponentComponent } from './star-rating-component/star-rating-component.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ProfilComponent } from './profil/profil.component';
     InscriptionComponent,
     ObjetComponent,
     MenuComponent,
-    ProfilComponent
+    ProfilComponent,
+    StarRatingComponentComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,20 @@
+.ligne1{
+  background-color: lightcoral;
+  height: 30rem;
+  margin: 40px;
+}
+
+.ligne2{
+  background-color: lightblue;
+  height : 250% ;
+  margin: 20px;
+}
+
+.bordTop{
+  border-top: solid grey 2px;
+
+}
+
 .gras{
   font-weight: bold;
     }
@@ -9,44 +26,77 @@
   margin-top: 40px;
   margin-left: 20px;
   }
+
   .card{
   margin : auto;
-  width:35%;
-  }
-  .column {
-  float: left;
-  width: 30%;
+  width: 85%;
+  box-shadow: none;
   }
 
-  .identifiant{
-  margin-top : 70px;
-  }
   .deroule{
   margin-left:10px;
   margin-right: 10px;
   }
+
   h4{
   line-height: 2;
   }
-  .moins{
-  color:red;
-  margin-left: 10px;
-  }
-  .plus{
-  color : rgb(34, 194, 34);
-  margin-left: 10px;
-  }
+
+/*
   button{
-  position : relative;
-  background-color: rgb(199, 154, 154);
+  background-color: rgb(245, 82, 71);
   top: -190px;
   left: 170px;
   font-size: small;
-  border-radius: 10px;
+  border-radius: 5px;
   }
+*/
 
   .basPage{
   margin-top : 10px;
   margin-bottom: 30px;
   margin-left : 10px;
   }
+
+  colonne{
+    border: rounded border-black;
+  }
+
+
+  .rating {
+    direction: rtl;
+ }
+ .rating a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 3em;
+    transition: color .4s;
+ }
+ .rating a:hover,
+ .rating a:focus,
+ .rating a:hover ~ a,
+ .rating a:focus ~ a {
+    color: orange;
+    cursor: pointer;
+ }
+
+
+ .star-rating {
+  font-size: 2rem;
+  color: #d8d8d8;
+}
+
+.star {
+  cursor: pointer;
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0.1rem;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Empty_Star.svg/64px-Empty_Star.svg.png?20061109100031');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.star.filled {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Star_empty.svg/108px-Star_empty.svg.png?20120902203240');
+}

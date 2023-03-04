@@ -9,6 +9,7 @@ import { ClientComponent } from './client/client.component';
 import { ObjetComponent } from './objet/objet.component';
 import { MenuComponent } from './menu/menu.component';
 import { ProfilComponent } from './profil/profil.component';
+import { AccueilComponent } from './accueil/accueil.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ProfilComponent } from './profil/profil.component';
     ClientComponent,
     ObjetComponent,
     MenuComponent,
-    ProfilComponent
+    ProfilComponent,
+    AccueilComponent
   ],
   imports: [
     BrowserModule,

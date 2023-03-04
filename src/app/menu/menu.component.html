@@ -10,14 +10,6 @@
                     loading="lazy" />
             </a>
 
-            <!--
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            -->
-
         </div>
         <!-- Fin éléments de gauche -->
 
@@ -25,7 +17,7 @@
         <!-- Elements du milieu -->
         <div class="navbar-nav flex-row d-none d-md-flex">
             <form class="input-group w-auto my-auto d-none d-sm-flex">
-                <input autocomplete="off" type="search" class="form-control rounded" placeholder="rechercher"
+                <input autocomplete="off" type="search" class="form-control rounded" placeholder="Rechercher"
                     style="min-width: 125px;" id="barre-recherche" />
                 <span class="input-group-text border-0 d-none d-lg-flex"><i class="fas fa-search"></i></span>
             </form>
@@ -59,7 +51,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                     <li>
-                        <a class="dropdown-item" routerLink="accueil">Accueil</a>
+                        <a class="dropdown-item" routerLink="profil">Some news</a>
                     </li>
                     <li>
                         <a class="dropdown-item" routerLink="profil">Some news</a>
@@ -99,20 +91,6 @@
 </nav>
 <!-- Fin navbar -->
 
-
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-    </script>
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-    </script>
 
 <!-- Formulaire de connexion -->
 <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -160,6 +138,7 @@
         </div>
     </div>
 </div>
+<!-- Fin de formulaire de connexion -->
 
 
 <!-- Formulaire d'inscription -->
@@ -177,27 +156,37 @@
 
             <div class="modal-body mx-3">
                 <form #loginForm="ngForm"> <!-- (ngSubmit)="inscription(loginForm.value)"-->
-                    <div class="md-form mb-5">
-                        <i class="fas fa-envelope prefix grey-text"></i>
-                        <input type="email" id="defaultForm-email" class="form-control validate">
-                        <label data-error="wrong" data-success="right" for="defaultForm-email">Nom</label>
+
+
+                    <div class="md-form">
+                        <i class="fas fa-solid fa-user prefix grey-text"></i>
+                        <input name="nom" type="text" id="defaultForm-nom" class="form-control validate">
+                        <label data-error="wrong" data-success="right" for="defaultForm-nom">Nom</label>
                     </div>
 
-                    <div class="md-form mb-5">
-                        <i class="fas fa-envelope prefix grey-text"></i>
-                        <input type="email" id="defaultForm-email" class="form-control validate">
-                        <label data-error="wrong" data-success="right" for="defaultForm-email">Prénom</label>
+                    <div class="md-form">
+                        <i class="fas fa-solid fa-user prefix grey-text"></i>
+                        <input name="prenom" type="text" id="defaultForm-prenom" class="form-control validate">
+                        <label data-error="wrong" data-success="right" for="defaultForm-prenom">Prénom</label>
                     </div>
 
-                    <div class="md-form mb-5">
-                        <i class="fas fa-envelope prefix grey-text"></i>
-                        <input type="email" id="defaultForm-email" class="form-control validate">
-                        <label data-error="wrong" data-success="right" for="defaultForm-email">Email</label>
+                    <div class="md-form">
+                        <i class="fas fa-solid fa-phone prefix grey-text"></i>
+                        <input name="numeroTelephone" type="tel" id="defaultForm-numeroTelephone"
+                            class="form-control validate">
+                        <label data-error="wrong" data-success="right" for="defaultForm-numeroTelephone">Numéro de
+                            téléphone</label>
                     </div>
 
-                    <div class="md-form mb-4">
+                    <div class="md-form">
+                        <i class="fas fa-envelope prefix grey-text"></i>
+                        <input name="mail" type="email" id="defaultForm-mail" class="form-control validate">
+                        <label data-error="wrong" data-success="right" for="defaultForm-mail">Email</label>
+                    </div>
+
+                    <div class="md-form">
                         <i class="fas fa-lock prefix grey-text"></i>
-                        <input type="password" id="defaultForm-pass" class="form-control validate">
+                        <input name="motDePasse" type="password" id="defaultForm-pass" class="form-control validate">
                         <label data-error="wrong" data-success="right" for="defaultForm-pass">Mot de passe</label>
                     </div>
                     <div class="d-flex flex-column text-center"><button
@@ -214,3 +203,4 @@
         </div>
     </div>
 </div>
+<!-- Fin de formulaire d'inscription -->

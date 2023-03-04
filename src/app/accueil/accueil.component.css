@@ -3,9 +3,62 @@
 }
 
 .card {
-    height: 300px;
+    height: 250px;
 }
 
 .card-img-top {
     border: 1px solid rgb(175, 175, 175);
+    max-width: max-content;
+}
+
+.card-img-bot {
+    border: 1px solid rgb(175, 175, 175);
+    clip-path: circle();
+    width: 80px;
+    block-size: fit-content;
+}
+
+.card-img-bot:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+.card-img-top:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+.card-title {
+    font-size: medium;
+    height: 10px;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+
+
+.card-text {
+    font-size: 11px;
+    width: fit-content;
+    block-size: fit-content;
+    height: 40px;
+    margin-left: 4px;
+}
+
+.text-muted {
+
+    width: fit-content;
+    min-height: auto;
+}
+
+.left-bottom-card {
+    float: left;
+    width: 30%;
+}
+
+.right-bottom-card {
+    float: left;
+    width: 70%;
+}
+
+.card-text-nom {
+    font-size: 11px;
 }

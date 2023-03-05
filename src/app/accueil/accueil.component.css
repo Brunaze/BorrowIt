@@ -3,7 +3,7 @@
 }
 
 .card {
-    height: 250px;
+    height: 300px;
 }
 
 .card-img-top {
@@ -27,10 +27,10 @@
 }
 
 .card-title {
-    font-size: medium;
+    font-size: larger;
     height: 10px;
     font-weight: bold;
-    margin-left: 5px;
+    margin-left: 10px;
 }
 
 
@@ -40,7 +40,7 @@
     width: fit-content;
     block-size: fit-content;
     height: 40px;
-    margin-left: 4px;
+    margin-left: 10px;
 }
 
 .text-muted {
@@ -61,4 +61,8 @@
 
 .card-text-nom {
     font-size: 11px;
+}
+
+.cursor-hover {
+    cursor: pointer;
 }

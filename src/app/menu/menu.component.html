@@ -155,8 +155,7 @@
             </div>
 
             <div class="modal-body mx-3">
-                <form #loginForm="ngForm"> <!-- (ngSubmit)="inscription(loginForm.value)"-->
-
+                <form #loginForm="ngForm" (ngSubmit)="inscription(loginForm.value)">
 
                     <div class="md-form">
                         <i class="fas fa-solid fa-user prefix grey-text"></i>
@@ -173,7 +172,7 @@
                     <div class="md-form">
                         <i class="fas fa-solid fa-phone prefix grey-text"></i>
                         <input name="numeroTelephone" type="tel" id="defaultForm-numeroTelephone"
-                            class="form-control validate">
+                            class="form-control validate" pattern="[0-9]{10}">
                         <label data-error="wrong" data-success="right" for="defaultForm-numeroTelephone">Numéro de
                             téléphone</label>
                     </div>

@@ -3,25 +3,23 @@
 <div class="ml-4 mr-4 mt-4">
     <div class="container" style="max-width:max-content;">
         <div class="card-deck">
-            <div class="card">
-                <a routerLink="/objet">
+            <div class="card" *ngFor="let o of objet">
+                <a routerLink="/objet/{{o.id}}">
                     <img class="card-img-top" src="https://pimdatacdn.bahco.com/media/sub637/16a10be11fad9b3f.png"
                         alt="tournveis">
                 </a>
                 <div class="card-block">
-                    <h4 class="card-title">Tournevis</h4>
+                    <h4 class="card-title cursor-hover" routerLink="/objet">{{ o.nom }}</h4>
                     <p class="card-text">
-                        This is a ScrewTurn
+                        {{ o.description }}
                     </p>
                     <div class="left-bottom-card">
-                        <a routerLink="/profil">
-                            <img class="card-img-bot"
-                                src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60"
-                                alt="tournveis">
+                        <a routerLink="/profil/{{o.proprietaire}}">
+                            <img class="card-img-bot" src="{{o.proprietaire.photo}}" alt="tournveis">
                         </a>
 
                     </div>
-                    <div class="right-bottom-card">
+                    <div class="right-bottom-card mt-3">
                         <p class="card-text">
                             <small class="text-muted">
                                 Ajouté il y a 2 jours par

@@ -4,12 +4,14 @@ import { ClientComponent } from './client/client.component';
 import { ObjetComponent } from './objet/objet.component';
 import { ProfilComponent } from './profil/profil.component';
 import { AccueilComponent } from './accueil/accueil.component';
+import { MessagerieComponent } from './messagerie/messagerie.component';
 
 const routes: Routes = [
   { path: 'client', component: ClientComponent },
   { path: 'objet', component: ObjetComponent },
   { path: 'profil', component: ProfilComponent },
-  { path: 'accueil', component: AccueilComponent }
+  { path: 'accueil', component: AccueilComponent },
+  { path: 'messagerie', component: MessagerieComponent }
 ];
 
 @NgModule({

@@ -10,6 +10,7 @@ import { ObjetComponent } from './objet/objet.component';
 import { MenuComponent } from './menu/menu.component';
 import { ProfilComponent } from './profil/profil.component';
 import { AccueilComponent } from './accueil/accueil.component';
+import { MessagerieComponent } from './messagerie/messagerie.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { AccueilComponent } from './accueil/accueil.component';
     ObjetComponent,
     MenuComponent,
     ProfilComponent,
-    AccueilComponent
+    AccueilComponent,
+    MessagerieComponent
   ],
   imports: [
     BrowserModule,

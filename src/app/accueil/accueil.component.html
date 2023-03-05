@@ -1,6 +1,30 @@
+<!-- onglet type objet -->
+<div class="mt-3
+">
+    <ul class="nav nav-pills justify-content-center">
+        <li class="nav-item justify-content-center">
+            <a class="nav-link active" routerLink=""><img src="https://imagizer.imageshack.com/img923/9459/sJdCKC.png"
+                    height="20" alt="BorrowIt Logo" loading="lazy" /></a>
+            <p class="text-center">Outils</p>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+    </ul>
+</div>
+
+
+
+
 <!-- DEBUT CARDS -->
 <!-- LIGNE 1 CARDS -->
-<div class="ml-4 mr-4 mt-4">
+<div class="ml-4 mr-4 mt-4 mb-5">
     <div class="container" style="max-width:max-content;">
         <div class="card-deck">
             <div class="card" *ngFor="let o of objet">
@@ -679,4 +703,28 @@
             </div>
         </div>
     </div>
+
     <!-- FIN CARDS -->
+    <!-- DEBUT NUMERO PAGE -->
+    <div class="mt-4 d-flex justify-content-center">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <!-- FIN NUMERO PAGE -->

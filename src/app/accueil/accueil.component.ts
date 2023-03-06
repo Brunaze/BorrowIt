@@ -10,11 +10,17 @@ import { Router } from '@angular/router';
 export class AccueilComponent implements OnInit {
 
   objet: any;
-  constructor(private http: HttpClient, private route: Router) { }
+  numbers: any;
+  constructor(private http: HttpClient, private route: Router) {
+
+  }
 
   ngOnInit(): void {
     this.http.get('http://localhost:8283/objet').subscribe({
-      next: (data) => { this.objet = data },
+      next: (data) => {
+        this.objet = data;
+        this.numbers = Array(Object.keys(this.objet).length).fill(0).map((x, i) => i);
+      },
       error: (err) => { console.error(err) }
     })
   }

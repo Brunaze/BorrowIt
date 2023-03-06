@@ -35,6 +35,6 @@ export class AuthService {
 
   deconnexion() {
     localStorage.removeItem('userConnect');
-    this.route.navigateByUrl('');
+    window.location.reload;
   }
 }

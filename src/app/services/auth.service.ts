@@ -13,18 +13,28 @@ export class AuthService {
   }
 
   getUserConnect() {
-
+    let user: any = localStorage.getItem('userConnect');
+    return JSON.parse(user);
   }
 
   isNotConnected() {
-
+    if (this.getUserConnect() == null) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   isConnected() {
-
+    if (this.getUserConnect() != null) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   deconnexion() {
-
+    localStorage.removeItem('userConnect');
+    this.route.navigateByUrl('');
   }
 }

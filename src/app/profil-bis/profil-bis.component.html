@@ -1,0 +1,115 @@
+
+
+<!-- Side Nav Bar -->
+<div class="navbar">
+  <h1 style="margin-left: 1px">Profil</h1>
+<mat-sidenav-container class="example-container1">
+  <mat-sidenav #sidenav mode="over" opened>
+    <mat-nav-list class="example-container2" >
+      <a mat-list-item routerLink="/accueil">Accueil</a>
+      <a mat-list-item routerLink="/profil">Profil</a>
+      <a mat-list-item routerLink="/parametres">Modifier votre profil</a>
+      <a mat-list-item routerLink="/deconnexion">Déconnexion</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <div class="sidenav-content">
+    <router-outlet>
+<br><br><br><br><br><br>
+    </router-outlet>
+  </div>
+</mat-sidenav-container>
+</div>
+
+
+
+<div class="card">
+  <div class="row justify-content-md-center ligne1">
+
+    <!-- Colonne n°1 -->
+    <div class="col-lg-4 borderBlack1">
+      <div class="justify-content-md-center text-center mt-3">
+        <img
+          src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60"
+          class="img-fluid rounded border border-dark" alt="Card image cap">
+
+        <div class="name">
+          <h4 class="titre4">NOM Prénom</h4>
+        </div>
+      </div>
+    </div>
+
+    <!-- Colonne n°2 -->
+    <div class=""></div>
+
+    <!-- Colonne n°3 -->
+    <div class="col col-lg-6">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="gras"> ANCIENNE VERSION
+            Bonjour, je suis //Extraire Prénom//</h2>
+          <h5 class="grey-text">Membre depuis //date//</h5>
+        </div>
+
+        <div class="card-text">
+          <br>
+          <ul>
+            <li><Strong>Mail</Strong>: // xxxxxxgmail.com //</li>
+            <p></p>
+            <li><Strong>Numéro</Strong> : //06 00 00 00 00// </li>
+          </ul>
+          <br><br>
+        </div>
+        <!--
+          <div class="card-footer">
+          <button type="button" class="" data-veloute="###">Modifier le profil</button>
+        </div>
+      -->
+      </div>
+
+
+    </div>
+
+  </div>
+</div>
+
+
+<!------------------------------- Ligne n°2 ---------------------------->
+<div class="card">
+  <div class="row justify-content-md-center ligne2">
+
+    <!-- Colonne n°1 -->
+    <div class="col-lg-4"></div>
+    <!-- Colonne n°2 -->
+    <div class=""></div>
+
+    <!-- Colonne n°3 -->
+    <div class="col col-lg-5 bordTop">
+      <h5>NOTE</h5>
+      <h6><a href="" title="Donner 1 étoile" class="passiv_star"> XX ★</a></h6>
+    </div>
+
+  </div>
+</div>
+
+
+<!--
+<div class="card">
+
+  <div class="rating">
+    <a href="#5" title="Donner 5 étoiles">☆</a>
+    <a href="#4" title="Donner 4 étoiles">☆</a>
+    <a href="#3" title="Donner 3 étoiles">☆</a>
+    <a href="#2" title="Donner 2 étoiles">☆</a>
+    <a href="#1" title="Donner 1 étoile">☆</a>
+  </div>
+
+
+
+  <div class="star-rating">
+    <span class="star" *ngFor="let star of stars" [class.filled]="star <= currentRate" (click)="rate(star)"></span>
+  </div>
+
+</div>
+-->
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

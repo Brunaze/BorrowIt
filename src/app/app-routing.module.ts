@@ -2,18 +2,18 @@ import { ComponentRef, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClientComponent } from './client/client.component';
 import { ObjetComponent } from './objet/objet.component';
-import { ProfilComponent } from './profil/profil.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { StarRatingComponentComponent } from './star-rating-component/star-rating-component.component';
 import { MessagerieComponent } from './messagerie/messagerie.component';
-
+import { ProfileComponent } from './profile/profile.component';
+import { ProfilBisComponent } from './profil-bis/profil-bis.component';
 
 const routes: Routes = [
   { path: 'client', component: ClientComponent },
   { path: 'objet', component: ObjetComponent },
-  { path: 'profil', component: ProfilComponent },
   { path: 'accueil', component: AccueilComponent },
-  { path: 'profil', component: ProfilComponent },
+  { path: 'profil', component: ProfileComponent },
+  { path: 'profil0', component: ProfilBisComponent },
   { path: 'star', component: StarRatingComponentComponent },
   { path: 'messagerie', component: MessagerieComponent }
 ];

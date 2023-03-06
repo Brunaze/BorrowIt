@@ -14,3 +14,4 @@ export class ProfilComponent implements OnInit {
   ngOnInit(): void {
 }
 }
+

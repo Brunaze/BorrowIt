@@ -17,7 +17,7 @@ export class ObjetComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.http.get('http://localhost:8283/objet/1').subscribe({
+    this.http.get('http://localhost:8283/objet').subscribe({
       next: (data) => {
         this.objet = data;
       },

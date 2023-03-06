@@ -68,3 +68,7 @@
 .cursor-hover {
     cursor: pointer;
 }
+
+.text-center {
+    font-size: small;
+}

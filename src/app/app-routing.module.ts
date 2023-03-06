@@ -5,6 +5,8 @@ import { ObjetComponent } from './objet/objet.component';
 import { ProfilComponent } from './profil/profil.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { StarRatingComponentComponent } from './star-rating-component/star-rating-component.component';
+import { MessagerieComponent } from './messagerie/messagerie.component';
+
 
 const routes: Routes = [
   { path: 'client', component: ClientComponent },
@@ -12,8 +14,8 @@ const routes: Routes = [
   { path: 'profil', component: ProfilComponent },
   { path: 'accueil', component: AccueilComponent },
   { path: 'profil', component: ProfilComponent },
-  { path: 'star', component: StarRatingComponentComponent }
-
+  { path: 'star', component: StarRatingComponentComponent },
+  { path: 'messagerie', component: MessagerieComponent }
 ];
 
 @NgModule({

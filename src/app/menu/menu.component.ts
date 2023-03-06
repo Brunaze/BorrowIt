@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ViewChild, } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
@@ -13,7 +13,6 @@ declare var $: any;
 
 export class MenuComponent implements OnInit {
 
-  @ViewChild('closebutton') closebutton: any;
 
   user: any;
   msgErr: any;
@@ -35,6 +34,22 @@ export class MenuComponent implements OnInit {
         }
       },
       error: (err) => { console.log(err) }
+    })
+  }
+
+  inscription(val: any) {
+    this.http.post('http://localhost:8283/utilisateur', val).subscribe({
+      next: (data) => {
+        this.user = data;
+        this.http.post('http://localhost:8283/client', { points: 0, note: 0, messagerie: null, utilisateur: data }).subscribe({
+          next: (data) => {
+            this.user = data;
+            window.location.reload();
+          },
+          error: (err) => { console.error(err) }
+        })
+      },
+      error: (err) => { console.error(err) }
     })
   }
 }

@@ -11,6 +11,7 @@ import { ProfilComponent } from './profil/profil.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { StarRatingComponentComponent } from './star-rating-component/star-rating-component.component';
 import { MessagerieComponent } from './messagerie/messagerie.component';
+import { LocationsComponent } from './locations/locations.component';
 
 
 
@@ -23,7 +24,8 @@ import { MessagerieComponent } from './messagerie/messagerie.component';
     ProfilComponent,
     AccueilComponent,
     StarRatingComponentComponent,
-    MessagerieComponent
+    MessagerieComponent,
+    LocationsComponent
   ],
   imports: [
     BrowserModule,

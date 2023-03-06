@@ -13,13 +13,18 @@ declare var $: any;
 
 export class MenuComponent implements OnInit {
 
-
   user: any;
   msgErr: any;
+
   constructor(private route: Router, public authService: AuthService, private http: HttpClient) { }
 
   ngOnInit(): void {
-
+    this.http.get('http://localhost:8283/utilisateur').subscribe({
+      next: (data) => {
+        this.user = data;
+      },
+      error: (err) => { console.error(err) }
+    })
   }
 
   connexion(val: any) {
@@ -38,11 +43,12 @@ export class MenuComponent implements OnInit {
   }
 
   inscription(val: any) {
-    this.http.post('http://localhost:8283/utilisateur', val).subscribe({
+    this.http.post('http://localhost:8283/client', val).subscribe({
       next: (data) => {
-        window.location.reload;
+        window.location.reload();
       },
       error: (err) => { console.error(err) }
     })
   }
+
 }

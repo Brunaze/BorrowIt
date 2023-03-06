@@ -19,7 +19,6 @@ export class AccueilComponent implements OnInit {
     this.http.get('http://localhost:8283/objet').subscribe({
       next: (data) => {
         this.objet = data;
-        this.numbers = Array(Object.keys(this.objet).length).fill(0).map((x, i) => i);
       },
       error: (err) => { console.error(err) }
     })

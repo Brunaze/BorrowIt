@@ -65,15 +65,13 @@
 
 
 <!-- DEBUT CARDS -->
-<!-- LIGNE 1 CARDS -->
 <div class="ml-4 mr-4 mt-4 mb-5">
     <div class="container" style="max-width:max-content;">
         <div class="row">
-            <div class="col-sm-3" *ngFor="let o of objet">
+            <div class="col-sm-2" *ngFor="let o of objet">
                 <div class="card">
-                    <a routerLink=" /objet/{{o.id}}">
-                        <img class="card-img-top" src="https://pimdatacdn.bahco.com/media/sub637/16a10be11fad9b3f.png"
-                            alt="tournveis">
+                    <a routerLink=" /objet">
+                        <img class="card-img-top" src="{{ o.urlPhoto }}">
                     </a>
                     <div class="card-block">
                         <h4 class="card-title cursor-hover" routerLink="/objet">{{ o.nom }}</h4>
@@ -82,7 +80,7 @@
                         </p>
                         <div class="left-bottom-card">
                             <a routerLink="/profil/{{o.proprietaire}}">
-                                <img class="card-img-bot" src="{{o.proprietaire.photo}}" alt="tournveis">
+                                <img class="card-img-bot" src="{{o.proprietaire.photo}}">
                             </a>
 
                         </div>

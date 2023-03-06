@@ -40,14 +40,7 @@ export class MenuComponent implements OnInit {
   inscription(val: any) {
     this.http.post('http://localhost:8283/utilisateur', val).subscribe({
       next: (data) => {
-        this.user = data;
-        this.http.post('http://localhost:8283/client', { points: 0, note: 0, messagerie: null, utilisateur: data }).subscribe({
-          next: (data) => {
-            this.user = data;
-            window.location.reload();
-          },
-          error: (err) => { console.error(err) }
-        })
+        window.location.reload;
       },
       error: (err) => { console.error(err) }
     })

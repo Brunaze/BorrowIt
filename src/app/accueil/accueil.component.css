@@ -1,14 +1,16 @@
-.card-deck {
-    width: 2000px align-items-center;
-}
-
+/*
 .card {
     height: 300px;
 }
+*/
 
 .card-img-top {
     border: 1px solid rgb(175, 175, 175);
     max-width: max-content;
+    max-height: max-content;
+    display: block;
+    height: 250px;
+    margin: auto;
 }
 
 .card-img-bot {
@@ -65,4 +67,8 @@
 
 .cursor-hover {
     cursor: pointer;
+}
+
+.text-center {
+    font-size: small;
 }

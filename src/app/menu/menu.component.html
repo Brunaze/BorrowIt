@@ -43,26 +43,13 @@
             </li>
 
             <li class="nav-item dropdown me-3 me-lg-1" *ngIf="authService.isConnected()">
-                <a class="nav-link dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button"
+                <a class="nav-link" routerLink="messagerie" id="navbarDropdownMenuLink" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-comments fa-lg"></i>
 
                     <span class="badge rounded-pill badge-notification bg-danger"></span>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                    <li>
-                        <a class="dropdown-item" routerLink="profil">Some news</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" routerLink="profil">Some news</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#">Another news</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </li>
-                </ul>
+
             </li>
 
             <li class="nav-item dropdown me-3 me-lg-1" *ngIf="authService.isConnected()">
@@ -75,7 +62,7 @@
                         <a class="dropdown-item" routerLink="profil">Profil</a>
                     </li>
                     <li>
-                        <a class="dropdown-item">Another news</a>
+                        <a class="dropdown-item">Ajouter un ami</a>
                     </li>
                     <hr>
                     <li>
@@ -140,7 +127,6 @@
 </div>
 <!-- Fin de formulaire de connexion -->
 
-
 <!-- Formulaire d'inscription -->
 <div class="modal fade" id="modalInscriptionForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true">
@@ -155,37 +141,39 @@
             </div>
 
             <div class="modal-body mx-3">
-                <form #loginForm="ngForm" (ngSubmit)="inscription(loginForm.value)">
+                <form #inscriptionForm="ngForm" (ngSubmit)="inscription(inscriptionForm.value)">
 
                     <div class="md-form">
                         <i class="fas fa-solid fa-user prefix grey-text"></i>
-                        <input name="nom" type="text" id="defaultForm-nom" class="form-control validate">
+                        <input name="nom" type="text" id="defaultForm-nom" class="form-control validate" ngModel="">
                         <label data-error="wrong" data-success="right" for="defaultForm-nom">Nom</label>
                     </div>
 
                     <div class="md-form">
                         <i class="fas fa-solid fa-user prefix grey-text"></i>
-                        <input name="prenom" type="text" id="defaultForm-prenom" class="form-control validate">
+                        <input name="prenom" type="text" id="defaultForm-prenom" class="form-control validate"
+                            ngModel="">
                         <label data-error="wrong" data-success="right" for="defaultForm-prenom">Prénom</label>
                     </div>
 
                     <div class="md-form">
                         <i class="fas fa-solid fa-phone prefix grey-text"></i>
                         <input name="numeroTelephone" type="tel" id="defaultForm-numeroTelephone"
-                            class="form-control validate" pattern="[0-9]{10}">
+                            class="form-control validate" ngModel="" pattern="[0-9]{10}">
                         <label data-error="wrong" data-success="right" for="defaultForm-numeroTelephone">Numéro de
                             téléphone</label>
                     </div>
 
                     <div class="md-form">
                         <i class="fas fa-envelope prefix grey-text"></i>
-                        <input name="mail" type="email" id="defaultForm-mail" class="form-control validate">
+                        <input name="mail" type="email" id="defaultForm-mail" class="form-control validate" ngModel="">
                         <label data-error="wrong" data-success="right" for="defaultForm-mail">Email</label>
                     </div>
 
                     <div class="md-form">
                         <i class="fas fa-lock prefix grey-text"></i>
-                        <input name="motDePasse" type="password" id="defaultForm-pass" class="form-control validate">
+                        <input name="motDePasse" type="password" id="defaultForm-pass" class="form-control validate"
+                            ngModel="">
                         <label data-error="wrong" data-success="right" for="defaultForm-pass">Mot de passe</label>
                     </div>
                     <div class="d-flex flex-column text-center"><button

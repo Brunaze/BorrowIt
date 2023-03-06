@@ -35,6 +35,14 @@ export class AuthService {
 
   deconnexion() {
     localStorage.removeItem('userConnect');
-    this.route.navigateByUrl('');
+    window.location.reload;
+  }
+  setObjet(objet: any) {
+    window.localStorage.setItem('obj', JSON.stringify(objet));
+  }
+
+  getObjet() {
+    let objet: any = localStorage.getItem('objetid');
+    return JSON.parse(objet);
   }
 }

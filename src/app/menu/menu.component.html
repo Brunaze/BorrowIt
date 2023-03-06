@@ -127,7 +127,6 @@
 </div>
 <!-- Fin de formulaire de connexion -->
 
-
 <!-- Formulaire d'inscription -->
 <div class="modal fade" id="modalInscriptionForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true">
@@ -142,7 +141,7 @@
             </div>
 
             <div class="modal-body mx-3">
-                <form #loginForm="ngForm" (ngSubmit)="inscription(loginForm.value)">
+                <form #inscriptionForm="ngForm" (ngSubmit)="inscription(inscriptionForm.value)">
 
                     <div class="md-form">
                         <i class="fas fa-solid fa-user prefix grey-text"></i>

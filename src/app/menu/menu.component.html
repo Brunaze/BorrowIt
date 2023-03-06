@@ -159,33 +159,35 @@
 
                     <div class="md-form">
                         <i class="fas fa-solid fa-user prefix grey-text"></i>
-                        <input name="nom" type="text" id="defaultForm-nom" class="form-control validate">
+                        <input name="nom" type="text" id="defaultForm-nom" class="form-control validate" ngModel="">
                         <label data-error="wrong" data-success="right" for="defaultForm-nom">Nom</label>
                     </div>
 
                     <div class="md-form">
                         <i class="fas fa-solid fa-user prefix grey-text"></i>
-                        <input name="prenom" type="text" id="defaultForm-prenom" class="form-control validate">
+                        <input name="prenom" type="text" id="defaultForm-prenom" class="form-control validate"
+                            ngModel="">
                         <label data-error="wrong" data-success="right" for="defaultForm-prenom">Prénom</label>
                     </div>
 
                     <div class="md-form">
                         <i class="fas fa-solid fa-phone prefix grey-text"></i>
                         <input name="numeroTelephone" type="tel" id="defaultForm-numeroTelephone"
-                            class="form-control validate" pattern="[0-9]{10}">
+                            class="form-control validate" ngModel="" pattern="[0-9]{10}">
                         <label data-error="wrong" data-success="right" for="defaultForm-numeroTelephone">Numéro de
                             téléphone</label>
                     </div>
 
                     <div class="md-form">
                         <i class="fas fa-envelope prefix grey-text"></i>
-                        <input name="mail" type="email" id="defaultForm-mail" class="form-control validate">
+                        <input name="mail" type="email" id="defaultForm-mail" class="form-control validate" ngModel="">
                         <label data-error="wrong" data-success="right" for="defaultForm-mail">Email</label>
                     </div>
 
                     <div class="md-form">
                         <i class="fas fa-lock prefix grey-text"></i>
-                        <input name="motDePasse" type="password" id="defaultForm-pass" class="form-control validate">
+                        <input name="motDePasse" type="password" id="defaultForm-pass" class="form-control validate"
+                            ngModel="">
                         <label data-error="wrong" data-success="right" for="defaultForm-pass">Mot de passe</label>
                     </div>
                     <div class="d-flex flex-column text-center"><button

@@ -13,6 +13,7 @@ import { MenuComponent } from './menu/menu.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { StarRatingComponentComponent } from './star-rating-component/star-rating-component.component';
 import { MessagerieComponent } from './messagerie/messagerie.component';
+import { LocationsComponent } from './locations/locations.component';
 import { ProfilBisComponent } from './profil-bis/profil-bis.component';
 import { ProfileComponent } from './profile/profile.component';
 
@@ -28,9 +29,9 @@ import { ProfileComponent } from './profile/profile.component';
     AccueilComponent,
     StarRatingComponentComponent,
     MessagerieComponent,
+    LocationsComponent,
     ProfilBisComponent,
-    ProfileComponent,
-
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

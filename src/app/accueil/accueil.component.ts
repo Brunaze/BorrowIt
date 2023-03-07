@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { RecupObjetService } from '../services/recup-objet.service';
 
 @Component({
   selector: 'app-accueil',
@@ -10,17 +11,17 @@ import { AuthService } from '../services/auth.service';
 })
 export class AccueilComponent implements OnInit {
 
-  objet: any;
+  objets: any;
   numbers: any;
   msgErr: any;
-  constructor(private http: HttpClient, private route: Router, public authService: AuthService) {
+  constructor(private http: HttpClient, private route: Router, public recupObjetService: RecupObjetService, public authService: AuthService) {
 
   }
 
   ngOnInit(): void {
     this.http.get('http://localhost:8283/objet').subscribe({
       next: (data) => {
-        this.objet = data;
+        this.objets = data;
       },
       error: (err) => { console.error(err) }
     })
@@ -29,9 +30,9 @@ export class AccueilComponent implements OnInit {
   objetid(val: any) {
     this.http.post('http://localhost:8283/utilisateur/objet/id', val).subscribe({
       next: (data) => {
-        this.objet = data;
-        if (this.objet != null) {
-          this.authService.setObjet(this.objet);
+        this.objets = data;
+        if (this.objets != null) {
+          this.recupObjetService.setObjet(this.objets);
           window.location.reload();
         } else {
           this.msgErr = 'pas d objet';
@@ -40,4 +41,16 @@ export class AccueilComponent implements OnInit {
       error: (err) => { console.log(err) }
     })
   }
+
+  objetByTag(val: any) {
+    this.http.get('http://localhost:8283/objet/tag/' + val).subscribe({
+      next: (data) => {
+        this.objets = data;
+
+      },
+      error: (err) => { console.log(err) }
+    })
+  }
+
+
 }

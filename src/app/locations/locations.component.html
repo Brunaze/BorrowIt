@@ -1,0 +1,45 @@
+<div class="ml-4 mr-4 mt-4 mb-5">
+    <div class="container justify-content-center">
+        <div class="container justify-content-center mb-4">
+            <button type="button" class="btn btn-primary active" *ngIf="voirDemandes">Demandes
+                reçues</button>
+            <button type="button" class="btn btn-primary" *ngIf="!voirDemandes" (click)="changeButton()">Demandes
+                reçues</button>
+            <button type="button" class="btn btn-primary" *ngIf="voirDemandes" (click)="changeButton()">Demandes
+                acceptées</button>
+            <button type="button" class="btn btn-primary active" *ngIf="!voirDemandes">Demandes
+                acceptées</button>
+        </div>
+        <div class="container">
+            <div class="row mb-4" *ngFor="let loc of locations">
+                <span *ngIf="loc.valide == !voirDemandes">
+                    <div class="card col-sm-12" style="width: 50rem; background-color: rgb(187, 187, 187);">
+                        <div class="row g-0">
+                            <div class="col-md-6">
+                                <img src="https://pimdatacdn.bahco.com/media/sub637/16a10be11fad9b3f.png"
+                                    class="card-img-top" alt="...">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ loc.objet.nom }}</h5>
+                                    <p class="card-text">{{ loc.dateFin - loc.dateDebut }} jour(s) du {{ loc.dateDebut
+                                        }} au {{ loc.dateFin }}<br>
+                                        total : 15€ <br>
+                                        caution : {{ loc.objet.caution }}€
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container" *ngIf="voirDemandes">
+                        <button type="button" class="btn btn-success"
+                            (click)="validerLocation(loc.id)">Accepter</button>
+                        <button type="button" class="btn btn-danger" (click)="refuserLocation(loc.id)">Refuser</button>
+                        <button type="button" class="btn btn-info">Contacter</button>
+                        <button type="button" class="btn btn-info">Voir profil locataire</button>
+                    </div>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

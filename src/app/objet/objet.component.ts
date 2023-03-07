@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { RecupObjetService } from '../services/recup-objet.service';
 @Component({
   selector: 'app-objet',
   templateUrl: './objet.component.html',
@@ -12,17 +13,10 @@ export class ObjetComponent implements OnInit {
   objet: any;
   user: any;
   msgErr: any;
-  constructor(private route: Router, public authService: AuthService, private http: HttpClient) { }
-
-
+  constructor(private route: Router, public authService: AuthService, private recupObjetService: RecupObjetService, private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get('http://localhost:8283/objet').subscribe({
-      next: (data) => {
-        this.objet = data;
-      },
-      error: (err) => (console.log(err))
-    })
+    this.objet = this.recupObjetService.getObjet();
   }
 
   getObjet(val: any): void {

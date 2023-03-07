@@ -5,6 +5,7 @@ import { ObjetComponent } from './objet/objet.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { StarRatingComponentComponent } from './star-rating-component/star-rating-component.component';
 import { MessagerieComponent } from './messagerie/messagerie.component';
+import { LocationsComponent } from './locations/locations.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfilBisComponent } from './profil-bis/profil-bis.component';
 
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'profil', component: ProfileComponent },
   { path: 'profil0', component: ProfilBisComponent },
   { path: 'star', component: StarRatingComponentComponent },
-  { path: 'messagerie', component: MessagerieComponent }
+  { path: 'messagerie', component: MessagerieComponent },
+  { path: 'locations', component: LocationsComponent }
 ];
 
 @NgModule({

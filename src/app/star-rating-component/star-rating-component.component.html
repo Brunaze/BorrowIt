@@ -8,7 +8,9 @@
 <p>star-rating-component works!</p>
 
 <div class="star-rating">
-  <span class="star" *ngFor="let star of stars" [ngClass]="{ 'filled': star <= currentRate, 'half-filled': star - 0.5 <= currentRate && currentRate < star }" (click)="rate(star)">
+  <span class="star" *ngFor="let star of stars"
+    [ngClass]="{ 'filled': star <= currentRate, 'half-filled': star - 0.5 <= currentRate && currentRate < star }"
+    (click)="rate(star)">
     <span class="star-icon">★</span>
   </span>
 </div>
@@ -17,7 +19,9 @@
 <p>star-rating-component works!</p>
 
 <div class="star-rating">
-  <span class="star" *ngFor="let star of stars" [ngClass]="{ 'filled': star <= currentRate, 'half-filled': star - 0.5 <= currentRate && currentRate < star }" (click)="rate(star)">
+  <span class="star" *ngFor="let star of stars"
+    [ngClass]="{ 'filled': star <= currentRate, 'half-filled': star - 0.5 <= currentRate && currentRate < star }"
+    (click)="rate(star)">
     <span class="star-icon">&#9733;</span>
   </span>
 </div>

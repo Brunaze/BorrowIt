@@ -38,13 +38,4 @@ export class AuthService {
     window.location.reload;
   }
 
-
-  setObjet(objet: any) {
-    window.localStorage.setItem('obj', JSON.stringify(objet));
-  }
-
-  getObjet() {
-    let objet: any = localStorage.getItem('obj');
-    return JSON.parse(objet);
-  }
 }

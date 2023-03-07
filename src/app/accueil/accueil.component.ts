@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { RecupObjetService } from '../services/recup-objet.service';
 
 @Component({
   selector: 'app-accueil',
@@ -13,7 +14,7 @@ export class AccueilComponent implements OnInit {
   objets: any;
   numbers: any;
   msgErr: any;
-  constructor(private http: HttpClient, private route: Router, public authService: AuthService) {
+  constructor(private http: HttpClient, private route: Router, public recupObjetService: RecupObjetService, public authService: AuthService) {
 
   }
 
@@ -31,7 +32,7 @@ export class AccueilComponent implements OnInit {
       next: (data) => {
         this.objets = data;
         if (this.objets != null) {
-          this.authService.setObjet(this.objets);
+          this.recupObjetService.setObjet(this.objets);
           window.location.reload();
         } else {
           this.msgErr = 'pas d objet';

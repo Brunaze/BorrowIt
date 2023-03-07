@@ -70,7 +70,7 @@
         <div class="row">
             <div class="col-sm-2" *ngFor="let o of objets">
                 <div class="card">
-                    <a routerLink="/objet" (click)="authService.setObjet(o)">
+                    <a routerLink="/objet" (click)="recupObjetService.setObjet(o)">
                         <img class="card-img-top" src="{{ o.urlPhoto }}">
                     </a>
                     <div class="card-block">

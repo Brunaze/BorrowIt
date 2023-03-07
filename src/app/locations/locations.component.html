@@ -1,42 +1,64 @@
-<div class="ml-4 mr-4 mt-4 mb-5">
+<div class="ml-4 mr-4 mt-4 mb-5 log text-center">
     <div class="container justify-content-center">
         <div class="container justify-content-center mb-4">
-            <button type="button" class="btn btn-primary active" *ngIf="voirDemandes">Demandes
+            <button type="button" class="btn btn-primary active"
+                *ngIf="listeLocVisible.getVoirDemande() == 'true'">Demandes
                 reçues</button>
-            <button type="button" class="btn btn-primary" *ngIf="!voirDemandes" (click)="changeButton()">Demandes
+            <button type="button" class="btn btn-primary" *ngIf="listeLocVisible.getVoirDemande() == 'false'"
+                (click)="listeLocVisible.setVoirDemande(true); locPointeAnnulation = null">Demandes
                 reçues</button>
-            <button type="button" class="btn btn-primary" *ngIf="voirDemandes" (click)="changeButton()">Demandes
+            <button type="button" class="btn btn-primary" *ngIf="listeLocVisible.getVoirDemande() == 'true'"
+                (click)="listeLocVisible.setVoirDemande(false)">Demandes
                 acceptées</button>
-            <button type="button" class="btn btn-primary active" *ngIf="!voirDemandes">Demandes
+            <button type="button" class="btn btn-primary active"
+                *ngIf="listeLocVisible.getVoirDemande() == 'false'">Demandes
                 acceptées</button>
         </div>
         <div class="container">
-            <div class="row mb-4" *ngFor="let loc of locations">
-                <span *ngIf="loc.valide == !voirDemandes">
-                    <div class="card col-sm-12" style="width: 50rem; background-color: rgb(187, 187, 187);">
-                        <div class="row g-0">
-                            <div class="col-md-6">
-                                <img src="https://pimdatacdn.bahco.com/media/sub637/16a10be11fad9b3f.png"
-                                    class="card-img-top" alt="...">
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ loc.objet.nom }}</h5>
-                                    <p class="card-text">{{ loc.dateFin - loc.dateDebut }} jour(s) du {{ loc.dateDebut
-                                        }} au {{ loc.dateFin }}<br>
-                                        total : 15€ <br>
-                                        caution : {{ loc.objet.caution }}€
-                                    </p>
+            <div class="row" *ngFor="let loc of locations">
+                <span
+                    *ngIf="(loc.valide && listeLocVisible.getVoirDemande() == 'false') || (!loc.valide && listeLocVisible.getVoirDemande() == 'true')">
+                    <div class="card mb-4" style="background-color: rgb(226, 226, 226);">
+                        <div class="card col-sm-12" style="width: 50rem; background-color: rgb(187, 187, 187);">
+                            <div class="row g-0">
+                                <div class="col-md-6">
+                                    <img src="https://pimdatacdn.bahco.com/media/sub637/16a10be11fad9b3f.png"
+                                        class="card-img-top" alt="...">
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ loc.objet.nom }}</h5>
+                                        <p class="card-text">{{ getDiffDates(loc) }} jour(s) du {{ loc.dateDebut }} au
+                                            {{
+                                            loc.dateFin }}<br>
+                                            total : {{ getDiffDates(loc) * loc.objet.prixJour }}€ <br>
+                                            caution : {{ loc.objet.caution }}€
+                                        </p>
+                                        <button type="button" class="btn btn-danger"
+                                            *ngIf="listeLocVisible.getVoirDemande() == 'false'"
+                                            (click)="locPointeAnnulation = loc">Annuler</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="container" *ngIf="voirDemandes">
-                        <button type="button" class="btn btn-success"
-                            (click)="validerLocation(loc.id)">Accepter</button>
-                        <button type="button" class="btn btn-danger" (click)="refuserLocation(loc.id)">Refuser</button>
-                        <button type="button" class="btn btn-info">Contacter</button>
-                        <button type="button" class="btn btn-info">Voir profil locataire</button>
+                        <div class="container" *ngIf="listeLocVisible.getVoirDemande() == 'true'">
+                            <button type="button" class="btn btn-success"
+                                (click)="validerLocation(loc.id)">Accepter</button>
+                            <button type="button" class="btn btn-danger"
+                                (click)="refuserLocation(loc.id)">Refuser</button>
+                            <button type="button" class="btn btn-info">Contacter</button>
+                            <button type="button" class="btn btn-info">Voir profil locataire</button>
+                        </div>
+
+                        <div class="card" style="background-color: rgb(226, 226, 226);"
+                            *ngIf="locPointeAnnulation == loc">
+                            <p>
+                                Êtes-vous sûr ?
+                            </p>
+                            <button type="button" class="btn btn-info"
+                                (click)="locPointeAnnulation = null; refuserLocation(loc.id)">Oui</button>
+                            <button type="button" class="btn btn-info" (click)="locPointeAnnulation = null">Non</button>
+                        </div>
                     </div>
                 </span>
             </div>

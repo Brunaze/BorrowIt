@@ -41,4 +41,16 @@ export class AccueilComponent implements OnInit {
       error: (err) => { console.log(err) }
     })
   }
+
+  objetByTag(val: any) {
+    this.http.get('http://localhost:8283/objet/tag/' + val).subscribe({
+      next: (data) => {
+        this.objets = data;
+
+      },
+      error: (err) => { console.log(err) }
+    })
+  }
+
+
 }

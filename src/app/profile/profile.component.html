@@ -1,27 +1,30 @@
 <div class="ml-4 mr-4 mt-4 mb-5">
   <div class="container" style="max-width: 100%">
-    <div class="row border border-dark">
+    <div class="row ligne1">
 
-      <div class="col-2">
+      <div class="col-2" style="z-index: 2">
+        <h1 id="MesLocations">Profilx</h1>
+      </div>
         <!-- Colonne n° 0 : Side Nav Bar -->
         <div class="navbar">
-          <h1 style="margin-left: 1px">Profil</h1>
+          <h1 style="margin-right: 25px;">Profil</h1>
           <mat-sidenav-container class="example-container1">
             <mat-sidenav #sidenav mode="over" opened>
               <mat-nav-list class="example-container2">
                 <a mat-list-item routerLink="/accueil">Accueil</a>
                 <a mat-list-item routerLink="/profil">Profil</a>
+                <a mat-list-item routerLink="/parametres">Inventaire</a>
+                <a mat-list-item (click)="allerVersElement('MesLocations')">Mes locations</a>
                 <a mat-list-item routerLink="/parametres">Modifier votre profil</a>
-                <a mat-list-item routerLink="/deconnexion">Déconnexion</a>
               </mat-nav-list>
             </mat-sidenav>
             <div class="sidenav-content">
               <router-outlet>
-                <br><br><br><br><br><br>
+
               </router-outlet>
             </div>
           </mat-sidenav-container>
-        </div>
+
       </div>
 
       <!-- Colonne n°1 -->
@@ -46,14 +49,29 @@
           <h5 class="grey-text">Membre depuis //date//</h5>
         </div>
 
+
+        <!-- Info contact personnel dispo -->
         <div class="card-text">
-          <br>
-          <ul class="text1large">
-            <li><Strong>Mail</Strong>: // xxxxxxgmail.com //</li>
+          <div class="log" *ngIf="authService.isConnected()">
+            <br>
+            <ul class="text1large">
+              <li><Strong>Mail</Strong>: // xxxxxxgmail.com //</li>
+              <p></p>
+              <li><Strong>Numéro</Strong> : //06 00 00 00 00// </li>
+            </ul>
+            <br><br>
+          </div>
+
+          <div class="log d-flex justify-content-between" *ngIf="authService.isNotConnected()">
+            <li><Strong>Pour me contacter :</Strong></li>
+          </div>
+          <div class="log text-center">
+            <button type="button" class="btn" data-toggle="modal" data-target="#modalLoginForm">Connectez vous</button>
             <p></p>
-            <li><Strong>Numéro</Strong> : //06 00 00 00 00// </li>
-          </ul>
-          <br><br>
+          </div>
+
+
+
         </div>
         <!--
             <div class="card-footer">
@@ -62,17 +80,102 @@
 
         <div class="card-footer">
           <div class="">
-            <h4>J'ai déjà effectué XX prêt</h4>
-            <h5><a href="" title="Moyenne des Notes des commantaire" class="passiv_star"> XX ★</a></h5>
+            <h5>J'ai déjà effectué XX prêt</h5>
+            <h5><a href="notation" title="Moyenne des Notes des commantaire" class="passiv_star"> XX ★</a></h5>
           </div>
         </div>
-
 
       </div>
 
 
+    </div>
+  </div>
 
+  <div class="row ligne2 justify-content-center">
+    <div class="col-2" style="z-index: 1">
+      <h1 id="MesLocations">Mes locations</h1>
+    </div>
+    <div class="col-10 mt-3 justify-content-center border">
+      <ul class="nav nav-pills justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link" routerLink=""><img src="https://i.goopics.net/k9x1py.png" height="30" alt="BorrowIt Logo"
+              loading="lazy" /></a>
+          <p class="text-center">outils</p>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink=""><img src="https://i.goopics.net/y7bhsj.png" height="30" alt="BorrowIt Logo"
+              loading="lazy" /></a>
+          <p class="text-center">livres</p>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink=""><img src="https://i.goopics.net/oazyxx.png" height="30" alt="BorrowIt Logo"
+              loading="lazy" /></a>
+          <p class="text-center">jeux</p>
+        </li>
+        <li class="nav-item justify-content-center">
+          <a class="nav-link" routerLink=""><img src="https://i.goopics.net/9himml.png" height="30" alt="BorrowIt Logo"
+              loading="lazy" /></a>
+          <p class="text-center">musique</p>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink=""><img src="https://i.goopics.net/p9ujew.png" height="30" alt="BorrowIt Logo"
+              loading="lazy" /></a>
+          <p class="text-center">films</p>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink=""><img src="https://i.goopics.net/8tds6u.png" height="30" alt="BorrowIt Logo"
+              loading="lazy" /></a>
+          <p class="text-center">mode</p>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink=""><img src="https://i.goopics.net/6uc1yi.png" height="30" alt="BorrowIt Logo"
+              loading="lazy" /></a>
+          <p class="text-center">immobilier</p>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink=""><img src="https://i.goopics.net/laimnu.png" height="30" alt="BorrowIt Logo"
+              loading="lazy" /></a>
+          <p class="text-center">Sport</p>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink=""><img src="https://i.goopics.net/2ij49a.png" height="30" alt="BorrowIt Logo"
+              loading="lazy" /></a>
+          <p class="text-center">informatique</p>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink=""><img src="https://i.goopics.net/6wbehu.png" height="30" alt="BorrowIt Logo"
+              loading="lazy" /></a>
+          <p class="text-center">véhicules</p>
+        </li>
+        <!-- Lien pour autres -->
+        <li class="nav-item">
+          <a class="nav-link" routerLink=""><img src="https://i.goopics.net/t7q6k8.png" height="30" alt="BorrowIt Logo"
+              loading="lazy" /></a>
+          <p class="text-center">autres</p>
+        </li>
+      </ul>
+    </div>
+  </div>
 
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</div>
+
+<!--
+<div class="container">
+  <div class="col-2" style="z-index: 2">
+    <h1 id="MesLocations">Profilx</h1>
+  </div>
+  <div class="row">
+    <div class="col-10">
+      One of three columns
     </div>
   </div>
 </div>
+
+  <div class="row ligne1">
+<div class="col-2" style="z-index: 2">
+  <h1 id="MesLocations">Profilx</h1>
+</div>
+</div>
+Lien pour autres -->

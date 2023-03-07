@@ -1,5 +1,5 @@
 .navbar {
-  width: 13%;
+  width: 15%;
   height: 100%;
   position: fixed;
   top: 0;
@@ -50,17 +50,16 @@
 
 .ligne1 {
   height: 20rem;
-  margin-top: 40px;
-  margin-left: 60px;
-  margin-right: 40px;
-  margin-bottom: 25px;
+  margin-top: 60px;
+  margin-right: 10px;
+  margin-bottom: 35px;
   position: relative;
 }
 
 .ligne2 {
+  border-top: solid black 2px;
   position: relative;
-  margin-left: 40px;
-  margin-right: 40px;
+  margin-right: 20px;
 }
 
 .ligne3 {
@@ -101,7 +100,7 @@
 }
 
 button {
-  background-color: lightgray;
+  background-color: rgb(221, 20, 20);
   position: bottom;
   font-size: small;
   border-radius: 5px;

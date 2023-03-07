@@ -10,7 +10,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class AccueilComponent implements OnInit {
 
-  objet: any;
+  objets: any;
   numbers: any;
   msgErr: any;
   constructor(private http: HttpClient, private route: Router, public authService: AuthService) {
@@ -20,7 +20,7 @@ export class AccueilComponent implements OnInit {
   ngOnInit(): void {
     this.http.get('http://localhost:8283/objet').subscribe({
       next: (data) => {
-        this.objet = data;
+        this.objets = data;
       },
       error: (err) => { console.error(err) }
     })
@@ -29,9 +29,9 @@ export class AccueilComponent implements OnInit {
   objetid(val: any) {
     this.http.post('http://localhost:8283/utilisateur/objet/id', val).subscribe({
       next: (data) => {
-        this.objet = data;
-        if (this.objet != null) {
-          this.authService.setObjet(this.objet);
+        this.objets = data;
+        if (this.objets != null) {
+          this.authService.setObjet(this.objets);
           window.location.reload();
         } else {
           this.msgErr = 'pas d objet';

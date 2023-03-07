@@ -14,15 +14,8 @@ export class ObjetComponent implements OnInit {
   msgErr: any;
   constructor(private route: Router, public authService: AuthService, private http: HttpClient) { }
 
-
-
   ngOnInit(): void {
-    this.http.get('http://localhost:8283/objet').subscribe({
-      next: (data) => {
-        this.objet = data;
-      },
-      error: (err) => (console.log(err))
-    })
+    this.objet = this.authService.getObjet();
   }
 
   getObjet(val: any): void {

@@ -11,22 +11,25 @@
                 *ngIf="listeLocVisible.getListeLocVisible() == 'demandeAcceptees'">Demandes acceptées</button>
             <button type="button" class="btn btn-primary"
                 *ngIf="listeLocVisible.getListeLocVisible() != 'demandeAcceptees'"
-                (click)="listeLocVisible.setListeLocVisible('demandeAcceptees')">Demandes acceptées</button>
+                (click)="listeLocVisible.setListeLocVisible('demandeAcceptees'); locPointeAnnulation = null">Demandes
+                acceptées</button>
             <button type="button" class="btn btn-primary active"
                 *ngIf="listeLocVisible.getListeLocVisible() == 'enCours'">Locations en cours</button>
             <button type="button" class="btn btn-primary" *ngIf="listeLocVisible.getListeLocVisible() != 'enCours'"
-                (click)="listeLocVisible.setListeLocVisible('enCours')">Locations en cours</button>
+                (click)="listeLocVisible.setListeLocVisible('enCours'); locPointeAnnulation = null">Locations en
+                cours</button>
             <button type="button" class="btn btn-primary active"
                 *ngIf="listeLocVisible.getListeLocVisible() == 'historique'">Historique locations</button>
             <button type="button" class="btn btn-primary" *ngIf="listeLocVisible.getListeLocVisible() != 'historique'"
-                (click)="listeLocVisible.setListeLocVisible('historique')">Historique locations</button>
+                (click)="listeLocVisible.setListeLocVisible('historique'); locPointeAnnulation = null">Historique
+                locations</button>
         </div>
         <div class="container">
             <div class="row" *ngFor="let loc of locations">
                 <span
                     *ngIf="(loc.valide && getComparaisonToday(loc) == 'future' && listeLocVisible.getListeLocVisible() == 'demandeAcceptees') || 
                     (!loc.valide && listeLocVisible.getListeLocVisible() == 'demandeRecues') || 
-                    (loc.valide && getComparaisonToday(loc) == 'enCours' && listeLocVisible.getListeLocVisible() == 'enCours') ||
+                    (loc.valide && (getComparaisonToday(loc) == 'enCours' || getComparaisonToday(loc) == 'enCoursFinie') && listeLocVisible.getListeLocVisible() == 'enCours') ||
                     (loc.valide && getComparaisonToday(loc) == 'historique' && listeLocVisible.getListeLocVisible() == 'historique')">
                     <div class="card mb-4" style="background-color: rgb(226, 226, 226);">
                         <div class="card col-sm-12" style="width: 50rem; background-color: rgb(187, 187, 187);">
@@ -37,18 +40,29 @@
                                 <div class="col-md-6">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ loc.objet.nom }}</h5>
-                                        <p class="card-text">{{ getDiffDates(loc) }} jour(s) du {{ loc.dateDebut }} au
+                                        <p class="card-text">{{ getDiffDates(loc.dateFin, loc.dateDebut) }} jour(s) du
+                                            {{ loc.dateDebut }} au
                                             {{
                                             loc.dateFin }}<br>
-                                            total : {{ getDiffDates(loc) * loc.objet.prixJour }}€ <br>
-                                            caution : {{ loc.objet.caution }}€
+                                            total : {{ getDiffDates(loc.dateFin, loc.dateDebut) * loc.objet.prixJour }}€
+                                            <br>
+                                            caution : {{ loc.objet.caution }}€ <br>
+                                            <span
+                                                *ngIf="getComparaisonToday(loc) == 'historique' && getDiffDates(loc.dateFinReelle, loc.dateFin) != 1">
+                                                {{ getDiffDates(loc.dateFinReelle, loc.dateFin) - 1 }} jour(s) de retard
+                                                (rendu le {{ loc.dateFinReelle }})
+                                            </span>
                                         </p>
+
                                         <button type="button" class="btn btn-danger"
                                             *ngIf="listeLocVisible.getListeLocVisible() == 'demandeAcceptees'"
                                             (click)="locPointeAnnulation = loc">Annuler</button>
+                                        <button type="button" class="btn btn-danger"
+                                            *ngIf="listeLocVisible.getListeLocVisible() == 'enCours' || listeLocVisible.getListeLocVisible() == 'enCoursFinie'">
+                                            Signaler</button>
                                         <button type="button" class="btn btn-info"
-                                            *ngIf="listeLocVisible.getListeLocVisible() == 'demandeAcceptees'">
-                                            Contacter</button>
+                                            *ngIf="listeLocVisible.getListeLocVisible() != 'demandeRecues'">
+                                            Locataire</button>
                                     </div>
                                 </div>
                             </div>
@@ -58,8 +72,8 @@
                                 (click)="validerLocation(loc.id)">Accepter</button>
                             <button type="button" class="btn btn-danger"
                                 (click)="refuserLocation(loc.id)">Refuser</button>
-                            <button type="button" class="btn btn-info">Contacter</button>
-                            <button type="button" class="btn btn-info">Voir profil locataire</button>
+                            <!--<button type="button" class="btn btn-info">Contacter</button>-->
+                            <button type="button" class="btn btn-info">Locataire</button>
                         </div>
 
                         <div class="card" style="background-color: rgb(226, 226, 226);"
@@ -70,6 +84,20 @@
                             <button type="button" class="btn btn-info"
                                 (click)="locPointeAnnulation = null; refuserLocation(loc.id)">Oui</button>
                             <button type="button" class="btn btn-info" (click)="locPointeAnnulation = null">Non</button>
+                        </div>
+
+                        <div class="card" style="background-color: rgb(226, 226, 226);"
+                            *ngIf="getComparaisonToday(loc) == 'enCoursFinie'">
+                            <p style="margin-top: 5px;">
+                                Date de rendu ?
+                            </p>
+                            <form #finLocationForm="ngForm"
+                                (ngSubmit)="putFinLocation(loc.id, finLocationForm.value.date)">
+                                <div class="form-group">
+                                    <input class="form-control" type="date" name="date" ngModel="" required>
+                                </div>
+                                <button class="btn submit-btn btn-success" type="submit">Valider</button>
+                            </form>
                         </div>
                     </div>
                 </span>

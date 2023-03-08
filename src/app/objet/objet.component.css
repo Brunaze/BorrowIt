@@ -25,11 +25,13 @@
     -webkit-box-shadow: 0px 5px 20px -5px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 5px 20px -5px rgba(0, 0, 0, 0.3);
     border-radius: 4px;
+    height: 600px;
 }
 
 .booking-form .form-group {
     position: relative;
     margin-bottom: 30px;
+    height: 60px;
 }
 
 .booking-form .form-control {
@@ -140,3 +142,53 @@
 .card-img-bot:hover {
     box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }
+
+.card-img-top {
+
+
+    max-width: fit-content;
+    margin: auto;
+    max-height: 400px;
+    margin-top: 30px;
+    object-fit: contain;
+}
+
+.div-img-top {
+    height: 400px;
+    text-align: center;
+    object-fit: contain;
+    vertical-align: middle;
+    margin-bottom: 30px;
+}
+
+.form-proprietaire-left {
+    float: left;
+    width: 30%;
+}
+
+.form-proprietaire-right {
+    float: left;
+    width: 70%;
+}
+
+.card-bot-left {
+    float: left;
+    width: 50%;
+}
+
+.card-bot-right {
+    float: left;
+    width: 50%;
+}
+
+/*
+.img {
+  border: 1px solid rgb(175, 175, 175);
+  max-width: max-content;
+  max-height: max-content;
+  object-fit: contain;
+  display: block;
+  height: 50%;
+  margin: auto;
+}
+*/

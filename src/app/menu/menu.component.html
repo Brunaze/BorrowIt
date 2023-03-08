@@ -59,7 +59,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                     <li>
-                        <a class="dropdown-item" routerLink="profil">Profil</a>
+                        <a class="dropdown-item" routerLink="profil" (click)="userservice.setUser(authService.getUserConnect())">Profil</a>
                     </li>
                     <li>
                         <a class="dropdown-item">Ajouter un ami</a>

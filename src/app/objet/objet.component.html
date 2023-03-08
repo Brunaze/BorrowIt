@@ -2,13 +2,25 @@
     <div class="row">
         <div class="col-sm-6">
             <div class="card">
-                <img src="{{ objet.urlPhoto }}" class="card-img-top" alt="...">
+                <div class="div-img-top">
+                    <img src="{{ objet.urlPhoto }}" class="card-img-top" alt="...">
+                </div>
                 <div class="card-body">
-                    <h5 class="card-title">{{ objet.nom }}</h5>
-                    <p class="card-text">{{ objet.prixJour }} €/jour</p>
-                    <p class="card-text">{{ objet.caution }} €</p>
+                    <h4 class="card-title" style="font-weight: bolder;">{{ objet.nom }}</h4>
+                    <p class="card-text">{{ objet.description }}</p>
 
+                </div>
+                <div class="card-body">
+                    <div class="card-bot-left">
+                        <h5 class="card-title" style="font-weight: bold;">Prix journalier : <h5>{{ objet.prixJour }}
+                                €/jour</h5>
+                        </h5>
 
+                    </div>
+                    <div class="card-bot-right">
+                        <h5 class="card-title" style="font-weight: bold;">Caution : <h5>{{ objet.caution }} €</h5>
+                        </h5>
+                    </div>
                 </div>
             </div>
         </div>
@@ -17,28 +29,46 @@
                 <form>
                     <div class="form-group">
                         <span class="form-label">Proprietaire</span>
-                        <div class="form-proprietaire">
+                        <div class="form-proprietaire-left">
                             <a routerLink="/profil/{{objet.proprietaire}}">
                                 <img class="card-img-bot" src="{{objet.proprietaire.urlPhoto}}">
                             </a>
-                            <p>{{objet.proprietaire.nom}}</p>
+                        </div>
+                        <div class="form-proprietaire-right">
+
+                            <p>{{objet.proprietaire.nom}} {{objet.proprietaire.prenom}}</p>
                         </div>
 
                     </div>
+
+
+
+                    <!--CHECK IN-->
+
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <span class="form-label">Check In</span>
-                                <input class="form-control" type="date" required>
+                                <input id="dp2" class="form-control" type="date" required>
                             </div>
                         </div>
+
+                        <!--CHECK OUT-->
+
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <span class="form-label">Check out</span>
-                                <input class="form-control" type="date" required>
+                                <input id="dp2" class="form-control" type="date" required>
                             </div>
                         </div>
                     </div>
+
+
+
+
+
+
+
 
                     <div class="form-btn">
                         <button class="submit-btn">Check availability</button>
@@ -179,4 +209,3 @@
         </div>
     </div>
 </div>
-<!-- FIN FORMULAIRE D'INSCRIPTION CACHE-->

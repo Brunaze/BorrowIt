@@ -85,7 +85,7 @@
                             {{ o.description }}
                         </p>
                         <div class="left-bottom-card">
-                            <a routerLink="/profil/{{o.proprietaire}}">
+                            <a routerLink="/profil" (click)="userservice.setUser(o.proprietaire)">
                                 <img class="card-img-bot" src="{{o.proprietaire.urlPhoto}}">
                             </a>
                         </div>
@@ -96,7 +96,7 @@
                                 </small>
                                 <br>
                                 <small class="card-text-nom">
-                                    Victime SOOWOOOOOOOOO
+                                  {{ o.proprietaire.nom }} {{ o.proprietaire.prenom }}
                                 </small>
                             </p>
 

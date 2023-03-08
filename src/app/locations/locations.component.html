@@ -94,7 +94,8 @@
                             <form #finLocationForm="ngForm"
                                 (ngSubmit)="putFinLocation(loc.id, finLocationForm.value.date)">
                                 <div class="form-group">
-                                    <input class="form-control" type="date" name="date" ngModel="" required>
+                                    <input class="form-control" type="date" name="date" min="2023-03-10"
+                                        max="2023-12-31" ngModel="" required>
                                 </div>
                                 <button class="btn submit-btn btn-success" type="submit">Valider</button>
                             </form>

@@ -18,8 +18,8 @@ export class LocationsComponent implements OnInit {
   constructor(private http: HttpClient, private route: Router, public authService: AuthService, public listeLocVisible: ListeLocVisibleService) { }
 
   ngOnInit(): void {
-    if (this.listeLocVisible.getVoirDemande() == null) {
-      this.listeLocVisible.setVoirDemande(true);
+    if (this.listeLocVisible.getListeLocVisible() == null) {
+      this.listeLocVisible.setListeLocVisible('demandeRecues');
     }
     this.getListeLocNonValide()
   }
@@ -46,6 +46,16 @@ export class LocationsComponent implements OnInit {
   }
 
   getDiffDates(loc: any) {
-    return ((new Date(loc.dateFin)).valueOf() - (new Date(loc.dateDebut)).valueOf()) / (3600 * 24 * 1000);
+    return (((new Date(loc.dateFin)).valueOf() - (new Date(loc.dateDebut)).valueOf()) / (3600 * 24 * 1000)) + 1;
+  }
+
+  getComparaisonToday(loc: any) {
+    if (new Date(loc.dateDebut) > new Date()) {
+      return "future"
+    } else if (new Date(loc.dateFin) < new Date()) {
+      return "historique"
+    } else {
+      return "enCours"
+    }
   }
 }

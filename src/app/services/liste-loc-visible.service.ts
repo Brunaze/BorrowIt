@@ -7,11 +7,11 @@ export class ListeLocVisibleService {
 
   constructor() { }
 
-  setVoirDemande(val: any) {
-    window.localStorage.setItem('voirDemandes', val);
+  setListeLocVisible(val: any) {
+    window.localStorage.setItem('listeLocVisible', val);
   }
 
-  getVoirDemande() {
-    return localStorage.getItem('voirDemandes');
+  getListeLocVisible() {
+    return localStorage.getItem('listeLocVisible');
   }
 }

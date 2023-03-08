@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { RechercheService } from '../services/recherche.service';
 
 declare var $: any;
 
@@ -16,7 +17,7 @@ export class MenuComponent implements OnInit {
   user: any;
   msgErr: any;
 
-  constructor(private route: Router, public authService: AuthService, private http: HttpClient) { }
+  constructor(public route: Router, public authService: AuthService, private http: HttpClient, public rechercheObjet : RechercheService) { }
 
   ngOnInit(): void {
     this.http.get('http://localhost:8283/utilisateur').subscribe({
@@ -48,6 +49,15 @@ export class MenuComponent implements OnInit {
         window.location.reload();
       },
       error: (err) => { console.error(err) }
+    })
+  }
+
+  searchObjet(val: any): void {
+    this.http.get('http://localhost:8283/recherche/' + val).subscribe({
+      next: (data) => {
+        this.rechercheObjet.setObjetRecherche(data);
+      },
+      error: (err) => (console.log(err))
     })
   }
 

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { RechercheService } from '../services/recherche.service';
 import { RecupObjetService } from '../services/recup-objet.service';
 
 @Component({
@@ -14,14 +15,17 @@ export class AccueilComponent implements OnInit {
   objets: any;
   numbers: any;
   msgErr: any;
-  constructor(private http: HttpClient, private route: Router, public recupObjetService: RecupObjetService, public authService: AuthService) {
+  constructor(private http: HttpClient, private route: Router, public rechercheObjet : RechercheService, public recupObjetService: RecupObjetService, public authService: AuthService) {
 
   }
 
   ngOnInit(): void {
     this.http.get('http://localhost:8283/objet').subscribe({
       next: (data) => {
-        this.objets = data;
+        if (this.rechercheObjet.getObjetRecherche() == null){
+          this.objets = data;
+          this.rechercheObjet.setObjetRecherche(data);
+        }
       },
       error: (err) => { console.error(err) }
     })
@@ -46,6 +50,8 @@ export class AccueilComponent implements OnInit {
     this.http.get('http://localhost:8283/objet/tag/' + val).subscribe({
       next: (data) => {
         this.objets = data;
+        this.rechercheObjet.setObjetRecherche(data);
+
 
       },
       error: (err) => { console.log(err) }

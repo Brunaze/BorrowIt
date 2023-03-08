@@ -15,7 +15,7 @@ export class AccueilComponent implements OnInit {
   objets: any;
   numbers: any;
   msgErr: any;
-  constructor(public userservice: UserService,private http: HttpClient, private route: Router, public recupObjetService: RecupObjetService, public authService: AuthService) {
+  constructor(public userservice: UserService, private http: HttpClient, private route: Router, public recupObjetService: RecupObjetService, public authService: AuthService) {
 
   }
 
@@ -52,6 +52,5 @@ export class AccueilComponent implements OnInit {
       error: (err) => { console.log(err) }
     })
   }
-
 
 }

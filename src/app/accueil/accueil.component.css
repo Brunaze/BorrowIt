@@ -15,8 +15,8 @@
     object-fit: contain;
 }
 
-.card-img-bot {
-    border: 1px solid rgb(175, 175, 175);
+.card-img-bot { /*CORRECTION carte de taille différente selon la photo du proprio*/
+    border: 2px solid black; /*CORRECTION a faire on ne voit pas la bordure*/
     clip-path: circle();
     width: 60px;
     block-size: fit-content;

@@ -54,7 +54,7 @@ export class MenuComponent implements OnInit {
   }
 
   searchObjet(val: any): void {
-    this.http.get('http://localhost:8283/recherche/' + val).subscribe({
+    this.http.get('http://localhost:8283/objet/recherche/' + val).subscribe({
       next: (data) => {
         this.rechercheObjet.setObjetRecherche(data);
       },

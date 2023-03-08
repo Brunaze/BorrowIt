@@ -17,17 +17,21 @@ export class AccueilComponent implements OnInit {
   numbers: any;
   msgErr: any;
 
-  constructor(public userservice: UserService,private http: HttpClient, private route: Router, public recupObjetService: RecupObjetService, public authService: AuthService, public rechercheObjet : RechercheService) {
+  constructor(public userservice: UserService, private http: HttpClient, private route: Router, public recupObjetService: RecupObjetService, public authService: AuthService, public rechercheObjet: RechercheService) {
 
   }
 
   ngOnInit(): void {
+    if (this.rechercheObjet.getObjetRecherche() == null) {
+      this.allObjets();
+    }
+  }
+
+  allObjets(): void {
     this.http.get('http://localhost:8283/objet').subscribe({
       next: (data) => {
-        if (this.rechercheObjet.getObjetRecherche() == null){
-          this.objets = data;
-          this.rechercheObjet.setObjetRecherche(data);
-        }
+        this.objets = data;
+        this.rechercheObjet.setObjetRecherche(data);
       },
       error: (err) => { console.error(err) }
     })
@@ -53,12 +57,9 @@ export class AccueilComponent implements OnInit {
       next: (data) => {
         this.objets = data;
         this.rechercheObjet.setObjetRecherche(data);
-
-
       },
       error: (err) => { console.log(err) }
     })
   }
-
 
 }

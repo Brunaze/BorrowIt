@@ -28,6 +28,11 @@
   border: 1px solid #555;
 }
 
+.text1large{
+  font-size: large;
+
+}
+
 /*
 .navbar {
   width: 240px;

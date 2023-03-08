@@ -4,8 +4,8 @@
     <ul class="nav nav-pills justify-content-center">
         <!-- Lien pour ALL -->
         <li class="nav-item">
-            <a class="nav-link" onclick="window.location.reload();"><img src="https://i.goopics.net/t7q6k8.png"
-                    height="30" alt="BorrowIt Logo" loading="lazy" /></a>
+            <a class="nav-link" (click)="allObjets();"><img src="https://i.goopics.net/t7q6k8.png" height="30"
+                    alt="BorrowIt Logo" loading="lazy" /></a>
             <p class="text-center">Voir tout</p>
         </li>
         <li class="nav-item">
@@ -96,7 +96,7 @@
                                 </small>
                                 <br>
                                 <small class="card-text-nom">
-                                  {{ o.proprietaire.nom }} {{ o.proprietaire.prenom }}
+                                    {{ o.proprietaire.nom }} {{ o.proprietaire.prenom }}
                                 </small>
                             </p>
 

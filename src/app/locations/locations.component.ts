@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { ListeLocVisibleService } from '../services/liste-loc-visible.service';
 
 @Component({
   selector: 'app-locations',
@@ -10,13 +11,16 @@ import { AuthService } from '../services/auth.service';
 })
 export class LocationsComponent implements OnInit {
 
-  voirDemandes: any;
   locations: any;
+  diff: any;
+  locPointeAnnulation: any;
 
-  constructor(private http: HttpClient, private route: Router, public authService: AuthService) { }
+  constructor(private http: HttpClient, private route: Router, public authService: AuthService, public listeLocVisible: ListeLocVisibleService) { }
 
   ngOnInit(): void {
-    this.voirDemandes = true
+    if (this.listeLocVisible.getListeLocVisible() == null) {
+      this.listeLocVisible.setListeLocVisible('demandeRecues');
+    }
     this.getListeLocNonValide()
   }
 
@@ -29,10 +33,6 @@ export class LocationsComponent implements OnInit {
     })
   }
 
-  changeButton(): void {
-    this.voirDemandes = !this.voirDemandes
-  }
-
   validerLocation(val: any): void {
     this.http.patch('http://localhost:8283/location/validation/' + val, {
       "description": "PATCH la validité de la location",
@@ -43,5 +43,19 @@ export class LocationsComponent implements OnInit {
   refuserLocation(val: any): void {
     this.http.delete('http://localhost:8283/location/delete/' + val).subscribe({})
     window.location.reload()
+  }
+
+  getDiffDates(loc: any) {
+    return (((new Date(loc.dateFin)).valueOf() - (new Date(loc.dateDebut)).valueOf()) / (3600 * 24 * 1000)) + 1;
+  }
+
+  getComparaisonToday(loc: any) {
+    if (new Date(loc.dateDebut) > new Date()) {
+      return "future"
+    } else if (new Date(loc.dateFin) < new Date()) {
+      return "historique"
+    } else {
+      return "enCours"
+    }
   }
 }

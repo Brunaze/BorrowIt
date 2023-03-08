@@ -2,30 +2,68 @@
     <div class="row">
         <div class="col-sm-6">
             <div class="card">
-                <img src="{{ objet.urlPhoto }}" class="img card-img-top" alt="...">
+                <div class="div-img-top">
+                    <img src="{{ objet.urlPhoto }}" class="card-img-top" alt="...">
+                </div>
                 <div class="card-body">
-                    <h5 class="card-title">{{ objet.nom }}</h5>
-                    <p class="card-text">{{ objet.prixJour }} €/jour</p>
-                    <p class="card-text">{{ objet.caution }} €</p>
+                    <h4 class="card-title" style="font-weight: bolder;">{{ objet.nom }}</h4>
+                    <p class="card-text">{{ objet.description }}</p>
 
-                    <!-- BOUTON LOUER -->
-                    <p class="log" *ngIf="authService.isConnected()">
-                        <a class="btn btn-primary">Louer</a>
-                    </p>
-                    <p class="log" *ngIf="authService.isNotConnected()">
-                        <a class="btn btn-primary" data-toggle="modal" data-target="#modalLoginForm">Louer</a>
-                    </p>
-
+                </div>
+                <div class="card-body">
+                    <div class="card-bot-left">
+                        <h5 class="card-title">Prix journalier : {{ objet.prixJour }} €/jour</h5>
+                    </div>
+                    <div class="card-bot-right">
+                        <h5 class="card-title">Caution : {{ objet.caution }} €</h5>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-6">
-            <p><label for="start">Début de location : </label>
-                <input type="date" id="start" name="trip-start" value="2023-03-03" min="2023-01-01" max="2023-12-31">
-            </p>
-            <p><label for="start">Fin de location : </label>
-                <input type="date" id="start" name="trip-start" value="2023-03-03" min="2023-01-01" max="2023-12-31">
-            </p>
+        <div class="col-md-4 col-md-pull-7">
+            <div class="booking-form">
+                <form>
+                    <div class="form-group">
+                        <span class="form-label">Proprietaire</span>
+                        <div class="form-proprietaire-left">
+                            <a routerLink="/profil/{{objet.proprietaire}}">
+                                <img class="card-img-bot" src="{{objet.proprietaire.urlPhoto}}">
+                            </a>
+                        </div>
+                        <div class="form-proprietaire-right">
+
+                            <p>{{objet.proprietaire.nom}}</p>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <span class="form-label">Check In</span>
+                                <input class="form-control" type="date" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <span class="form-label">Check out</span>
+                                <input class="form-control" type="date" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-btn">
+                        <button class="submit-btn">Check availability</button>
+                    </div>
+                    <div class="form-btn mt-3">
+                        <p class="log" *ngIf="authService.isConnected()">
+                            <a class="submit-btn">Louer</a>
+                        </p>
+                        <p class="log" *ngIf="authService.isNotConnected()">
+                            <a class="submit-btn" data-toggle="modal" data-target="#modalLoginForm">Louer</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 
@@ -51,7 +89,7 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
 
-<!-- Formulaire de connexion -->
+<!-- Formulaire de connexion CACHE -->
 <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -97,9 +135,10 @@
         </div>
     </div>
 </div>
+<!-- FIN FORMULAIRE CONNEXION CACHE-->
 
 
-<!-- Formulaire d'inscription -->
+<!-- Formulaire d'inscription CACHE -->
 <div class="modal fade" id="modalInscriptionForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">

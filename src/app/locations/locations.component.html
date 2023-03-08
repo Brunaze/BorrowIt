@@ -2,28 +2,37 @@
     <div class="container justify-content-center">
         <div class="container justify-content-center mb-4">
             <button type="button" class="btn btn-primary active"
-                *ngIf="listeLocVisible.getVoirDemande() == 'true'">Demandes
+                *ngIf="listeLocVisible.getListeLocVisible() == 'demandeRecues'">Demandes reçues</button>
+            <button type="button" class="btn btn-primary"
+                *ngIf="listeLocVisible.getListeLocVisible() != 'demandeRecues'"
+                (click)="listeLocVisible.setListeLocVisible('demandeRecues'); locPointeAnnulation = null">Demandes
                 reçues</button>
-            <button type="button" class="btn btn-primary" *ngIf="listeLocVisible.getVoirDemande() == 'false'"
-                (click)="listeLocVisible.setVoirDemande(true); locPointeAnnulation = null">Demandes
-                reçues</button>
-            <button type="button" class="btn btn-primary" *ngIf="listeLocVisible.getVoirDemande() == 'true'"
-                (click)="listeLocVisible.setVoirDemande(false)">Demandes
-                acceptées</button>
             <button type="button" class="btn btn-primary active"
-                *ngIf="listeLocVisible.getVoirDemande() == 'false'">Demandes
-                acceptées</button>
+                *ngIf="listeLocVisible.getListeLocVisible() == 'demandeAcceptees'">Demandes acceptées</button>
+            <button type="button" class="btn btn-primary"
+                *ngIf="listeLocVisible.getListeLocVisible() != 'demandeAcceptees'"
+                (click)="listeLocVisible.setListeLocVisible('demandeAcceptees')">Demandes acceptées</button>
+            <button type="button" class="btn btn-primary active"
+                *ngIf="listeLocVisible.getListeLocVisible() == 'enCours'">Locations en cours</button>
+            <button type="button" class="btn btn-primary" *ngIf="listeLocVisible.getListeLocVisible() != 'enCours'"
+                (click)="listeLocVisible.setListeLocVisible('enCours')">Locations en cours</button>
+            <button type="button" class="btn btn-primary active"
+                *ngIf="listeLocVisible.getListeLocVisible() == 'historique'">Historique locations</button>
+            <button type="button" class="btn btn-primary" *ngIf="listeLocVisible.getListeLocVisible() != 'historique'"
+                (click)="listeLocVisible.setListeLocVisible('historique')">Historique locations</button>
         </div>
         <div class="container">
             <div class="row" *ngFor="let loc of locations">
                 <span
-                    *ngIf="(loc.valide && listeLocVisible.getVoirDemande() == 'false') || (!loc.valide && listeLocVisible.getVoirDemande() == 'true')">
+                    *ngIf="(loc.valide && getComparaisonToday(loc) == 'future' && listeLocVisible.getListeLocVisible() == 'demandeAcceptees') || 
+                    (!loc.valide && listeLocVisible.getListeLocVisible() == 'demandeRecues') || 
+                    (loc.valide && getComparaisonToday(loc) == 'enCours' && listeLocVisible.getListeLocVisible() == 'enCours') ||
+                    (loc.valide && getComparaisonToday(loc) == 'historique' && listeLocVisible.getListeLocVisible() == 'historique')">
                     <div class="card mb-4" style="background-color: rgb(226, 226, 226);">
                         <div class="card col-sm-12" style="width: 50rem; background-color: rgb(187, 187, 187);">
                             <div class="row g-0">
-                                <div class="col-md-6">
-                                    <img src="https://pimdatacdn.bahco.com/media/sub637/16a10be11fad9b3f.png"
-                                        class="card-img-top" alt="...">
+                                <div class="img-objet col-md-6">
+                                    <img src="{{ loc.objet.urlPhoto }}" class="card-img-top" alt="...">
                                 </div>
                                 <div class="col-md-6">
                                     <div class="card-body">
@@ -35,13 +44,16 @@
                                             caution : {{ loc.objet.caution }}€
                                         </p>
                                         <button type="button" class="btn btn-danger"
-                                            *ngIf="listeLocVisible.getVoirDemande() == 'false'"
+                                            *ngIf="listeLocVisible.getListeLocVisible() == 'demandeAcceptees'"
                                             (click)="locPointeAnnulation = loc">Annuler</button>
+                                        <button type="button" class="btn btn-info"
+                                            *ngIf="listeLocVisible.getListeLocVisible() == 'demandeAcceptees'">
+                                            Contacter</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="container" *ngIf="listeLocVisible.getVoirDemande() == 'true'">
+                        <div class="container" *ngIf="listeLocVisible.getListeLocVisible() == 'demandeRecues'">
                             <button type="button" class="btn btn-success"
                                 (click)="validerLocation(loc.id)">Accepter</button>
                             <button type="button" class="btn btn-danger"

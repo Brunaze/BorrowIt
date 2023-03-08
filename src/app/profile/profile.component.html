@@ -2,40 +2,58 @@
   <div class="container" style="max-width: 100%">
     <div class="row ligne1">
 
-      <div class="col-2" style="z-index: 2">
+      <div class="col-2" style="z-index: 1">
         <h1 id="MesLocations">Profilx</h1>
       </div>
-        <!-- Colonne n° 0 : Side Nav Bar -->
-        <div class="navbar">
-          <h1 style="margin-right: 25px;">Profil</h1>
-          <mat-sidenav-container class="example-container1">
-            <mat-sidenav #sidenav mode="over" opened>
-              <mat-nav-list class="example-container2">
-                <a mat-list-item routerLink="/accueil">Accueil</a>
-                <a mat-list-item routerLink="/profil">Profil</a>
-                <a mat-list-item routerLink="/parametres">Inventaire</a>
-                <a mat-list-item (click)="allerVersElement('MesLocations')">Mes locations</a>
-                <a mat-list-item routerLink="/parametres">Modifier votre profil</a>
-              </mat-nav-list>
-            </mat-sidenav>
-            <div class="sidenav-content">
-              <router-outlet>
+      <!-- Colonne n° 0 : Side Nav Bar -->
+      <div class="navbar">
+        <h1 style="margin-right: 25px;">Profil</h1>
+        <mat-sidenav-container class="example-container1">
+          <mat-sidenav #sidenav mode="over" opened>
+            <mat-nav-list class="example-container2">
+              <a mat-list-item routerLink="/accueil">Accueil</a>
+              <a mat-list-item routerLink="/profil">Profil</a>
+              <a mat-list-item routerLink="/parametres">Inventaire</a>
+              <a mat-list-item (click)="allerVersElement('MesLocations')">Mes locations</a>
+              <a mat-list-item routerLink="/locations">Gérer mes locations</a>
+              <a mat-list-item routerLink="/parametres">Modifier votre profil</a>
+            </mat-nav-list>
+          </mat-sidenav>
+          <div class="sidenav-content">
+            <router-outlet>
 
-              </router-outlet>
-            </div>
-          </mat-sidenav-container>
+            </router-outlet>
+          </div>
+        </mat-sidenav-container>
 
       </div>
 
+
+
+
+      <!-- <div class="card">
+                <img src="{{ objet.urlPhoto }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ objet.nom }}</h5>
+                    <p class="card-text">{{ objet.prixJour }} €/jour</p>
+                    <p class="card-text">{{ objet.caution }} €</p>
+
+
+                    <p class="log" *ngIf="authService.isConnected()">
+                      <a class="btn btn-primary">Louer</a>
+                  </p>
+                  <p class="log" *ngIf="authService.isNotConnected()">
+                      <a class="btn btn-primary" data-toggle="modal" data-target="#modalLoginForm">Louer</a>
+                  </p>
+
+              </div>
+          </div> -->
       <!-- Colonne n°1 -->
-      <div class="col-4 justify-content-md-center text-center mt-3">
+      <div class="col-4 justify-content-md-center text-center mt-3 " style="align-content: center">
 
-        <img
-          src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60"
-          class="img-fluid rounded border border-dark" alt="Card image cap">
-
-        <div class="name">
-          <h4 class="titre4">NOM Prénom</h4>
+        <div class="photoProfile">
+          <img src="{{user.urlPhoto}}" class="img img-fluid " alt="Image profil">
+          <h4 class="titre4">{{ user.nom }} {{ user.prenom }}</h4>
         </div>
 
       </div>
@@ -45,8 +63,8 @@
 
 
         <div class="card-header">
-          <h2 class="gras"> Bonjour, je suis //Extraire Prénom//</h2>
-          <h5 class="grey-text">Membre depuis //date//</h5>
+          <h2 class="gras"> Bonjour, je suis {{ user.prenom }}</h2>
+          <h5 class="grey-text maxtaille">Membre depuis {{ user.dateCreation | date:'MMMM yyyy':'':'fr' }}</h5>
         </div>
 
 
@@ -55,113 +73,187 @@
           <div class="log" *ngIf="authService.isConnected()">
             <br>
             <ul class="text1large">
-              <li><Strong>Mail</Strong>: // xxxxxxgmail.com //</li>
-              <p></p>
-              <li><Strong>Numéro</Strong> : //06 00 00 00 00// </li>
+              <br>
+              <li><Strong>Mail</Strong>: {{ user.mail }} </li>
+              <p><br></p>
+              <li><Strong>Numéro</Strong> : {{ user.numeroTelephone }} </li>
             </ul>
             <br><br>
           </div>
 
           <div class="log d-flex justify-content-between" *ngIf="authService.isNotConnected()">
-            <li><Strong>Pour me contacter :</Strong></li>
+            <p><Strong>Pour me contacter :</Strong></p>
+
+            <div class="log text-center">
+              <button type="button" class="btn" data-toggle="modal" data-target="#modalLoginForm">Connectez
+                vous</button>
+              <p></p>
+            </div>
+
+
+
           </div>
-          <div class="log text-center">
-            <button type="button" class="btn" data-toggle="modal" data-target="#modalLoginForm">Connectez vous</button>
-            <p></p>
-          </div>
-
-
-
-        </div>
-        <!--
+          <!--
             <div class="card-footer">
             <button type="button" class="" data-veloute="###">Modifier le profil</button>
             </div>-->
 
-        <div class="card-footer">
-          <div class="">
-            <h5>J'ai déjà effectué XX prêt</h5>
-            <h5><a href="notation" title="Moyenne des Notes des commantaire" class="passiv_star"> XX ★</a></h5>
+          <div class="card-footer">
+            <div class="">
+              <h5>J'ai déjà effectué XX prêt</h5>
+              <h5><a href="notation" title="Moyenne des Notes" class="passiv_star"> {{ user.note }} ★ <small
+                    style="color: black;">(XX avis)</small>
+                </a></h5>
+            </div>
           </div>
+
         </div>
 
+
       </div>
-
-
     </div>
+
+    <div class="row ligne2 justify-content-center ">
+      <div class="col-2" style="z-index: 1">
+        <h1 id="MesLocations">Mes locations</h1>
+      </div>
+      <div class="col-10 mt-3 justify-content-center border">
+        <ul class="nav nav-pills justify-content-center">
+          <li class="nav-item">
+            <a class="nav-link" routerLink=""><img src="https://i.goopics.net/k9x1py.png" height="30"
+                alt="BorrowIt Logo" loading="lazy" /></a>
+            <p class="text-center">outils</p>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink=""><img src="https://i.goopics.net/y7bhsj.png" height="30"
+                alt="BorrowIt Logo" loading="lazy" /></a>
+            <p class="text-center">livres</p>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink=""><img src="https://i.goopics.net/oazyxx.png" height="30"
+                alt="BorrowIt Logo" loading="lazy" /></a>
+            <p class="text-center">jeux</p>
+          </li>
+          <li class="nav-item justify-content-center">
+            <a class="nav-link" routerLink=""><img src="https://i.goopics.net/9himml.png" height="30"
+                alt="BorrowIt Logo" loading="lazy" /></a>
+            <p class="text-center">musique</p>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink=""><img src="https://i.goopics.net/p9ujew.png" height="30"
+                alt="BorrowIt Logo" loading="lazy" /></a>
+            <p class="text-center">films</p>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink=""><img src="https://i.goopics.net/8tds6u.png" height="30"
+                alt="BorrowIt Logo" loading="lazy" /></a>
+            <p class="text-center">mode</p>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink=""><img src="https://i.goopics.net/6uc1yi.png" height="30"
+                alt="BorrowIt Logo" loading="lazy" /></a>
+            <p class="text-center">immobilier</p>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink=""><img src="https://i.goopics.net/laimnu.png" height="30"
+                alt="BorrowIt Logo" loading="lazy" /></a>
+            <p class="text-center">Sport</p>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink=""><img src="https://i.goopics.net/2ij49a.png" height="30"
+                alt="BorrowIt Logo" loading="lazy" /></a>
+            <p class="text-center">informatique</p>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink=""><img src="https://i.goopics.net/6wbehu.png" height="30"
+                alt="BorrowIt Logo" loading="lazy" /></a>
+            <p class="text-center">véhicules</p>
+          </li>
+          <!-- Lien pour autres -->
+          <li class="nav-item">
+            <a class="nav-link" routerLink=""><img src="https://i.goopics.net/t7q6k8.png" height="30"
+                alt="BorrowIt Logo" loading="lazy" /></a>
+            <p class="text-center">autres</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
+    <!-- DEBUT CARDS -->
+    <div class="ml-4 mr-4 mt-4 mb-5">
+      <div class="container" style="max-width:max-content;">
+        <div class="row">
+          <div class="col-sm-2" *ngFor="let o of objets">
+            <div class="card">
+              <a routerLink="/objet" (click)="recupObjetService.setObjet(o)">
+                <img class="card-img-top" src="{{ o.urlPhoto }}">
+              </a>
+              <div class="card-block">
+                <h4 class="card-title cursor-hover" routerLink="/objet">{{ o.nom }}</h4>
+                <p class="card-text">
+                  {{ o.description }}
+                </p>
+                <div class="left-bottom-card">
+                  <a routerLink="/profil" (click)="userservice.setUser(o.proprietaire)">
+                    <img class="card-img-bot" src="{{o.proprietaire.urlPhoto}}">
+                  </a>
+                </div>
+                <div class="right-bottom-card mb-4">
+                  <p class="card-text">
+                    <small class="text-muted">
+                      Ajouté il y a 2 jours par
+                    </small>
+                    <br>
+                    <small class="card-text-nom">
+                      {{ user.nom }} {{ user.prenom }}
+                    </small>
+                  </p>
+
+                </div>
+              </div>
+            </div>
+            <br>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- FIN CARDS -->
+    <!-- DEBUT NUMERO PAGE -->
+    <div class="mt-4 d-flex justify-content-center">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">Previous</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Next</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <!-- FIN NUMERO PAGE -->
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
   </div>
 
-  <div class="row ligne2 justify-content-center">
-    <div class="col-2" style="z-index: 1">
-      <h1 id="MesLocations">Mes locations</h1>
-    </div>
-    <div class="col-10 mt-3 justify-content-center border">
-      <ul class="nav nav-pills justify-content-center">
-        <li class="nav-item">
-          <a class="nav-link" routerLink=""><img src="https://i.goopics.net/k9x1py.png" height="30" alt="BorrowIt Logo"
-              loading="lazy" /></a>
-          <p class="text-center">outils</p>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink=""><img src="https://i.goopics.net/y7bhsj.png" height="30" alt="BorrowIt Logo"
-              loading="lazy" /></a>
-          <p class="text-center">livres</p>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink=""><img src="https://i.goopics.net/oazyxx.png" height="30" alt="BorrowIt Logo"
-              loading="lazy" /></a>
-          <p class="text-center">jeux</p>
-        </li>
-        <li class="nav-item justify-content-center">
-          <a class="nav-link" routerLink=""><img src="https://i.goopics.net/9himml.png" height="30" alt="BorrowIt Logo"
-              loading="lazy" /></a>
-          <p class="text-center">musique</p>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink=""><img src="https://i.goopics.net/p9ujew.png" height="30" alt="BorrowIt Logo"
-              loading="lazy" /></a>
-          <p class="text-center">films</p>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink=""><img src="https://i.goopics.net/8tds6u.png" height="30" alt="BorrowIt Logo"
-              loading="lazy" /></a>
-          <p class="text-center">mode</p>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink=""><img src="https://i.goopics.net/6uc1yi.png" height="30" alt="BorrowIt Logo"
-              loading="lazy" /></a>
-          <p class="text-center">immobilier</p>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink=""><img src="https://i.goopics.net/laimnu.png" height="30" alt="BorrowIt Logo"
-              loading="lazy" /></a>
-          <p class="text-center">Sport</p>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink=""><img src="https://i.goopics.net/2ij49a.png" height="30" alt="BorrowIt Logo"
-              loading="lazy" /></a>
-          <p class="text-center">informatique</p>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink=""><img src="https://i.goopics.net/6wbehu.png" height="30" alt="BorrowIt Logo"
-              loading="lazy" /></a>
-          <p class="text-center">véhicules</p>
-        </li>
-        <!-- Lien pour autres -->
-        <li class="nav-item">
-          <a class="nav-link" routerLink=""><img src="https://i.goopics.net/t7q6k8.png" height="30" alt="BorrowIt Logo"
-              loading="lazy" /></a>
-          <p class="text-center">autres</p>
-        </li>
-      </ul>
-    </div>
-  </div>
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-</div>
-
-<!--
+  <!--
 <div class="container">
   <div class="col-2" style="z-index: 2">
     <h1 id="MesLocations">Profilx</h1>

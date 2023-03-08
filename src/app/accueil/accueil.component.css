@@ -8,6 +8,7 @@
     border: 1px solid rgb(175, 175, 175);
     max-width: max-content;
     max-height: max-content;
+    object-fit: contain;
     display: block;
     height: 250px;
     margin: auto;

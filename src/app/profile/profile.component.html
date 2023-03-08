@@ -2,52 +2,25 @@
   <div class="container" style="max-width: 100%">
     <div class="row ligne1">
 
+      <!-- Colonne Side Nav Bar -->
+      <div class="navbar"></div>
+
+      <!-- Colonne n° 0 -->
       <div class="col-2" style="z-index: 1">
-        <h1 id="MesLocations">Profilx</h1>
-      </div>
-      <!-- Colonne n° 0 : Side Nav Bar -->
-      <div class="navbar">
-        <h1 style="margin-right: 25px;">Profil</h1>
-        <mat-sidenav-container class="example-container1">
-          <mat-sidenav #sidenav mode="over" opened>
-            <mat-nav-list class="example-container2">
+        <h1>Profil</h1>
+
+          <mat-sidenav #sidenav mode="side" opened>
+            <mat-nav-list class="menuContainer">
               <a mat-list-item routerLink="/accueil">Accueil</a>
-              <a mat-list-item routerLink="/profil">Profil</a>
               <a mat-list-item routerLink="/parametres">Inventaire</a>
-              <a mat-list-item (click)="allerVersElement('MesLocations')">Mes locations</a>
+              <a mat-list-item (click)="allerVersElement('Mesobjetsredir')">Mes objets</a>
               <a mat-list-item routerLink="/locations">Gérer mes locations</a>
               <a mat-list-item routerLink="/parametres">Modifier votre profil</a>
             </mat-nav-list>
           </mat-sidenav>
-          <div class="sidenav-content">
-            <router-outlet>
-
-            </router-outlet>
-          </div>
-        </mat-sidenav-container>
 
       </div>
 
-
-
-
-      <!-- <div class="card">
-                <img src="{{ objet.urlPhoto }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{ objet.nom }}</h5>
-                    <p class="card-text">{{ objet.prixJour }} €/jour</p>
-                    <p class="card-text">{{ objet.caution }} €</p>
-
-
-                    <p class="log" *ngIf="authService.isConnected()">
-                      <a class="btn btn-primary">Louer</a>
-                  </p>
-                  <p class="log" *ngIf="authService.isNotConnected()">
-                      <a class="btn btn-primary" data-toggle="modal" data-target="#modalLoginForm">Louer</a>
-                  </p>
-
-              </div>
-          </div> -->
       <!-- Colonne n°1 -->
       <div class="col-4 justify-content-md-center text-center mt-3 " style="align-content: center">
 
@@ -100,7 +73,7 @@
 
           <div class="card-footer">
             <div class="">
-              <h5>J'ai déjà effectué XX prêt</h5>
+              <h5>J'ai déjà effectué XX locations</h5>
               <h5><a href="notation" title="Moyenne des Notes" class="passiv_star"> {{ user.note }} ★ <small
                     style="color: black;">(XX avis)</small>
                 </a></h5>
@@ -115,8 +88,10 @@
 
     <div class="row ligne2 justify-content-center ">
       <div class="col-2" style="z-index: 1">
-        <h1 id="MesLocations">Mes locations</h1>
+        <h2 id="Mesobjetsredir">Mes objets</h2>
       </div>
+
+       <!--  Bar de classification -->
       <div class="col-10 mt-3 justify-content-center border">
         <ul class="nav nav-pills justify-content-center">
           <li class="nav-item">
@@ -180,7 +155,7 @@
     </div>
 
 
-    <!-- DEBUT CARDS -->
+    <!-- DEBUT CARDS d'objet -->
     <div class="ml-4 mr-4 mt-4 mb-5">
       <div class="container" style="max-width:max-content;">
         <div class="row">

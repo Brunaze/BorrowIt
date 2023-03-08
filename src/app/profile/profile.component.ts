@@ -26,6 +26,12 @@ constructor(private route: Router, public authService: AuthService, public recup
 
   ngOnInit(): void {
     this.user = this.userservice.getUser();
+    this.http.get('http://localhost:8283/objet/listeObjetsClient/' + this.user.id).subscribe({
+      next: (data) => {
+        this.objets = data;
+      },
+      error: (err) => { console.error(err) }
+    })
 }
 
 getUserb(val: any): void {

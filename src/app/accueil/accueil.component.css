@@ -8,14 +8,15 @@
     border: 1px solid rgb(175, 175, 175);
     max-width: max-content;
     max-height: max-content;
+    object-fit: contain;
     display: block;
     height: 250px;
     margin: auto;
     object-fit: contain;
 }
 
-.card-img-bot {
-    border: 1px solid rgb(175, 175, 175);
+.card-img-bot { /*CORRECTION carte de taille différente selon la photo du proprio*/
+    border: 2px solid black; /*CORRECTION a faire on ne voit pas la bordure*/
     clip-path: circle();
     width: 60px;
     block-size: fit-content;
@@ -56,12 +57,12 @@
 
 .left-bottom-card {
     float: left;
-    width: 30%;
+    width: 40%;
 }
 
 .right-bottom-card {
     float: left;
-    width: 70%;
+    width: 60%;
 }
 
 .card-text-nom {
@@ -78,5 +79,4 @@
 
 .nav-link:hover {
     box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
-
 }

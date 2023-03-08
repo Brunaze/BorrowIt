@@ -11,13 +11,16 @@
     display: block;
     height: 250px;
     margin: auto;
+    object-fit: contain;
 }
 
 .card-img-bot {
     border: 1px solid rgb(175, 175, 175);
     clip-path: circle();
-    width: 80px;
+    width: 60px;
     block-size: fit-content;
+    margin-left: 10px;
+    margin-bottom: 10px;
 }
 
 .card-img-bot:hover {

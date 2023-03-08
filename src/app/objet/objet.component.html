@@ -6,11 +6,17 @@
                     <img src="{{ objet.urlPhoto }}" class="card-img-top" alt="...">
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">{{ objet.nom }}</h5>
-                    <p class="card-text">{{ objet.prixJour }} €/jour</p>
-                    <p class="card-text">{{ objet.caution }} €</p>
+                    <h4 class="card-title" style="font-weight: bolder;">{{ objet.nom }}</h4>
+                    <p class="card-text">{{ objet.description }}</p>
 
-
+                </div>
+                <div class="card-body">
+                    <div class="card-bot-left">
+                        <h5 class="card-title">Prix journalier : {{ objet.prixJour }} €/jour</h5>
+                    </div>
+                    <div class="card-bot-right">
+                        <h5 class="card-title">Caution : {{ objet.caution }} €</h5>
+                    </div>
                 </div>
             </div>
         </div>
@@ -19,10 +25,13 @@
                 <form>
                     <div class="form-group">
                         <span class="form-label">Proprietaire</span>
-                        <div class="form-proprietaire">
+                        <div class="form-proprietaire-left">
                             <a routerLink="/profil/{{objet.proprietaire}}">
                                 <img class="card-img-bot" src="{{objet.proprietaire.urlPhoto}}">
                             </a>
+                        </div>
+                        <div class="form-proprietaire-right">
+
                             <p>{{objet.proprietaire.nom}}</p>
                         </div>
 

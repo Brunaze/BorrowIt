@@ -8,6 +8,7 @@ import { MessagerieComponent } from './messagerie/messagerie.component';
 import { LocationsComponent } from './locations/locations.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfilBisComponent } from './profil-bis/profil-bis.component';
+import { AbonnementComponent } from './abonnement/abonnement.component';
 
 const routes: Routes = [
   { path: 'client', component: ClientComponent },
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'profil0', component: ProfilBisComponent },
   { path: 'star', component: StarRatingComponentComponent },
   { path: 'messagerie', component: MessagerieComponent },
-  { path: 'locations', component: LocationsComponent }
+  { path: 'locations', component: LocationsComponent },
+  { path: 'abonnement', component: AbonnementComponent }
 ];
 
 @NgModule({

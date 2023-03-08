@@ -60,21 +60,12 @@
   border-top: solid black 2px;
   position: relative;
   margin-right: 20px;
+  margin-top: 200px;
 }
 
 .ligne3 {
   background-color: lightblue;
   margin-top: 10px;
-}
-
-.card {
-  margin: auto;
-  width: 90%;
-  box-shadow: none
-}
-
-.bordTop {
-  border-top: solid grey 2px;
 }
 
 .borderBlack1 {
@@ -91,13 +82,28 @@
   font-weight: bold;
 }
 
+.photoProfile {
+align-items: center;
+
+text-align: center;
+vertical-align: middle;
+}
+
 .img {
+  border: solid black 1px;
+  width: 70%;
+  height: 70%;
+  object-fit: cover;
+  border-radius: 10%;
+}
+
+/* .img {
   width: 300px;
   height: auto;
   border-radius: 10%;
   margin-top: 40px;
   margin-left: 20px;
-}
+}*/
 
 button {
   background-color: rgb(221, 20, 20);
@@ -117,6 +123,13 @@ button {
   border-radius: 5px;
   }
 */
+
+.maxtaille{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
 
 .basPage {
   margin-top: 10px;

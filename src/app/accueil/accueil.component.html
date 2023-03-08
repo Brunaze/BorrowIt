@@ -6,63 +6,63 @@
         <li class="nav-item">
             <a class="nav-link" onclick="window.location.reload();"><img src="https://i.goopics.net/t7q6k8.png"
                     height="30" alt="BorrowIt Logo" loading="lazy" /></a>
-            <p class="text-center">ALL</p>
+            <p class="text-center">Voir tout</p>
         </li>
         <li class="nav-item">
             <a class="nav-link" (click)='objetByTag("outil")'><img src="https://i.goopics.net/k9x1py.png" height="30"
                     alt="BorrowIt Logo" loading="lazy" /></a>
-            <p class="text-center">outils</p>
+            <p class="text-center">Outils</p>
         </li>
         <li class="nav-item">
             <a class="nav-link" (click)='objetByTag("livre")'><img src="https://i.goopics.net/y7bhsj.png" height="30"
                     alt="BorrowIt Logo" loading="lazy" /></a>
-            <p class="text-center">livres</p>
+            <p class="text-center">Livres</p>
         </li>
         <li class="nav-item">
             <a class="nav-link" (click)='objetByTag("jeu")'><img src="https://i.goopics.net/oazyxx.png" height="30"
                     alt="BorrowIt Logo" loading="lazy" /></a>
-            <p class="text-center">jeux</p>
+            <p class="text-center">Jeux</p>
         </li>
         <li class="nav-item justify-content-center">
             <a class="nav-link" (click)='objetByTag("musique")'><img src="https://i.goopics.net/9himml.png" height="30"
                     alt="BorrowIt Logo" loading="lazy" /></a>
-            <p class="text-center">musique</p>
+            <p class="text-center">Musique</p>
         </li>
         <li class="nav-item">
             <a class="nav-link" (click)='objetByTag("film")'><img src="https://i.goopics.net/p9ujew.png" height="30"
                     alt="BorrowIt Logo" loading="lazy" /></a>
-            <p class="text-center">films</p>
+            <p class="text-center">Films</p>
         </li>
         <li class="nav-item">
             <a class="nav-link" (click)='objetByTag("mode")'><img src="https://i.goopics.net/8tds6u.png" height="30"
                     alt="BorrowIt Logo" loading="lazy" /></a>
-            <p class="text-center">mode</p>
+            <p class="text-center">Mode</p>
         </li>
         <li class="nav-item">
             <a class="nav-link" (click)='objetByTag("immobilier")'><img src="https://i.goopics.net/6uc1yi.png"
                     height="30" alt="BorrowIt Logo" loading="lazy" /></a>
-            <p class="text-center">immobilier</p>
+            <p class="text-center">Immobilier</p>
         </li>
         <li class="nav-item">
             <a class="nav-link" (click)='objetByTag("sport")'><img src="https://i.goopics.net/laimnu.png" height="30"
                     alt="BorrowIt Logo" loading="lazy" /></a>
-            <p class="text-center">sport</p>
+            <p class="text-center">Sport</p>
         </li>
         <li class="nav-item">
             <a class="nav-link" (click)='objetByTag("informatique")'><img src="https://i.goopics.net/2ij49a.png"
                     height="30" alt="BorrowIt Logo" loading="lazy" /></a>
-            <p class="text-center">informatique</p>
+            <p class="text-center">Informatique</p>
         </li>
         <li class="nav-item">
             <a class="nav-link" (click)='objetByTag("vehicule")'><img src="https://i.goopics.net/6wbehu.png" height="30"
                     alt="BorrowIt Logo" loading="lazy" /></a>
-            <p class="text-center">véhicules</p>
+            <p class="text-center">Véhicules</p>
         </li>
         <!-- Lien pour autres -->
         <li class="nav-item">
             <a class="nav-link" (click)='objetByTag("autre")'><img src="https://i.goopics.net/t7q6k8.png" height="30"
                     alt="BorrowIt Logo" loading="lazy" /></a>
-            <p class="text-center">autres</p>
+            <p class="text-center">Autres</p>
         </li>
     </ul>
 </div>
@@ -74,7 +74,7 @@
 <div class="ml-4 mr-4 mt-4 mb-5">
     <div class="container" style="max-width:max-content;">
         <div class="row">
-            <div class="col-sm-2" *ngFor="let o of objets">
+            <div class="col-sm-2" *ngFor="let o of rechercheObjet.getObjetRecherche()">
                 <div class="card">
                     <a routerLink="/objet" (click)="recupObjetService.setObjet(o)">
                         <img class="card-img-top" src="{{ o.urlPhoto }}">
@@ -85,7 +85,7 @@
                             {{ o.description }}
                         </p>
                         <div class="left-bottom-card">
-                            <a routerLink="/profil/{{o.proprietaire}}">
+                            <a routerLink="/profil" (click)="userservice.setUser(o.proprietaire)">
                                 <img class="card-img-bot" src="{{o.proprietaire.urlPhoto}}">
                             </a>
                         </div>
@@ -96,7 +96,7 @@
                                 </small>
                                 <br>
                                 <small class="card-text-nom">
-                                    Victime SOOWOOOOOOOOO
+                                  {{ o.proprietaire.nom }} {{ o.proprietaire.prenom }}
                                 </small>
                             </p>
 

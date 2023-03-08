@@ -12,10 +12,14 @@
                 </div>
                 <div class="card-body">
                     <div class="card-bot-left">
-                        <h5 class="card-title">Prix journalier : {{ objet.prixJour }} €/jour</h5>
+                        <h5 class="card-title" style="font-weight: bold;">Prix journalier : <h5>{{ objet.prixJour }}
+                                €/jour</h5>
+                        </h5>
+
                     </div>
                     <div class="card-bot-right">
-                        <h5 class="card-title">Caution : {{ objet.caution }} €</h5>
+                        <h5 class="card-title" style="font-weight: bold;">Caution : <h5>{{ objet.caution }} €</h5>
+                        </h5>
                     </div>
                 </div>
             </div>
@@ -36,20 +40,35 @@
                         </div>
 
                     </div>
+
+
+
+                    <!--CHECK IN-->
+
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <span class="form-label">Check In</span>
-                                <input class="form-control" type="date" required>
+                                <input id="dp2" class="form-control" type="date" required>
                             </div>
                         </div>
+
+                        <!--CHECK OUT-->
+
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <span class="form-label">Check out</span>
-                                <input class="form-control" type="date" required>
+                                <input id="dp2" class="form-control" type="date" required>
                             </div>
                         </div>
                     </div>
+
+
+
+
+
+
+
 
                     <div class="form-btn">
                         <button class="submit-btn">Check availability</button>

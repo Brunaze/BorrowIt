@@ -16,6 +16,7 @@ import { MessagerieComponent } from './messagerie/messagerie.component';
 import { LocationsComponent } from './locations/locations.component';
 import { ProfilBisComponent } from './profil-bis/profil-bis.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AbonnementComponent } from './abonnement/abonnement.component';
 
 
 
@@ -31,7 +32,8 @@ import { ProfileComponent } from './profile/profile.component';
     MessagerieComponent,
     LocationsComponent,
     ProfilBisComponent,
-    ProfileComponent
+    ProfileComponent,
+    AbonnementComponent
   ],
   imports: [
     BrowserModule,

@@ -15,7 +15,7 @@ export class LocationsComponent implements OnInit {
   diff: any;
   locPointeAnnulation: any;
 
-  constructor(private http: HttpClient, private route: Router, public authService: AuthService, public listeLocVisible: ListeLocVisibleService) { }
+  constructor(private http: HttpClient, public route: Router, public authService: AuthService, public listeLocVisible: ListeLocVisibleService) { }
 
   ngOnInit(): void {
     if (this.listeLocVisible.getListeLocVisible() == null) {
@@ -45,17 +45,27 @@ export class LocationsComponent implements OnInit {
     window.location.reload()
   }
 
-  getDiffDates(loc: any) {
-    return (((new Date(loc.dateFin)).valueOf() - (new Date(loc.dateDebut)).valueOf()) / (3600 * 24 * 1000)) + 1;
+  getDiffDates(date1: any, date2: any) {
+    return (((new Date(date1)).valueOf() - (new Date(date2)).valueOf()) / (3600 * 24 * 1000)) + 1;
   }
 
   getComparaisonToday(loc: any) {
     if (new Date(loc.dateDebut) > new Date()) {
       return "future"
-    } else if (new Date(loc.dateFin) < new Date()) {
-      return "historique"
+    } else if (loc.dateFinReelle == null) {
+      if (new Date(loc.dateFin) <= new Date()) {
+        return "enCoursFinie"
+      } else {
+        return "enCours"
+      }
     } else {
-      return "enCours"
+      return "historique"
     }
+  }
+
+  putFinLocation(id: any, date: any) {
+    date = new Date(date)
+    this.http.patch('http://localhost:8283/location/finReelle/' + id, date).subscribe({})
+    window.location.reload()
   }
 }

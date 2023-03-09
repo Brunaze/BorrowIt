@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { RecupObjetService } from '../services/recup-objet.service';
-import { DatePipe, registerLocaleData } from '@angular/common';
+import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 
 registerLocaleData(localeFr, 'fr');

@@ -1,8 +1,7 @@
 <div class="container-fluid justify-content-center">
     <div class="row align-text-center">
         <div class="mx-auto col-10 col-md-8 col-lg-6">
-            <form #signalementForm="ngForm"
-                (ngSubmit)="sendSignalement(signalementForm.value.typeSignalement, signalementForm.value.commentaire)">
+            <form #signalementForm="ngForm" (ngSubmit)="1">
                 <div class="md-form mb-4">
                     <p>Avis sur la location de l'utilisateur : {{ avisLocation.getAvisLocation().objet.proprietaire.nom
                         }} {{
@@ -11,16 +10,14 @@
                 </div>
                 <div class="md-form mb-4">
                     <p>Note :</p>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
+                    <span *ngFor="let i of [1, 2, 3, 4, 5]">
+                        <span *ngIf="comp('inf', i)">
+                            <i class="fa-regular fa-star" (click)="note = i"></i>
+                        </span>
+                        <span *ngIf="comp('sup', i-1)">
+                            <i class="fa-solid fa-star" (click)="note = i"></i>
+                        </span>
+                    </span>
                 </div>
                 <div class="md-form mb-4">
                     <p>Commentaire :</p>

@@ -69,10 +69,12 @@
                                             data-toggle="modal" data-target="#modal">
                                             A Payer</button>
                                         <button type="button" class="btn btn-info"
-                                            *ngIf="listeEmpruntVisible.getListeEmpruntVisible() != ''">
+                                            *ngIf="listeEmpruntVisible.getListeEmpruntVisible() != '' "
+                                            (click)="userService.setUser(loc.proprietaire); route.navigateByUrl('/profil')">
                                             Voir Proprietaire</button>
                                         <button type="button" class="btn btn-info"
-                                            *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'historique'">
+                                            *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'historique'"
+                                            (click)="avisLocation.setAvisLocation(loc); route.navigateByUrl('/avis')">
                                             Avis</button>
                                     </div>
                                 </div>

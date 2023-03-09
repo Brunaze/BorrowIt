@@ -1,12 +1,14 @@
 .conteneur {
-    width: 400px;
+
     max-width: 400px;
-    min-width: 200px;
+    min-width: 230px;
+    min-height: fit-content;
 }
 
-/*.card {
+.card {
+    width: 230px;
 }
-*/
+
 
 .card-img-top {
     border: 1px solid rgb(175, 175, 175);
@@ -22,10 +24,10 @@
     /*CORRECTION carte de taille différente selon la photo du proprio*/
     /* border: 2px solid black; /*CORRECTION a faire on ne voit pas la bordure*/
     clip-path: circle();
-    width: 70px;
+    width: 60px;
     block-size: fit-content;
-    margin-left: 30px;
-    margin-bottom: 30px;
+    margin-left: 20px;
+
     max-height: 70px;
     max-width: fit-content;
 }
@@ -63,15 +65,15 @@
 }
 
 .left-bottom-card {
-    margin-left: -10%;
     float: left;
     width: 50%;
+    margin-top: 10px;
 }
 
 .right-bottom-card {
-  /*margin-left: 2%;*/
+    /*margin-left: 2%;*/
     float: left;
-    width: 50%;
+    width: 60%;
 }
 
 .card-text-nom {

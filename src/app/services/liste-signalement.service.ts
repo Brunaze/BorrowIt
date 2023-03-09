@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -7,11 +8,11 @@ export class ListeSignalementService {
 
   constructor() { }
 
-  setListeSignalement(val: any) {
-    window.localStorage.setItem('listeSignalement', val);
+  setListeSigVisible(val: any) {
+    window.localStorage.setItem('listeSigVisible', val);
   }
 
-  getListeSignalement() {
-    return localStorage.getItem('listeSignalement');
+  getListeSigVisible() {
+    return localStorage.getItem('listeSigVisible');
   }
 }

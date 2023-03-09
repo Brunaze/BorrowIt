@@ -11,16 +11,30 @@ import { AvisLocationService } from '../services/avis-location.service';
 })
 export class AvisComponent implements OnInit {
 
+  note: any;
+
   constructor(public route: Router, public authService: AuthService, private http: HttpClient, public avisLocation: AvisLocationService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.note = 0;
+  }
 
-  sendSignalement(type: any, com: any): void {
-    this.http.post('http://localhost:8283/signalement', { typeSignalement: type, commentaire: com, clientSuspect: this.avisLocation.getAvisLocation(), clientSignaleur: this.authService.getUserConnect() }).subscribe({
+  sendAvis(com: any): void {
+    this.http.post('http://localhost:8283/signalement', { commentaire: com, note: this.note, location: this.avisLocation.getAvisLocation() }).subscribe({
       next: (data) => {
         this.route.navigateByUrl('/profil');
       },
       error: (err) => (console.log(err))
     })
+  }
+
+  comp(type: any, num: any) {
+    if (type == 'sup') {
+      return this.note > num
+    } else if (type == 'inf') {
+      return this.note < num
+    } else {
+      return null
+    }
   }
 }

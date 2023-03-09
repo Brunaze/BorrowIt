@@ -1,6 +1,42 @@
-<h1>Users</h1>
-<div class="container">
-    <div class="row" *ngFor="let u of users">
-        <p>{{u.nom}}</p>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let u of users">
+            <div class="panel panel-default userlist shadow-lg p-3 mb-5 bg-white rounded">
+                <div class="panel-body text-center">
+                    <div class="userprofile">
+                        <div class="userpic"> <img src="{{u.urlPhoto}}" alt="" class="userpicimg"> </div>
+                        <h3 class="username">{{u.nom}} {{u.prenom}}</h3>
+                    </div>
+                    <strong>Nombre de signalements : </strong><br>
+                    <h3>5</h3>
+
+                    <div class="panel-footer">
+                        <button type="button" class="btn btn-info" data-toggle="modal"
+                            data-target="#modalSignalement">Signalements</button>
+                        <button type="button" class="btn btn-info">Retirer</button>
+                        <button type="button" class="btn btn-danger">Bloquer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalSignalement" role="dialog" tabindex="-1" aria-labelledby="BackdropLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row" *ngFor="let s of signalements">
+
+                    <h3>{{ s.typeSignalement }}</h3>
+
+                    <p>{{s.commentaire}}</p>
+
+                </div>
+            </div>
+        </div>
     </div>
 </div>

@@ -17,10 +17,10 @@ import { LocationsComponent } from './locations/locations.component';
 import { ProfilBisComponent } from './profil-bis/profil-bis.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AbonnementComponent } from './abonnement/abonnement.component';
+import { AdministrateurComponent } from './administrateur/administrateur.component';
+import { SignalementComponent } from './signalement/signalement.component';
+import { AvisComponent } from './avis/avis.component';
 import { EmpruntsComponent } from './emprunts/emprunts.component';
-
-
-
 
 @NgModule({
   declarations: [
@@ -35,6 +35,9 @@ import { EmpruntsComponent } from './emprunts/emprunts.component';
     ProfilBisComponent,
     ProfileComponent,
     AbonnementComponent,
+    SignalementComponent,
+    AdministrateurComponent,
+    AvisComponent,
     EmpruntsComponent
   ],
   imports: [

@@ -1,0 +1,34 @@
+<div class="container-fluid justify-content-center">
+    <div class="row align-text-center">
+        <div class="mx-auto col-10 col-md-8 col-lg-6">
+            <form #signalementForm="ngForm"
+                (ngSubmit)="sendSignalement(signalementForm.value.typeSignalement, signalementForm.value.commentaire)">
+                <div class="md-form mb-4">
+                    <p>Signalement de l'utilisateur : {{ signalerUser.getUserSignaler().nom }} {{
+                        signalerUser.getUserSignaler().prenom }}</p>
+                </div>
+                <div class="md-form mb-4">
+                    <p>Type de signalement :</p>
+                    <i class="fas prefix grey-text"></i>
+                    <select class="form-select form-select-lg mb-3 form-control validate"
+                        aria-label=".form-select-lg example" name="typeSignalement" ngModel="">
+                        <option value="vulgarite">Vulgarité</option>
+                        <option value="paiement">Paiement</option>
+                        <option value="defectueux">Objet rendu defectueux</option>
+                        <option value="autre">Autre</option>
+                    </select>
+                </div>
+                <div class="md-form mb-4">
+                    <p>Commentaire :</p>
+                    <div class="form-floating">
+                        <textarea class="form-control validate" id="floatingTextarea2" name="commentaire"
+                            style="height: 100px" ngModel=""></textarea>
+                    </div>
+                </div>
+                <div class="d-flex flex-column text-center">
+                    <button class="btn btn-default btn-round custom-close" id="closeModal">Envoyer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -58,7 +58,8 @@
                                             *ngIf="listeLocVisible.getListeLocVisible() == 'demandeAcceptees'"
                                             (click)="locPointeAnnulation = loc">Annuler</button>
                                         <button type="button" class="btn btn-danger"
-                                            *ngIf="listeLocVisible.getListeLocVisible() == 'enCours' || listeLocVisible.getListeLocVisible() == 'enCoursFinie'">
+                                            *ngIf="listeLocVisible.getListeLocVisible() == 'enCours' || listeLocVisible.getListeLocVisible() == 'enCoursFinie'"
+                                            (click)="signalerUser.setUserSignaler(loc.locataire); route.navigateByUrl('/signalement')">
                                             Signaler</button>
                                         <button type="button" class="btn btn-info"
                                             *ngIf="listeLocVisible.getListeLocVisible() != 'demandeRecues'">
@@ -72,7 +73,6 @@
                                 (click)="validerLocation(loc.id)">Accepter</button>
                             <button type="button" class="btn btn-danger"
                                 (click)="refuserLocation(loc.id)">Refuser</button>
-                            <!--<button type="button" class="btn btn-info">Contacter</button>-->
                             <button type="button" class="btn btn-info">Locataire</button>
                         </div>
 

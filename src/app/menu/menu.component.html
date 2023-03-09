@@ -17,7 +17,7 @@
         <!-- Elements du milieu -->
         <div class="navbar-nav flex-row d-none d-md-flex">
             <form class="input-group w-auto my-auto d-none d-sm-flex" #searchForm="ngForm"
-                (ngSubmit)="searchObjet(searchForm.value.saisie); route.navigateByUrl('/accueil')">
+                (ngSubmit)="searchObjet(searchForm.value.saisie); route.navigateByUrl('')">
                 <input autocomplete="off" type="search" class="form-control rounded" placeholder="Rechercher"
                     style="min-width: 125px;" id="barre-recherche" name="saisie" ngModel="" />
                 <span class="input-group-text border-0 d-none d-lg-flex"><i class="fas fa-search"></i></span>
@@ -29,13 +29,13 @@
         <!-- Elements de droite -->
         <ul class="navbar-nav flex-row">
             <li class="nav-item me-3 me-lg-1">
-                <a class="nav-link d-sm-flex align-items-sm-center" routerLink="accueil">
+                <a class="nav-link d-sm-flex align-items-sm-center" routerLink="">
                     Louer votre objet
                 </a>
             </li>
 
             <li class="nav-item me-3 me-lg-1" *ngIf="authService.isConnected()">
-                <a class="nav-link d-sm-flex align-items-sm-center" style="color: rgb(211, 179, 0);"
+                <a class="nav-link d-sm-flex align-items-sm-center" style="color: rgb(228, 196, 15);"
                     routerLink="abonnement">
                     Devenez Premium
                 </a>

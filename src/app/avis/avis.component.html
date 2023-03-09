@@ -1,0 +1,38 @@
+<div class="container-fluid justify-content-center">
+    <div class="row align-text-center">
+        <div class="mx-auto col-10 col-md-8 col-lg-6">
+            <form #signalementForm="ngForm"
+                (ngSubmit)="sendSignalement(signalementForm.value.typeSignalement, signalementForm.value.commentaire)">
+                <div class="md-form mb-4">
+                    <p>Avis sur la location de l'utilisateur : {{ avisLocation.getAvisLocation().objet.proprietaire.nom
+                        }} {{
+                        avisLocation.getAvisLocation().objet.proprietaire.prenom }}</p>
+                    <p>Objet : {{ avisLocation.getAvisLocation().objet.nom }}</p>
+                </div>
+                <div class="md-form mb-4">
+                    <p>Note :</p>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <div class="md-form mb-4">
+                    <p>Commentaire :</p>
+                    <div class="form-floating">
+                        <textarea class="form-control validate" id="floatingTextarea2" name="commentaire"
+                            style="height: 100px" ngModel=""></textarea>
+                    </div>
+                </div>
+                <div class="d-flex flex-column text-center">
+                    <button class="btn btn-default btn-round custom-close" id="closeModal">Envoyer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

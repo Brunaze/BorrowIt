@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { ListeLocVisibleService } from '../services/liste-loc-visible.service';
+import { SignalerUserService } from '../services/signaler-user.service';
 
 @Component({
   selector: 'app-locations',
@@ -15,7 +16,7 @@ export class LocationsComponent implements OnInit {
   diff: any;
   locPointeAnnulation: any;
 
-  constructor(private http: HttpClient, public route: Router, public authService: AuthService, public listeLocVisible: ListeLocVisibleService) { }
+  constructor(private http: HttpClient, public signalerUser: SignalerUserService, public route: Router, public authService: AuthService, public listeLocVisible: ListeLocVisibleService) { }
 
   ngOnInit(): void {
     if (this.listeLocVisible.getListeLocVisible() == null) {

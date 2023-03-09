@@ -155,12 +155,12 @@ button {
 }
 
 
-/* -------------- Copie du CCS de Acceil le 08/03 au soir 18h -------------------------*/
+/* -------------- Copie du CCS de Acceil -------------------------*/
 .conteneur {
   width: 400px;
   max-width: 400px;
-  min-width: 200px;
-} /* Utilité ?*/
+  min-width: 230px;
+}
 
 .card-img-top {
   border: 1px solid rgb(175, 175, 175);

@@ -169,7 +169,7 @@
           <div class="container" style="max-width:max-content;">
             <div class="row">
 
-              <div class="col-sm-2" *ngFor="let o of objets">
+              <div class="conteneur col-2" *ngFor="let o of objets">
                 <div class="card mt-2">
                   <a routerLink="/objet" (click)="recupObjetService.setObjet(o)">
                     <img class="card-img-top" src="{{ o.urlPhoto }}">

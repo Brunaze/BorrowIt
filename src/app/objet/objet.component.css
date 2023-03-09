@@ -100,6 +100,14 @@
     border: none;
     -webkit-transition: 0.2s all;
     transition: 0.2s all;
+    min-width: 50px;
+    width: 200px;
+    max-width: 200px;
+}
+
+.form-btn {
+    text-align: center;
+
 }
 
 .booking-form .submit-btn:hover,
@@ -133,10 +141,10 @@
 }
 
 .card-img-bot {
-    border: 1px solid rgb(175, 175, 175);
     clip-path: circle();
     width: 80px;
     block-size: fit-content;
+    margin-left: 20px;
 }
 
 .card-img-bot:hover {
@@ -163,12 +171,12 @@
 
 .form-proprietaire-left {
     float: left;
-    width: 30%;
+    width: 40%;
 }
 
 .form-proprietaire-right {
     float: left;
-    width: 70%;
+    width: 60%;
 }
 
 .card-bot-left {
@@ -180,6 +188,8 @@
     float: left;
     width: 50%;
 }
+
+/*RATING STAR */
 
 /*
 .img {

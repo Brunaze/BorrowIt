@@ -19,6 +19,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { AbonnementComponent } from './abonnement/abonnement.component';
 import { AdministrateurComponent } from './administrateur/administrateur.component';
 import { SignalementComponent } from './signalement/signalement.component';
+import { AvisComponent } from './avis/avis.component';
+import { EmpruntsComponent } from './emprunts/emprunts.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { SignalementComponent } from './signalement/signalement.component';
     ProfileComponent,
     AbonnementComponent,
     SignalementComponent,
-    AdministrateurComponent
+    AdministrateurComponent,
+    AvisComponent,
+    EmpruntsComponent
   ],
   imports: [
     BrowserModule,

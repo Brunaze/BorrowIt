@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { AvisLocationService } from '../services/avis-location.service';
 import { ListEmpruntVisibleService } from '../services/list-emprunt-visible.service';
+import { UserService } from '../services/user.service';
 
 
 @Component({
@@ -15,7 +17,7 @@ export class EmpruntsComponent implements OnInit {
   emprunts: any;
   diff: any;
   locPointeAnnulation: any;
-  constructor(private http: HttpClient, public route: Router, public authService: AuthService, public listeEmpruntVisible: ListEmpruntVisibleService) { }
+  constructor(private http: HttpClient, public route: Router, public authService: AuthService, public listeEmpruntVisible: ListEmpruntVisibleService, public userService: UserService, public avisLocation: AvisLocationService) { }
 
   ngOnInit(): void {
     if (this.listeEmpruntVisible.getListeEmpruntVisible() == null) {

@@ -7,7 +7,6 @@ import { RecupObjetService } from '../services/recup-objet.service';
 import { DatePipe, registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 
-
 registerLocaleData(localeFr, 'fr');
 
 @Component({
@@ -21,6 +20,7 @@ export class ProfileComponent implements OnInit{
   numbers: any;
   user: any;
   msgErr: any;
+  compteView: any;
 
 constructor(private route: Router, public authService: AuthService, public recupObjetService: RecupObjetService, public userservice: UserService, private http: HttpClient) { }
 
@@ -32,9 +32,17 @@ constructor(private route: Router, public authService: AuthService, public recup
       },
       error: (err) => { console.error(err) }
     })
-}
 
-getUserb(val: any): void {
+      if (this.authService.getUserConnect().id != this.userservice.getUser().id){
+        this.compteView = true;
+        }else{
+          this.compteView = false;
+        }
+
+    }
+
+
+getUserprofil(val: any): void {
   this.http.get('http://localhost:8283/utilisateur', val).subscribe({
     next: (data) => {
       this.user = data;
@@ -74,5 +82,9 @@ objetByTag(val: any) {
     error: (err) => { console.log(err) }
   })
 }
+
+
+
+
 
 }

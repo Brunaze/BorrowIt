@@ -47,8 +47,7 @@
 }
 
 
-
-.card-text {
+.card-descrip {
     font-size: 11px;
     width: fit-content;
     block-size: fit-content;
@@ -64,11 +63,13 @@
 }
 
 .left-bottom-card {
+    margin-left: -10%;
     float: left;
     width: 50%;
 }
 
 .right-bottom-card {
+  /*margin-left: 2%;*/
     float: left;
     width: 50%;
 }

@@ -9,6 +9,8 @@ import { LocationsComponent } from './locations/locations.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfilBisComponent } from './profil-bis/profil-bis.component';
 import { AbonnementComponent } from './abonnement/abonnement.component';
+import { AdministrateurComponent } from './administrateur/administrateur.component';
+import { SignalementComponent } from './signalement/signalement.component';
 
 const routes: Routes = [
   { path: 'client', component: ClientComponent },

@@ -15,7 +15,7 @@
 
 
         <!-- Elements du milieu // BARRE DE RECHERCHE AU CENTRE CAR MARGIN LEFT CI DESSOUS-->
-        <div class="navbar-nav flex-row d-none d-md-flex" style="margin-left: 230px;" *ngIf="this.route.url ==='/'">
+        <div class="navbar-nav flex-row d-none d-md-flex" style=" margin-left: 200px;" *ngIf="this.route.url ==='/'">
             <form class="input-group w-auto my-auto d-none d-sm-flex" #searchForm="ngForm"
                 (ngSubmit)="searchObjet(searchForm.value.saisie); route.navigateByUrl('')">
                 <input autocomplete="off" type="search" class="form-control rounded" placeholder="Rechercher"

@@ -18,6 +18,9 @@
     height: 250px;
     margin: auto;
     object-fit: contain;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    margin-bottom: 5px;
 }
 
 .card-img-bot {
@@ -55,6 +58,7 @@
     block-size: fit-content;
     height: 40px;
     margin-left: 10px;
+    margin-bottom: -20px;
 }
 
 .text-muted {

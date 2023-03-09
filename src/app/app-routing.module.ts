@@ -9,6 +9,7 @@ import { LocationsComponent } from './locations/locations.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfilBisComponent } from './profil-bis/profil-bis.component';
 import { AbonnementComponent } from './abonnement/abonnement.component';
+import { EmpruntsComponent } from './emprunts/emprunts.component';
 
 const routes: Routes = [
   { path: 'client', component: ClientComponent },
@@ -19,7 +20,9 @@ const routes: Routes = [
   { path: 'star', component: StarRatingComponentComponent },
   { path: 'messagerie', component: MessagerieComponent },
   { path: 'locations', component: LocationsComponent },
-  { path: 'abonnement', component: AbonnementComponent }
+  { path: 'abonnement', component: AbonnementComponent },
+  { path: 'emprunts', component: EmpruntsComponent }
+
 ];
 
 @NgModule({

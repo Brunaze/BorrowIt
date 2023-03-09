@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { RecupObjetService } from '../services/recup-objet.service';
-
+import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-objet',
   templateUrl: './objet.component.html',
@@ -14,7 +14,7 @@ export class ObjetComponent implements OnInit {
   objet: any;
   user: any;
   msgErr: any;
-  constructor(private route: Router, public authService: AuthService, private recupObjetService: RecupObjetService, private http: HttpClient) { }
+  constructor(public userservice: UserService, private route: Router, public authService: AuthService, private recupObjetService: RecupObjetService, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.objet = this.recupObjetService.getObjet();
@@ -42,7 +42,7 @@ export class ObjetComponent implements OnInit {
       error: (err) => { console.log(err) }
     })
   }
-  
+
 
 
 

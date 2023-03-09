@@ -10,17 +10,18 @@ import { ProfileComponent } from './profile/profile.component';
 import { ProfilBisComponent } from './profil-bis/profil-bis.component';
 import { AbonnementComponent } from './abonnement/abonnement.component';
 import { AdministrateurComponent } from './administrateur/administrateur.component';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
   { path: 'client', component: ClientComponent },
   { path: 'objet', component: ObjetComponent },
   { path: 'accueil', component: AccueilComponent },
-  { path: 'profil', component: ProfileComponent },
+  { path: 'profil', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'profil0', component: ProfilBisComponent },
   { path: 'star', component: StarRatingComponentComponent },
-  { path: 'messagerie', component: MessagerieComponent },
-  { path: 'locations', component: LocationsComponent },
-  { path: 'abonnement', component: AbonnementComponent },
+  { path: 'messagerie', component: MessagerieComponent, canActivate: [AuthGuard] },
+  { path: 'locations', component: LocationsComponent, canActivate: [AuthGuard] },
+  { path: 'abonnement', component: AbonnementComponent, canActivate: [AuthGuard] },
   { path: 'administrateur', component: AdministrateurComponent }
 ];
 

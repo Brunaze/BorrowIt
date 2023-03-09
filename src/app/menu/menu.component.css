@@ -14,3 +14,35 @@
 #barre-recherche:checked {
     width: 200px;
 }
+
+.louer-objet {
+    font-weight: bolder;
+    color: rgb(0, 0, 0);
+    background: transparent;
+}
+
+.louer-objet:hover {
+
+    border-radius: 30px;
+    font-size: 110%;
+    border-style: solid;
+    border-width: 1px;
+}
+
+
+.premium {
+    font-weight: bolder;
+
+}
+
+.premium:hover {
+
+    border-style: solid;
+    border-width: 1px;
+    font-size: 120%;
+    border-radius: 30px;
+}
+
+.liens {
+    font-weight: bolder;
+}

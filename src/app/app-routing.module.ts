@@ -16,6 +16,7 @@ import { AdministrateurComponent } from './administrateur/administrateur.compone
 import { AuthGuard } from './services/auth.guard';
 import { SignalementComponent } from './signalement/signalement.component';
 import { AvisComponent } from './avis/avis.component';
+import { AjouterObjetComponent } from './ajouter-objet/ajouter-objet.component';
 
 
 const routes: Routes = [
@@ -31,7 +32,9 @@ const routes: Routes = [
   { path: 'abonnement', component: AbonnementComponent, canActivate: [AuthGuard] },
   { path: 'administrateur', component: AdministrateurComponent },
   { path: 'signalement', component: SignalementComponent },
-  { path: 'avis', component: AvisComponent }
+  { path: 'avis', component: AvisComponent },
+  { path: 'ajouter-objet', component: AjouterObjetComponent }
+
 ];
 
 @NgModule({

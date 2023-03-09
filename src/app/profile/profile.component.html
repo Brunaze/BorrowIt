@@ -1,5 +1,7 @@
-<div class="ml-4 mr-4 mt-4 mb-5">
+<div class="ml-4 mt-4 mb-5">
   <div class="container" style="max-width: 100%">
+
+    <!-- Ligne 1 -->
     <div class="row ligne1">
 
       <!-- Colonne Side Nav Bar -->
@@ -9,15 +11,15 @@
       <div class="col-2" style="z-index: 1">
         <h1>Profil</h1>
 
-          <mat-sidenav #sidenav mode="side" opened>
-            <mat-nav-list class="menuContainer">
-              <a mat-list-item routerLink="/accueil">Accueil</a>
-              <a mat-list-item routerLink="/parametres">Inventaire</a>
-              <a mat-list-item (click)="allerVersElement('Mesobjetsredir')">Mes objets</a>
-              <a mat-list-item routerLink="/locations">Gérer mes locations</a>
-              <a mat-list-item routerLink="/parametres">Modifier votre profil</a>
-            </mat-nav-list>
-          </mat-sidenav>
+        <mat-sidenav #sidenav mode="side" opened>
+          <mat-nav-list class="menuContainer">
+            <a mat-list-item routerLink="/accueil">Accueil</a>
+            <a mat-list-item routerLink="/parametres">Inventaire</a>
+            <a mat-list-item (click)="allerVersElement('Mesobjetsredir')">Mes objets</a>
+            <a mat-list-item routerLink="/locations">Gérer mes locations</a>
+            <a mat-list-item routerLink="/parametres">Modifier votre profil</a>
+          </mat-nav-list>
+        </mat-sidenav>
 
       </div>
 
@@ -38,6 +40,14 @@
         <div class="card-header">
           <h2 class="gras"> Bonjour, je suis {{ user.prenom }}</h2>
           <h5 class="grey-text maxtaille">Membre depuis {{ user.dateCreation | date:'MMMM yyyy':'':'fr' }}</h5>
+
+          <div style="margin-left: 2.5%;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(228, 196, 15)"
+              class="bi bi-patch-check-fill" viewBox="0 0 16 16">
+              <path
+                d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z" />
+            </svg> <small> Profil certifié</small>
+          </div>
         </div>
 
 
@@ -63,13 +73,7 @@
               <p></p>
             </div>
 
-
-
           </div>
-          <!--
-            <div class="card-footer">
-            <button type="button" class="" data-veloute="###">Modifier le profil</button>
-            </div>-->
 
           <div class="card-footer">
             <div class="">
@@ -77,158 +81,177 @@
               <h5><a href="notation" title="Moyenne des Notes" class="passiv_star"> {{ user.note }} ★ <small
                     style="color: black;">(XX avis)</small>
                 </a></h5>
+              <p id="Mesobjetsredir"></p>
             </div>
           </div>
-
         </div>
-
 
       </div>
     </div>
+
 
     <div class="row ligne2 justify-content-center ">
       <div class="col-2" style="z-index: 1">
-        <h2 id="Mesobjetsredir">Mes objets</h2>
+        <h2 id="#">Mes objets</h2>
       </div>
 
-       <!--  Bar de classification -->
+      <!--  Bar de classification -->
       <div class="col-10 mt-3 justify-content-center border">
-        <ul class="nav nav-pills justify-content-center">
-          <li class="nav-item">
-            <a class="nav-link" routerLink=""><img src="https://i.goopics.net/k9x1py.png" height="30"
-                alt="BorrowIt Logo" loading="lazy" /></a>
-            <p class="text-center">outils</p>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink=""><img src="https://i.goopics.net/y7bhsj.png" height="30"
-                alt="BorrowIt Logo" loading="lazy" /></a>
-            <p class="text-center">livres</p>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink=""><img src="https://i.goopics.net/oazyxx.png" height="30"
-                alt="BorrowIt Logo" loading="lazy" /></a>
-            <p class="text-center">jeux</p>
-          </li>
-          <li class="nav-item justify-content-center">
-            <a class="nav-link" routerLink=""><img src="https://i.goopics.net/9himml.png" height="30"
-                alt="BorrowIt Logo" loading="lazy" /></a>
-            <p class="text-center">musique</p>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink=""><img src="https://i.goopics.net/p9ujew.png" height="30"
-                alt="BorrowIt Logo" loading="lazy" /></a>
-            <p class="text-center">films</p>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink=""><img src="https://i.goopics.net/8tds6u.png" height="30"
-                alt="BorrowIt Logo" loading="lazy" /></a>
-            <p class="text-center">mode</p>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink=""><img src="https://i.goopics.net/6uc1yi.png" height="30"
-                alt="BorrowIt Logo" loading="lazy" /></a>
-            <p class="text-center">immobilier</p>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink=""><img src="https://i.goopics.net/laimnu.png" height="30"
-                alt="BorrowIt Logo" loading="lazy" /></a>
-            <p class="text-center">Sport</p>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink=""><img src="https://i.goopics.net/2ij49a.png" height="30"
-                alt="BorrowIt Logo" loading="lazy" /></a>
-            <p class="text-center">informatique</p>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink=""><img src="https://i.goopics.net/6wbehu.png" height="30"
-                alt="BorrowIt Logo" loading="lazy" /></a>
-            <p class="text-center">véhicules</p>
-          </li>
-          <!-- Lien pour autres -->
-          <li class="nav-item">
-            <a class="nav-link" routerLink=""><img src="https://i.goopics.net/t7q6k8.png" height="30"
-                alt="BorrowIt Logo" loading="lazy" /></a>
-            <p class="text-center">autres</p>
-          </li>
-        </ul>
-      </div>
-    </div>
+        <!--
+        <div class="BarClassification">
+          <ul class="nav nav-pills justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link" routerLink=""><img src="https://i.goopics.net/k9x1py.png" height="30"
+                  alt="BorrowIt Logo" loading="lazy" /></a>
+              <p class="text-center">outils</p>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink=""><img src="https://i.goopics.net/y7bhsj.png" height="30"
+                  alt="BorrowIt Logo" loading="lazy" /></a>
+              <p class="text-center">livres</p>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink=""><img src="https://i.goopics.net/oazyxx.png" height="30"
+                  alt="BorrowIt Logo" loading="lazy" /></a>
+              <p class="text-center">jeux</p>
+            </li>
+            <li class="nav-item justify-content-center">
+              <a class="nav-link" routerLink=""><img src="https://i.goopics.net/9himml.png" height="30"
+                  alt="BorrowIt Logo" loading="lazy" /></a>
+              <p class="text-center">musique</p>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink=""><img src="https://i.goopics.net/p9ujew.png" height="30"
+                  alt="BorrowIt Logo" loading="lazy" /></a>
+              <p class="text-center">films</p>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink=""><img src="https://i.goopics.net/8tds6u.png" height="30"
+                  alt="BorrowIt Logo" loading="lazy" /></a>
+              <p class="text-center">mode</p>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink=""><img src="https://i.goopics.net/6uc1yi.png" height="30"
+                  alt="BorrowIt Logo" loading="lazy" /></a>
+              <p class="text-center">immobilier</p>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink=""><img src="https://i.goopics.net/laimnu.png" height="30"
+                  alt="BorrowIt Logo" loading="lazy" /></a>
+              <p class="text-center">Sport</p>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink=""><img src="https://i.goopics.net/2ij49a.png" height="30"
+                  alt="BorrowIt Logo" loading="lazy" /></a>
+              <p class="text-center">informatique</p>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink=""><img src="https://i.goopics.net/6wbehu.png" height="30"
+                  alt="BorrowIt Logo" loading="lazy" /></a>
+              <p class="text-center">véhicules</p>
+            </li>
 
+            <li class="nav-item">
+              <a class="nav-link" routerLink=""><img src="https://i.goopics.net/t7q6k8.png" height="30"
+                  alt="BorrowIt Logo" loading="lazy" /></a>
+              <p class="text-center">autres</p>
+            </li>
+          </ul>
+        </div>
+      -->
 
-    <!-- DEBUT CARDS d'objet -->
-    <div class="ml-4 mr-4 mt-4 mb-5">
-      <div class="container" style="max-width:max-content;">
-        <div class="row">
-          <div class="col-sm-2" *ngFor="let o of objets">
-            <div class="card">
-              <a routerLink="/objet" (click)="recupObjetService.setObjet(o)">
-                <img class="card-img-top" src="{{ o.urlPhoto }}">
-              </a>
-              <div class="card-block">
-                <h4 class="card-title cursor-hover" routerLink="/objet">{{ o.nom }}</h4>
-                <p class="card-text">
-                  {{ o.description }}
-                </p>
-                <div class="left-bottom-card">
-                  <a routerLink="/profil" (click)="userservice.setUser(o.proprietaire)">
-                    <img class="card-img-bot" src="{{o.proprietaire.urlPhoto}}">
+        <!-- DEBUT CARDS d'objet -->
+        <div class="mt-4 mb-5">
+          <div class="container" style="max-width:max-content;">
+            <div class="row">
+
+              <div class="col-sm-2" *ngFor="let o of objets">
+                <div class="card">
+                  <a routerLink="/objet" (click)="recupObjetService.setObjet(o)">
+                    <img class="card-img-top" src="{{ o.urlPhoto }}">
                   </a>
-                </div>
-                <div class="right-bottom-card mb-4">
-                  <p class="card-text">
-                    <small class="text-muted">
-                      Ajouté il y a 2 jours par
-                    </small>
-                    <br>
-                    <small class="card-text-nom">
-                      {{ user.nom }} {{ user.prenom }}
-                    </small>
-                  </p>
+                  <div class="card-block">
+                    <h4 class="card-title cursor-hover" routerLink="/objet"
+                      style="max-width: 100%; font-size: initial;">{{ o.nom }}</h4>
+                    <p class="card-descrip">
+                      <br>
+                      {{ o.description }}
+                    </p>
+                    <div class="ml-2 mb-1">
+                      <small class="text-muted">
+                        Ajouté il y a 2 jours
+                      </small>
+                    </div>
+                  </div>
 
                 </div>
               </div>
-            </div>
-            <br>
-          </div>
 
+            </div>
+          </div>
+        </div>
+
+        <!-- FIN CARDS -->
+
+        <!--
+        <div class="mt-4 d-flex justify-content-center">
+          <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+
+         -->
+      </div>
+
+    </div> <!--  Fin ligne 2 -->
+
+    <!--  Fin ligne 3 -->
+    <div class="row ligne3 justify-content-center ">
+      <div class="col-2" style="z-index: 1">
+        <h2 id=""></h2>
+      </div>
+
+      <div class="col-10 mt-3 border">
+        <p style="text-align: right;">Vous voulez signaler l'utilisateur ?</p>
+        <!--  Signaler l'utilisateur -->
+        <div style="text-align: right;" *ngIf="compteView">
+          <button class="btn" type="button" data-toggle="modal" data-target="/signalement">Signaler l'utilisateur</button>
+        </div>
+
+        <div class="log" style="text-align: right;" *ngIf="authService.isNotConnected()">
+            <button type="button" class="btn" data-toggle="modal" data-target="#modalLoginForm">Signaler l'utilisateurtest</button>
+            <p></p>
         </div>
       </div>
-    </div>
 
-
-
-    <!-- FIN CARDS -->
-    <!-- DEBUT NUMERO PAGE -->
-    <div class="mt-4 d-flex justify-content-center">
-      <nav aria-label="Page navigation example">
-        <ul class="pagination">
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-              <span class="sr-only">Previous</span>
-            </a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-              <span class="sr-only">Next</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-    <!-- FIN NUMERO PAGE -->
-
+    </div>  <!-- Fin ligne3 -->
 
 
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-  </div>
 
-  <!--
+  </div> <!-- fin container -->
+</div> <!-- fin marge -->
+<!--
 <div class="container">
   <div class="col-2" style="z-index: 2">
     <h1 id="MesLocations">Profilx</h1>

@@ -17,6 +17,7 @@ import { LocationsComponent } from './locations/locations.component';
 import { ProfilBisComponent } from './profil-bis/profil-bis.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AbonnementComponent } from './abonnement/abonnement.component';
+import { SignalementComponent } from './signalement/signalement.component';
 
 
 
@@ -33,7 +34,8 @@ import { AbonnementComponent } from './abonnement/abonnement.component';
     LocationsComponent,
     ProfilBisComponent,
     ProfileComponent,
-    AbonnementComponent
+    AbonnementComponent,
+    SignalementComponent
   ],
   imports: [
     BrowserModule,

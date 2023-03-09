@@ -9,10 +9,14 @@ import { LocationsComponent } from './locations/locations.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfilBisComponent } from './profil-bis/profil-bis.component';
 import { AbonnementComponent } from './abonnement/abonnement.component';
+
+import { EmpruntsComponent } from './emprunts/emprunts.component';
+
 import { AdministrateurComponent } from './administrateur/administrateur.component';
 import { AuthGuard } from './services/auth.guard';
 import { SignalementComponent } from './signalement/signalement.component';
 import { AvisComponent } from './avis/avis.component';
+
 
 const routes: Routes = [
   { path: 'client', component: ClientComponent },
@@ -21,6 +25,7 @@ const routes: Routes = [
   { path: 'profil', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'profil0', component: ProfilBisComponent },
   { path: 'star', component: StarRatingComponentComponent },
+  { path: 'emprunts', component: EmpruntsComponent },
   { path: 'messagerie', component: MessagerieComponent, canActivate: [AuthGuard] },
   { path: 'locations', component: LocationsComponent, canActivate: [AuthGuard] },
   { path: 'abonnement', component: AbonnementComponent, canActivate: [AuthGuard] },

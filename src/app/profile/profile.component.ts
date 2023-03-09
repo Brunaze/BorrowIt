@@ -33,6 +33,7 @@ constructor(private route: Router, public authService: AuthService, public recup
       error: (err) => { console.error(err) }
     })
 
+    /* Vérification si le compte connecté et regardé sont les mêmes */
       if (this.authService.getUserConnect().id != this.userservice.getUser().id){
         this.compteView = true;
         }else{

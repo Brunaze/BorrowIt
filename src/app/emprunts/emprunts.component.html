@@ -1,0 +1,169 @@
+<div class="ml-4 mr-4 mt-4 mb-5 log text-center">
+    <div class="container justify-content-center">
+        <div class="container justify-content-center mb-4">
+            <button type="button" class="btn btn-primary active"
+                *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'demandeEffectuees'">Demandes envoyées</button>
+            <button type="button" class="btn btn-primary"
+                *ngIf="listeEmpruntVisible.getListeEmpruntVisible() != 'demandeEffectuees'"
+                (click)="listeEmpruntVisible.setListeEmpruntVisible('demandeEffectuees'); locPointeAnnulation = null">Demandes
+                envoyées</button>
+            <button type="button" class="btn btn-primary active"
+                *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'demandeAcceptees'">Demandes acceptées</button>
+            <button type="button" class="btn btn-primary"
+                *ngIf="listeEmpruntVisible.getListeEmpruntVisible() != 'demandeAcceptees'"
+                (click)="listeEmpruntVisible.setListeEmpruntVisible('demandeAcceptees'); locPointeAnnulation = null">Demandes
+                acceptées</button>
+            <button type="button" class="btn btn-primary active"
+                *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'enCours'">Locations en cours</button>
+            <button type="button" class="btn btn-primary"
+                *ngIf="listeEmpruntVisible.getListeEmpruntVisible() != 'enCours'"
+                (click)="listeEmpruntVisible.setListeEmpruntVisible('enCours'); locPointeAnnulation = null">Locations en
+                cours</button>
+            <button type="button" class="btn btn-primary active"
+                *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'historique'">Historique locations</button>
+            <button type="button" class="btn btn-primary"
+                *ngIf="listeEmpruntVisible.getListeEmpruntVisible() != 'historique'"
+                (click)="listeEmpruntVisible.setListeEmpruntVisible('historique'); locPointeAnnulation = null">Historique
+                locations</button>
+        </div>
+
+        <div class="container">
+            <div class="row" *ngFor="let loc of emprunts">
+                <span
+                    *ngIf="(loc.valide && getComparaisonToday(loc) == 'future' && listeEmpruntVisible.getListeEmpruntVisible() == 'demandeAcceptees') || 
+                    (!loc.valide && listeEmpruntVisible.getListeEmpruntVisible() == 'demandeEffectuees') || 
+                    (loc.valide && (getComparaisonToday(loc) == 'enCours' || getComparaisonToday(loc) == 'enCoursFinie') && listeEmpruntVisible.getListeEmpruntVisible() == 'enCours') ||
+                    (loc.valide && getComparaisonToday(loc) == 'historique' && listeEmpruntVisible.getListeEmpruntVisible() == 'historique')">
+                    <div class="card mb-4" style="background-color: rgb(226, 226, 226);">
+                        <div class="card col-sm-12" style="width: 50rem; background-color: rgb(187, 187, 187);">
+                            <div class="row g-0">
+                                <div class="img-objet col-md-6">
+                                    <img src="{{ loc.objet.urlPhoto }}" class="card-img-top" alt="...">
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ loc.objet.nom }}</h5>
+                                        <p class="card-text">{{ getDiffDates(loc.dateFin, loc.dateDebut) }} jour(s) du
+                                            {{ loc.dateDebut }} au
+                                            {{
+                                            loc.dateFin }}<br>
+                                            total : {{ getDiffDates(loc.dateFin, loc.dateDebut) * loc.objet.prixJour }}€
+                                            <br>
+                                            caution : {{ loc.objet.caution }}€ <br>
+                                            <span
+                                                *ngIf="getComparaisonToday(loc) == 'historique' && getDiffDates(loc.dateFinReelle, loc.dateFin) != 1">
+                                                {{ getDiffDates(loc.dateFinReelle, loc.dateFin) - 1 }} jour(s) de retard
+                                                (rendu le {{ loc.dateFinReelle }})
+                                            </span>
+                                        </p>
+
+                                        <button type="button" class="btn btn-danger"
+                                            *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'demandeEffectuees'"
+                                            (click)="locPointeAnnulation = loc">Annuler</button>
+                                        <button type="button" class="btn btn-danger"
+                                            *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'demandeAcceptees'"
+                                            (click)="locPointeAnnulation = loc">Annuler</button>
+
+                                        <button type="button" class="btn btn-primary btn-rounded"
+                                            *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'demandeAcceptees'"
+                                            data-toggle="modal" data-target="#modal">
+                                            A Payer</button>
+                                        <button type="button" class="btn btn-info"
+                                            *ngIf="listeEmpruntVisible.getListeEmpruntVisible() != ''">
+                                            Voir Proprietaire</button>
+                                        <button type="button" class="btn btn-info"
+                                            *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'historique'">
+                                            Avis</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card" style="background-color: rgb(226, 226, 226);"
+                            *ngIf="locPointeAnnulation == loc">
+                            <p>
+                                Êtes-vous sûr(e) ?
+                            </p>
+                            <button type="button" class="btn btn-info"
+                                (click)="locPointeAnnulation = null; annulerLocation(loc.id)">Oui</button>
+                            <button type="button" class="btn btn-info" (click)="locPointeAnnulation = null">Non</button>
+                        </div>
+
+                        <div class="card" style="background-color: rgb(226, 226, 226);"
+                            *ngIf="getComparaisonToday(loc) == 'enCoursFinie'">
+                            <p style="margin-top: 5px;">
+                                Date de rendu ?
+                            </p>
+
+                        </div>
+                    </div>
+                </span>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="modal" role="dialog" tabindex="-1" aria-labelledby="BackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="text-right"> <i class="fa fa-close close" data-dismiss="modal"></i> </div>
+                <div class="tabs mt-3">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation"> <a class="nav-link active" id="visa-tab"
+                                data-toggle="tab" href="#visa" role="tab" aria-controls="visa" aria-selected="true">
+                                <img src="https://i.imgur.com/sB4jftM.png" width="80"> </a> </li>
+                        <li class="nav-item" role="presentation"> <a class="nav-link" id="paypal-tab" data-toggle="tab"
+                                href="#paypal" role="tab" aria-controls="paypal" aria-selected="false"> <img
+                                    src="https://i.imgur.com/yK7EDD1.png" width="80"> </a> </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="visa" role="tabpanel" aria-labelledby="visa-tab">
+                            <div class="mt-4 mx-4">
+                                <div class="text-center">
+                                    <h5>Payer Location</h5>
+                                </div>
+                                <form #recupcbForm="ngForm" (ngSubmit)="postCarte(recupcbForm.value)">
+                                    <div class="form mt-3">
+                                        <div class="inputbox"> <input ngModel="" type="text" name="nom"
+                                                class="form-control" required> <span>Nom du titulaire</span>
+                                        </div>
+                                        <div class="inputbox"> <input ngModel="" type="text" name="numero"
+                                                class="form-control" required> <span>Numéro de la
+                                                carte</span> <i class="fa fa-eye"></i> </div>
+                                        <div class="d-flex flex-row">
+                                            <div class="inputbox"> <input ngModel="" type="text" name="dateExpiration"
+                                                    class="form-control" required pattern="[0-9]{2}/[0-9]{2}">
+                                                <span>Date
+                                                    d'expiration</span>
+                                            </div>
+                                            <div class="inputbox"> <input ngModel="" type="text" name="code"
+                                                    class="form-control" required pattern="[0-9]{3}">
+                                                <span>CVV</span>
+                                            </div>
+                                        </div>
+                                        <div class="px-5 pay"> <button class="btn btn-success btn-block">Payer 4,99
+                                                €</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="paypal" role="tabpanel" aria-labelledby="paypal-tab">
+                            <div class="px-5 mt-5">
+                                <div class="inputbox"> <input type="text" name="name" class="form-control"
+                                        required="required"> <span>Paypal Email Address</span> </div>
+                                <div class="pay px-5"> <button class="btn btn-primary btn-block">Add paypal</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

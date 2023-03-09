@@ -56,7 +56,8 @@
           <div class="log" *ngIf="authService.isConnected()">
             <div>
               <ul class="text1large">
-                <p class="grey-text" style="margin-top: -0.5%; margin-right: 2%; text-align: right;">Premium jusqu'en {{ user.dateFin | date:'dd MMMM yyyy':'':'fr'}}</p>
+                <p class="grey-text" style="margin-top: -0.5%; margin-right: 2%; text-align: right;">Premium jusqu'en {{
+                  user.dateFin | date:'dd MMMM yyyy':'':'fr'}}</p>
                 <li><Strong>Mail</Strong>: {{ user.mail }} </li>
                 <p><br></p>
                 <li><Strong>Numéro</Strong> : {{ user.numeroTelephone }} </li>
@@ -79,7 +80,7 @@
           <div class="card-footer">
             <div class="">
               <h5>J'ai déjà effectué XX locations</h5>
-              <h5><a href="notation" title="Moyenne des Notes" class="passiv_star"> {{ user.note }} ★ <small
+              <h5><a href="###" title="Moyenne des Notes" class="passiv_star"> {{ user.note }} ★ <small
                     style="color: black;">(XX avis)</small>
                 </a></h5>
               <p id="Mesobjetsredir"></p>
@@ -169,7 +170,7 @@
             <div class="row">
 
               <div class="col-sm-2" *ngFor="let o of objets">
-                <div class="card">
+                <div class="card mt-2">
                   <a routerLink="/objet" (click)="recupObjetService.setObjet(o)">
                     <img class="card-img-top" src="{{ o.urlPhoto }}">
                   </a>
@@ -246,7 +247,6 @@
       </div>
 
     </div> <!-- Fin ligne3 -->
-
 
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 

@@ -27,7 +27,7 @@ export class AbonnementComponent implements OnInit {
         const date = new Date(yyyy, mm - 1, dd);
         const formattedDate = `${yyyy}-${mm}-${dd}`;
 
-        this.http.post('http://localhost:8283/abonnement', { dateFin: "2023-03-23", typeAchat: "argent", client: this.authService.getUserConnect() }).subscribe({
+        this.http.post('http://localhost:8283/abonnement', { dateFin: "2023-04-10", typeAchat: "argent", client: this.authService.getUserConnect() }).subscribe({
           next: (data) => {
             window.location.reload();
           },

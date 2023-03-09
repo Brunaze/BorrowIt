@@ -1,4 +1,4 @@
-<div class="container" style="margin-top: 50px;">
+<div class="container" style="margin-top: 50px; height: 800px;">
     <div class="row">
         <div class="col-sm-6">
             <div class="card">
@@ -68,7 +68,7 @@
 
                     <div class="form-btn  flex-column mt-3">
                         <p class="log" *ngIf="authService.isConnected()">
-                            <a class="submit-btn">Louer</a>
+                            <a class="submit-btn" style="background-color: black; border-radius: 30px;">Louer</a>
                         </p>
                         <p class="log" *ngIf="authService.isNotConnected()">
                             <a class="submit-btn" data-toggle="modal" data-target="#modalLoginForm">Louer</a>

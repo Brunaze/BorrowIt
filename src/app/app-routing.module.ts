@@ -16,7 +16,7 @@ import { SignalementComponent } from './signalement/signalement.component';
 const routes: Routes = [
   { path: 'client', component: ClientComponent },
   { path: 'objet', component: ObjetComponent },
-  { path: 'accueil', component: AccueilComponent },
+  { path: '', component: AccueilComponent },
   { path: 'profil', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'profil0', component: ProfilBisComponent },
   { path: 'star', component: StarRatingComponentComponent },

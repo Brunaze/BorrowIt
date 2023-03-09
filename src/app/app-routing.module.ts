@@ -21,7 +21,9 @@ const routes: Routes = [
   { path: 'star', component: StarRatingComponentComponent },
   { path: 'messagerie', component: MessagerieComponent },
   { path: 'locations', component: LocationsComponent },
-  { path: 'abonnement', component: AbonnementComponent }
+  { path: 'abonnement', component: AbonnementComponent },
+  { path: 'administrateur', component: AdministrateurComponent },
+  { path: 'signalement', component: SignalementComponent }
 ];
 
 @NgModule({

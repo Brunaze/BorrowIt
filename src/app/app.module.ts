@@ -32,7 +32,9 @@ import { SignalementComponent } from './signalement/signalement.component';
     LocationsComponent,
     ProfilBisComponent,
     ProfileComponent,
-    AbonnementComponent
+    AbonnementComponent,
+    SignalementComponent,
+    AdministrateurComponent
   ],
   imports: [
     BrowserModule,

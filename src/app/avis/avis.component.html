@@ -1,0 +1,35 @@
+<div class="container-fluid justify-content-center">
+    <div class="row align-text-center">
+        <div class="mx-auto col-10 col-md-8 col-lg-6">
+            <form #signalementForm="ngForm" (ngSubmit)="1">
+                <div class="md-form mb-4">
+                    <p>Avis sur la location de l'utilisateur : {{ avisLocation.getAvisLocation().objet.proprietaire.nom
+                        }} {{
+                        avisLocation.getAvisLocation().objet.proprietaire.prenom }}</p>
+                    <p>Objet : {{ avisLocation.getAvisLocation().objet.nom }}</p>
+                </div>
+                <div class="md-form mb-4">
+                    <p>Note :</p>
+                    <span *ngFor="let i of [1, 2, 3, 4, 5]">
+                        <span *ngIf="comp('inf', i)">
+                            <i class="fa-regular fa-star" (click)="note = i"></i>
+                        </span>
+                        <span *ngIf="comp('sup', i-1)">
+                            <i class="fa-solid fa-star" (click)="note = i"></i>
+                        </span>
+                    </span>
+                </div>
+                <div class="md-form mb-4">
+                    <p>Commentaire :</p>
+                    <div class="form-floating">
+                        <textarea class="form-control validate" id="floatingTextarea2" name="commentaire"
+                            style="height: 100px" ngModel=""></textarea>
+                    </div>
+                </div>
+                <div class="d-flex flex-column text-center">
+                    <button class="btn btn-default btn-round custom-close" id="closeModal">Envoyer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

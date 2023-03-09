@@ -13,14 +13,13 @@
 
         <mat-sidenav #sidenav mode="side" opened>
           <mat-nav-list class="menuContainer">
-            <a mat-list-item routerLink="/accueil">Accueil</a>
+            <a mat-list-item routerLink="">Accueil</a>
             <a mat-list-item routerLink="/parametres">Inventaire</a>
             <a mat-list-item (click)="allerVersElement('Mesobjetsredir')">Mes objets</a>
             <a mat-list-item routerLink="/locations">Gérer mes locations</a>
             <a mat-list-item routerLink="/parametres">Modifier votre profil</a>
           </mat-nav-list>
         </mat-sidenav>
-
       </div>
 
       <!-- Colonne n°1 -->
@@ -30,11 +29,11 @@
           <img src="{{user.urlPhoto}}" class="img img-fluid " alt="Image profil">
           <h4 class="titre4">{{ user.nom }} {{ user.prenom }}</h4>
         </div>
-
       </div>
 
       <!-- Colonne n°2 -->
       <div class="col-6 justify-content-md-center mt-3">
+
 
 
         <div class="card-header">
@@ -42,26 +41,28 @@
           <h5 class="grey-text maxtaille">Membre depuis {{ user.dateCreation | date:'MMMM yyyy':'':'fr' }}</h5>
 
           <div style="margin-left: 2.5%;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(228, 196, 15)"
-              class="bi bi-patch-check-fill" viewBox="0 0 16 16">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="rgb(228, 196, 15)"
+              class="bi bi-patch-check-fill" viewBox="0 0 16 16" style="margin-bottom: 2%; margin-bottom: 2%;">
               <path
                 d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z" />
-            </svg> <small> Profil certifié</small>
+            </svg> Profil certifié
           </div>
+
         </div>
 
 
         <!-- Info contact personnel dispo -->
         <div class="card-text">
           <div class="log" *ngIf="authService.isConnected()">
-            <br>
-            <ul class="text1large">
-              <br>
-              <li><Strong>Mail</Strong>: {{ user.mail }} </li>
-              <p><br></p>
-              <li><Strong>Numéro</Strong> : {{ user.numeroTelephone }} </li>
-            </ul>
-            <br><br>
+            <div>
+              <ul class="text1large">
+                <p class="grey-text" style="margin-top: -0.5%; margin-right: 2%; text-align: right;">Premium jusqu'en {{ user.dateFin | date:'dd MMMM yyyy':'':'fr'}}</p>
+                <li><Strong>Mail</Strong>: {{ user.mail }} </li>
+                <p><br></p>
+                <li><Strong>Numéro</Strong> : {{ user.numeroTelephone }} </li>
+                <br>
+              </ul>
+            </div>
           </div>
 
           <div class="log d-flex justify-content-between" *ngIf="authService.isNotConnected()">
@@ -86,7 +87,9 @@
           </div>
         </div>
 
+
       </div>
+
     </div>
 
 
@@ -96,7 +99,7 @@
       </div>
 
       <!--  Bar de classification -->
-      <div class="col-10 mt-3 justify-content-center border">
+      <div class="col-10 mt-3 justify-content-center">
         <!--
         <div class="BarClassification">
           <ul class="nav nav-pills justify-content-center">
@@ -189,9 +192,7 @@
 
             </div>
           </div>
-        </div>
-
-        <!-- FIN CARDS -->
+        </div> <!-- FIN CARDS -->
 
         <!--
         <div class="mt-4 d-flex justify-content-center">
@@ -228,25 +229,28 @@
         <h2 id=""></h2>
       </div>
 
-      <div class="col-10 mt-3 border">
-        <p style="text-align: right;">Vous voulez signaler l'utilisateur ?</p>
+      <div class="col-10 mt-3">
         <!--  Signaler l'utilisateur -->
         <div style="text-align: right;" *ngIf="compteView">
-          <button class="btn" type="button" data-toggle="modal" data-target="/signalement">Signaler l'utilisateur</button>
+          <p style="text-align: right;">Vous voulez signaler l'utilisateur ?</p>
+          <button class="btn" type="button" data-toggle="modal" data-dismiss="modal" routerLink="/signalement">Signaler
+            l'utilisateur</button>
         </div>
 
         <div class="log" style="text-align: right;" *ngIf="authService.isNotConnected()">
-            <button type="button" class="btn" data-toggle="modal" data-target="#modalLoginForm">Signaler l'utilisateurtest</button>
-            <p></p>
+          <p style="text-align: right;">Vous voulez signaler l'utilisateur ?</p>
+          <button type="button" class="btn" data-toggle="modal" data-dismiss="modal"
+            data-target="#modalLoginForm">Signaler l'utilisateur</button>
+          <p></p>
         </div>
       </div>
 
-    </div>  <!-- Fin ligne3 -->
+    </div> <!-- Fin ligne3 -->
 
 
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 
   </div> <!-- fin container -->

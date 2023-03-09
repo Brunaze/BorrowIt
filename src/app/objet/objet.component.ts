@@ -14,6 +14,7 @@ export class ObjetComponent implements OnInit {
   objet: any;
   user: any;
   msgErr: any;
+
   constructor(public userservice: UserService, private route: Router, public authService: AuthService, private recupObjetService: RecupObjetService, private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -43,7 +44,9 @@ export class ObjetComponent implements OnInit {
     })
   }
 
-
+  creerLocation(debut: Date, fin: Date) {
+    this.http.post('http://localhost:8283/location', { dateDebut: debut, dateFin: fin, objet: this.objet, locataire: this.authService.getUserConnect() }).subscribe({})
+  }
 
 
 }

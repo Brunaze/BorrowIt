@@ -6,17 +6,17 @@
             <div class="panel panel-default userlist shadow-lg p-3 mb-5 bg-white rounded">
                 <div class="panel-body text-center">
                     <div class="userprofile">
-                        <div class="userpic"> <img src="{{u.urlPhoto}}" alt="" class="userpicimg"> </div>
+                        <div class="userpic mb-5"> <img src="{{u.urlPhoto}}" alt="" class="userpicimg"> </div>
                         <h3 class="username">{{u.nom}} {{u.prenom}}</h3>
                     </div>
                     <strong>Nombre de signalements : </strong><br>
                     <h3>5</h3>
-
                     <div class="panel-footer">
-                        <button type="button" class="btn btn-info" data-toggle="modal"
-                            data-target="#modalSignalement">Signalements</button>
-                        <button type="button" class="btn btn-info">Retirer</button>
-                        <button type="button" class="btn btn-danger">Bloquer</button>
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalSignalement"
+                            (click)="signalementById(u.id)">Signalements</button>
+                        <button type="button" class="btn btn-warning">Avertissement</button>
+                        <button type="button" class="btn btn-danger" (click)="user=u" data-toggle="modal"
+                            data-target="#modalBannir">Bannir</button>
                     </div>
                 </div>
             </div>
@@ -29,13 +29,47 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                <div class="row" *ngFor="let s of signalements">
+                <div class="row">
 
-                    <h3>{{ s.typeSignalement }}</h3>
-
-                    <p>{{s.commentaire}}</p>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    <h3>#</h3>
+                                </th>
+                                <th scope="col">
+                                    <h3 class="text-left">Type</h3>
+                                </th>
+                                <th scope="col">
+                                    <h3>Commentaire</h3>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let s of signalementsById">
+                            <tr>
+                                <th scope="row">{{s.id}}</th>
+                                <td><b><strong> {{ s.typeSignalement }}</strong></b> </td>
+                                <td>{{s.commentaire}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
 
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalBannir" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h5>Etes-vous sûr de vouloir bannir cet utilisateur ?</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger text-center" data-dismiss="modal"
+                    (click)="deleteUserById(user.id)">Oui</button>
+                <button type="button" class="btn text-center" data-dismiss="modal">Non</button>
             </div>
         </div>
     </div>

@@ -12,6 +12,7 @@ import { ListeSignalementService } from '../services/liste-signalement.service';
 export class AdministrateurComponent implements OnInit {
 
   users: any;
+  user: any;
   nbUsers: any;
   signalements: any;
   signalementsById: any;
@@ -33,10 +34,6 @@ export class AdministrateurComponent implements OnInit {
     })
   }
 
-
-
-
-
   allSignalements() {
     this.http.get('http://localhost:8283/signalement').subscribe({
       next: (data) => {
@@ -51,7 +48,6 @@ export class AdministrateurComponent implements OnInit {
     this.http.get('http://localhost:8283/signalement/listeSignalementClient/' + id).subscribe({
       next: (data) => {
         this.signalementsById = data;
-        return this.signalementsById;
       },
       error: (err) => { console.log(err) }
     })
@@ -62,6 +58,20 @@ export class AdministrateurComponent implements OnInit {
       next: (data) => {
         this.nbSignalement = data;
         return this.nbSignalement;
+      },
+      error: (err) => { console.log(err) }
+    })
+  }
+
+  deleteUserById(id: any) {
+    this.http.delete('http://localhost:8283/avis/' + id).subscribe({});
+    this.http.delete('http://localhost:8283/signalement/' + id).subscribe({});
+    this.http.delete('http://localhost:8283/objet/' + id).subscribe({});
+    this.http.delete('http://localhost:8283/location/' + id).subscribe({});
+    this.http.delete('http://localhost:8283/abonnement/' + id).subscribe({});
+    this.http.delete('http://localhost:8283/client/' + id).subscribe({
+      next: (data) => {
+        window.location.reload();
       },
       error: (err) => { console.log(err) }
     })

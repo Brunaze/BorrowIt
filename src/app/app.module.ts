@@ -17,10 +17,8 @@ import { LocationsComponent } from './locations/locations.component';
 import { ProfilBisComponent } from './profil-bis/profil-bis.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AbonnementComponent } from './abonnement/abonnement.component';
+import { AdministrateurComponent } from './administrateur/administrateur.component';
 import { SignalementComponent } from './signalement/signalement.component';
-
-
-
 
 @NgModule({
   declarations: [
@@ -34,8 +32,7 @@ import { SignalementComponent } from './signalement/signalement.component';
     LocationsComponent,
     ProfilBisComponent,
     ProfileComponent,
-    AbonnementComponent,
-    SignalementComponent
+    AbonnementComponent
   ],
   imports: [
     BrowserModule,

@@ -33,8 +33,13 @@ export class MenuComponent implements OnInit {
     this.http.post('http://localhost:8283/utilisateur/login', val).subscribe({
       next: (data) => {
         this.user = data;
-        if (this.user != null) {
+        console.log(this.user);
+        if (this.user != null && this.user.points != null) {
           this.authService.setUserConnect(this.user);
+          window.location.reload();
+        } else if (this.user != null) {
+          this.authService.setUserConnect(this.user);
+          this.route.navigateByUrl('administrateur');
           window.location.reload();
         } else {
           this.msgErr = 'Identifiant ou mot de passe incorrect';

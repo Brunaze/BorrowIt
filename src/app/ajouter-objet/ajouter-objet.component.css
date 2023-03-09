@@ -1,0 +1,19 @@
+.left-prix {
+    float: left;
+    width: 50%;
+
+}
+
+.right-prix {
+    float: left;
+    width: 50%;
+    justify-content: center;
+}
+
+.prix-caution {
+    width: 50px;
+}
+
+.prix-jour {
+    width: 50px;
+}

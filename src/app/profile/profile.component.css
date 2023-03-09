@@ -172,18 +172,6 @@ button {
   object-fit: contain;
 }
 
-.card-img-bot {
-  /*CORRECTION carte de taille différente selon la photo du proprio*/
-  /* border: 2px solid black; /*CORRECTION a faire on ne voit pas la bordure*/
-  clip-path: circle();
-  width: 70px;
-  block-size: fit-content;
-  margin-left: 10px;
-  margin-bottom: 30px;
-  max-height: 70px;
-  max-width: fit-content;
-}
-
 .card-img-bot:hover {
   box-shadow: 1px 1px 10px 10px rgba(0, 0, 0, 0.5);
 }
@@ -208,6 +196,7 @@ button {
   block-size: fit-content;
   height: 45px;
   margin-left: 10px;
+  margin-right: 5px;
 }
 
 .text-muted {

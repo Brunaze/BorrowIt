@@ -11,6 +11,7 @@ import { ProfilBisComponent } from './profil-bis/profil-bis.component';
 import { AbonnementComponent } from './abonnement/abonnement.component';
 import { AdministrateurComponent } from './administrateur/administrateur.component';
 import { AuthGuard } from './services/auth.guard';
+import { SignalementComponent } from './signalement/signalement.component';
 
 const routes: Routes = [
   { path: 'client', component: ClientComponent },
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'messagerie', component: MessagerieComponent, canActivate: [AuthGuard] },
   { path: 'locations', component: LocationsComponent, canActivate: [AuthGuard] },
   { path: 'abonnement', component: AbonnementComponent, canActivate: [AuthGuard] },
-  { path: 'administrateur', component: AdministrateurComponent }
+  { path: 'administrateur', component: AdministrateurComponent },
+  { path: 'signalement', component: SignalementComponent }
 ];
 
 @NgModule({

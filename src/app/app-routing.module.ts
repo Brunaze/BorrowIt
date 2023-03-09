@@ -12,6 +12,7 @@ import { AbonnementComponent } from './abonnement/abonnement.component';
 import { AdministrateurComponent } from './administrateur/administrateur.component';
 import { AuthGuard } from './services/auth.guard';
 import { SignalementComponent } from './signalement/signalement.component';
+import { AvisComponent } from './avis/avis.component';
 
 const routes: Routes = [
   { path: 'client', component: ClientComponent },
@@ -24,7 +25,8 @@ const routes: Routes = [
   { path: 'locations', component: LocationsComponent, canActivate: [AuthGuard] },
   { path: 'abonnement', component: AbonnementComponent, canActivate: [AuthGuard] },
   { path: 'administrateur', component: AdministrateurComponent },
-  { path: 'signalement', component: SignalementComponent }
+  { path: 'signalement', component: SignalementComponent },
+  { path: 'avis', component: AvisComponent }
 ];
 
 @NgModule({

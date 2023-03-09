@@ -28,14 +28,25 @@
 
         <!-- Elements de droite -->
         <ul class="navbar-nav flex-row">
-            <li class="mise-en-loc nav-item me-3 me-lg-1">
+            <li class="mise-en-loc nav-item me-3 me-lg-1" *ngIf="this.route.url !=='/ajouter-objet' ">
                 <a class=" louer-objet nav-link d-sm-flex align-items-sm-center" routerLink="ajouter-objet">
                     Mettre mon objet en location
                 </a>
             </li>
+            <li class="mise-en-loc nav-item me-3 me-lg-1" *ngIf="this.route.url ==='/ajouter-objet' ">
+                <a class=" louer-objet-clic nav-link d-sm-flex align-items-sm-center" routerLink="ajouter-objet">
+                    Mettre mon objet en location
+                </a>
+            </li>
 
-            <li class="nav-item me-3 me-lg-1" *ngIf="authService.isConnected()">
+            <li class="nav-item me-3 me-lg-1" *ngIf="authService.isConnected() && this.route.url !=='/abonnement'">
                 <a class="premium nav-link d-sm-flex align-items-sm-center" style="color: rgb(228, 196, 15);"
+                    routerLink="abonnement">
+                    Devenez Premium
+                </a>
+            </li>
+            <li class="nav-item me-3 me-lg-1" *ngIf="authService.isConnected() && this.route.url ==='/abonnement' ">
+                <a class="premium-clic nav-link d-sm-flex align-items-sm-center" style="color: rgb(228, 196, 15);"
                     routerLink="abonnement">
                     Devenez Premium
                 </a>

@@ -14,7 +14,9 @@ export class AbonnementComponent implements OnInit {
   constructor(private route: Router, private http: HttpClient, private authService: AuthService) { }
 
   ngOnInit(): void {
-
+    if (this.authService.getUserConnect().points == null) {
+      this.route.navigateByUrl('administrateur');
+    }
   }
 
   postCarte(val: any) {

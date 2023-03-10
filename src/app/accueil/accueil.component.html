@@ -59,7 +59,7 @@
         </li>
         <!-- Lien pour autres -->
         <li class="nav-item">
-            <a class="nav-link" (click)='objetByTag("autre")'><img src="https://i.goopics.net/t7q6k8.png" height="30"
+            <a class="nav-link" (click)='objetByTag("autre")'><img src="https://i.goopics.net/727i75.png" height="30"
                     alt="BorrowIt Logo" loading="lazy" /></a>
             <p class="text-center">Autres</p>
         </li>
@@ -78,8 +78,8 @@
                     <a routerLink="/objet" (click)="recupObjetService.setObjet(o)">
                         <img class="card-img-top" src="{{ o.urlPhoto }}">
                     </a>
-                    <div class="card-block">
-                        <h4 class="card-title cursor-hover" routerLink="/objet">{{ o.nom }}</h4>
+                    <div class="card-block" style="max-height: 118px;">
+                        <p class="card-title cursor-hover" routerLink="/objet">{{ o.nom }}</p>
 
                         <div class="left-bottom-card">
                             <a (click)="userservice.setUser(o.proprietaire); route.navigateByUrl('/profil')">

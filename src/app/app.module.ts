@@ -22,6 +22,7 @@ import { SignalementComponent } from './signalement/signalement.component';
 import { AvisComponent } from './avis/avis.component';
 import { EmpruntsComponent } from './emprunts/emprunts.component';
 import { AjouterObjetComponent } from './ajouter-objet/ajouter-objet.component';
+import { ModifierObjetComponent } from './modifier-objet/modifier-objet.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { AjouterObjetComponent } from './ajouter-objet/ajouter-objet.component';
     AdministrateurComponent,
     AvisComponent,
     EmpruntsComponent,
-    AjouterObjetComponent
+    AjouterObjetComponent,
+    ModifierObjetComponent
   ],
   imports: [
     BrowserModule,

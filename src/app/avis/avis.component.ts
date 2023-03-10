@@ -17,6 +17,9 @@ export class AvisComponent implements OnInit {
 
   ngOnInit(): void {
     this.note = 0;
+    if (this.authService.getUserConnect().points == null) {
+      this.route.navigateByUrl('administrateur');
+    }
   }
 
   sendAvis(com: any): void {

@@ -27,6 +27,9 @@ export class LocationsComponent implements OnInit {
       this.listeLocVisible.setListeLocVisible('demandeRecues');
     }
     this.getListeLocNonValide()
+    if (this.authService.getUserConnect().points == null) {
+      this.route.navigateByUrl('administrateur');
+    }
   }
 
   getListeLocNonValide() {

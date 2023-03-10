@@ -17,7 +17,7 @@ import { AuthGuard } from './services/auth.guard';
 import { SignalementComponent } from './signalement/signalement.component';
 import { AvisComponent } from './avis/avis.component';
 import { AjouterObjetComponent } from './ajouter-objet/ajouter-objet.component';
-
+import { ModifierObjetComponent } from './modifier-objet/modifier-objet.component';
 
 const routes: Routes = [
   { path: 'client', component: ClientComponent },
@@ -30,10 +30,11 @@ const routes: Routes = [
   { path: 'messagerie', component: MessagerieComponent, canActivate: [AuthGuard] },
   { path: 'locations', component: LocationsComponent, canActivate: [AuthGuard] },
   { path: 'abonnement', component: AbonnementComponent, canActivate: [AuthGuard] },
-  { path: 'administrateur', component: AdministrateurComponent, canActivate: [AuthGuard] },
-  { path: 'signalement', component: SignalementComponent, canActivate: [AuthGuard] },
-  { path: 'avis', component: AvisComponent, canActivate: [AuthGuard] },
-  { path: 'ajouter-objet', component: AjouterObjetComponent, canActivate: [AuthGuard] }
+  { path: 'administrateur', component: AdministrateurComponent },
+  { path: 'signalement', component: SignalementComponent },
+  { path: 'avis', component: AvisComponent },
+  { path: 'ajouter-objet', component: AjouterObjetComponent },
+  { path: 'modifier-objet', component: ModifierObjetComponent }
 
 ];
 

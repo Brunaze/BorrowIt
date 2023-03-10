@@ -40,11 +40,13 @@
           <h5 class="grey-text maxtaille">Membre depuis {{ user.dateCreation | date:'MMMM yyyy':'':'fr' }}</h5>
 
           <div style="margin-left: 2.5%;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="rgb(228, 196, 15)"
-              class="bi bi-patch-check-fill" viewBox="0 0 16 16" style="margin-bottom: 2%; margin-bottom: 2%;">
-              <path
-                d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z" />
-            </svg> Profil certifié
+            <div *ngIf="finAbonn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="rgb(228, 196, 15)"
+                class="bi bi-patch-check-fill" viewBox="0 0 16 16" style="margin-bottom: 2%; margin-bottom: 2%;">
+                <path
+                  d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z" />
+              </svg> <span class="ml-2">Profil certifié</span>
+            </div>
           </div>
 
         </div>
@@ -55,8 +57,14 @@
           <div class="log" *ngIf="authService.isConnected()">
             <div>
               <ul class="text1large">
-                <p class="grey-text" style="margin-top: -0.5%; margin-right: 2%; text-align: right;">Premium jusqu'en {{
-                  user.dateFin | date:'MMMM yyyy':'':'fr' }}</p>   <!-- NE marche pas -->
+                <div style="text-align: right;" *ngIf="onlyViewbyMySelf">
+                  <p class="grey-text" style=" margin-right: 2%; text-align: right;" *ngIf="finAbonn">Premium jusqu'au
+                    {{
+                    finAbonn | date:'dd MMMM yyyy':'':'fr' }}</p>
+                </div>
+                <br *ngIf="!finAbonn">
+                <br *ngIf="notViewbyMySelf">
+                <ng-template #elseBlock>Content to render when condition is false.</ng-template>
                 <li><Strong>Mail</Strong>: {{ user.mail }} </li>
                 <p><br></p>
                 <li><Strong>Numéro</Strong> : {{ user.numeroTelephone }} </li>
@@ -100,68 +108,6 @@
 
       <!--  Bar de classification -->
       <div class="col-10 mt-3 justify-content-center">
-        <!--
-        <div class="BarClassification">
-          <ul class="nav nav-pills justify-content-center">
-            <li class="nav-item">
-              <a class="nav-link" routerLink=""><img src="https://i.goopics.net/k9x1py.png" height="30"
-                  alt="BorrowIt Logo" loading="lazy" /></a>
-              <p class="text-center">outils</p>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink=""><img src="https://i.goopics.net/y7bhsj.png" height="30"
-                  alt="BorrowIt Logo" loading="lazy" /></a>
-              <p class="text-center">livres</p>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink=""><img src="https://i.goopics.net/oazyxx.png" height="30"
-                  alt="BorrowIt Logo" loading="lazy" /></a>
-              <p class="text-center">jeux</p>
-            </li>
-            <li class="nav-item justify-content-center">
-              <a class="nav-link" routerLink=""><img src="https://i.goopics.net/9himml.png" height="30"
-                  alt="BorrowIt Logo" loading="lazy" /></a>
-              <p class="text-center">musique</p>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink=""><img src="https://i.goopics.net/p9ujew.png" height="30"
-                  alt="BorrowIt Logo" loading="lazy" /></a>
-              <p class="text-center">films</p>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink=""><img src="https://i.goopics.net/8tds6u.png" height="30"
-                  alt="BorrowIt Logo" loading="lazy" /></a>
-              <p class="text-center">mode</p>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink=""><img src="https://i.goopics.net/6uc1yi.png" height="30"
-                  alt="BorrowIt Logo" loading="lazy" /></a>
-              <p class="text-center">immobilier</p>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink=""><img src="https://i.goopics.net/laimnu.png" height="30"
-                  alt="BorrowIt Logo" loading="lazy" /></a>
-              <p class="text-center">Sport</p>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink=""><img src="https://i.goopics.net/2ij49a.png" height="30"
-                  alt="BorrowIt Logo" loading="lazy" /></a>
-              <p class="text-center">informatique</p>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink=""><img src="https://i.goopics.net/6wbehu.png" height="30"
-                  alt="BorrowIt Logo" loading="lazy" /></a>
-              <p class="text-center">véhicules</p>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" routerLink=""><img src="https://i.goopics.net/t7q6k8.png" height="30"
-                  alt="BorrowIt Logo" loading="lazy" /></a>
-              <p class="text-center">autres</p>
-            </li>
-          </ul>
-        </div>
-      -->
 
         <!-- DEBUT CARDS d'objet -->
         <div class="mt-4 mb-5">
@@ -170,7 +116,7 @@
 
               <div class="conteneur col-2" *ngFor="let o of objets">
                 <div class="card mt-2">
-                  <a routerLink="/objet" (click)="recupObjetService.setObjet(o)">
+                  <a routerLink="/modifier-objet" (click)="recupObjetService.setObjet(o)">
                     <img class="card-img-top" src="{{ o.urlPhoto }}">
                   </a>
                   <div class="card-block">
@@ -231,7 +177,7 @@
 
       <div class="col-10 mt-3">
         <!--  Signaler l'utilisateur -->
-        <div style="text-align: right;" *ngIf="compteView">
+        <div style="text-align: right;" *ngIf="notViewbyMySelf">
           <p style="text-align: right;">Vous voulez signaler l'utilisateur ?</p>
           <button class="btn" type="button" data-toggle="modal" data-dismiss="modal" routerLink="/signalement">Signaler
             l'utilisateur</button>

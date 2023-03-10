@@ -19,6 +19,9 @@ export class ObjetComponent implements OnInit {
 
   ngOnInit(): void {
     this.objet = this.recupObjetService.getObjet();
+    if (this.authService.getUserConnect().points == null) {
+      this.route.navigateByUrl('administrateur');
+    }
   }
 
   getObjet(val: any): void {

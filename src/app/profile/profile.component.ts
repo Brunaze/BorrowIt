@@ -31,6 +31,7 @@ export class ProfileComponent implements OnInit{
   finAbonn : any;
   myDate = new Date();
   formattedfinAbonn: any;
+  note : any;
 
 
   constructor(private route: Router, public authService: AuthService, public recupObjetService: RecupObjetService,
@@ -81,7 +82,7 @@ export class ProfileComponent implements OnInit{
         console.log("false");
       }
 */
-
+this.note = this.userservice.getUser();
   }
 
 
@@ -140,9 +141,18 @@ verifAbonnementActif(id : any) {
     error: (err) => (console.log(err))
   })
 }
+
+
+getAvis(idClient : any) void {
+  this.http.get('http://localhost:8283/avis/proprietaire/' + idClient).subscribe({
+    next: (data) => {
+      this.note = data;
+    },
+    error: (err) => (console.log(err))
+  })
+}
+
 */
-
-
 
 
 

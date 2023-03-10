@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'client', component: ClientComponent },
   { path: 'objet', component: ObjetComponent },
   { path: '', component: AccueilComponent },
-  { path: 'profil', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'profil', component: ProfileComponent},
   { path: 'profil0', component: ProfilBisComponent },
   { path: 'star', component: StarRatingComponentComponent },
   { path: 'emprunts', component: EmpruntsComponent, canActivate: [AuthGuard] },

@@ -10,23 +10,24 @@
       <!-- Colonne n° 0 -->
       <div class="col-2" style="z-index: 1">
         <h1>Profil</h1>
-
+        <div *ngIf="onlyViewbyMySelf">
         <mat-sidenav #sidenav mode="side" opened>
           <mat-nav-list class="menuContainer">
             <a mat-list-item routerLink="">Accueil</a>
             <a mat-list-item (click)="allerVersElement('Mesobjetsredir')">Mes objets</a>
             <a mat-list-item routerLink="/locations">Gérer mes locations</a>
-            <a mat-list-item routerLink="/parametres">Modifier votre profil</a>
+            <a mat-list-item routerLink="/emprunts">Voir mes emprunts</a>
+            <!-- <a mat-list-item routerLink="/parametres">Modifier votre profil</a>-->
           </mat-nav-list>
         </mat-sidenav>
+        </div>
       </div>
 
       <!-- Colonne n°1 -->
       <div class="col-4 justify-content-md-center text-center mt-3 " style="align-content: center">
 
-        <div class="photoProfile">
-          <img src="{{user.urlPhoto}}" class="img img-fluid " alt="Image profil">
-          <h4 class="titre4">{{ user.nom }} {{ user.prenom }}</h4>
+        <div class="photoProfile" >
+          <img src="{{user.urlPhoto}}" style="max-width: 22rem;" class="img img-fluid " alt="Image profil">
         </div>
       </div>
 
@@ -36,7 +37,7 @@
 
 
         <div class="card-header">
-          <h2 class="gras"> Bonjour, je suis {{ user.prenom }}</h2>
+          <h2 class="gras"> Bonjour, je suis {{ user.prenom }} {{ user.nom }}</h2>
           <h5 class="grey-text maxtaille">Membre depuis {{ user.dateCreation | date:'MMMM yyyy':'':'fr' }}</h5>
 
           <div style="margin-left: 2.5%;">
@@ -64,19 +65,21 @@
                 </div>
                 <br *ngIf="!finAbonn">
                 <br *ngIf="notViewbyMySelf">
-                <ng-template #elseBlock>Content to render when condition is false.</ng-template>
                 <li><Strong>Mail</Strong>: {{ user.mail }} </li>
                 <p><br></p>
                 <li><Strong>Numéro</Strong> : {{ user.numeroTelephone }} </li>
                 <br>
               </ul>
             </div>
+            <br *ngIf="authService.isNotConnected()">
           </div>
 
           <div class="log d-flex justify-content-between" *ngIf="authService.isNotConnected()">
-            <p><Strong>Pour me contacter :</Strong></p>
+
+            <p><br *ngIf="authService.isNotConnected()"><Strong>Pour me contacter :</Strong></p>
 
             <div class="log text-center">
+              <br *ngIf="authService.isNotConnected()">
               <button type="button" class="btn" data-toggle="modal" data-target="#modalLoginForm">Connectez
                 vous</button>
               <p></p>
@@ -84,18 +87,20 @@
 
           </div>
 
+          <!--
           <div class="card-footer">
             <div class="">
               <h5>J'ai déjà effectué XX locations</h5>
-              <h5><a href="###" title="Moyenne des Notes" class="passiv_star"> {{ user.note }} ★ <small
+              <h5><a routerLink="/avis" title="Moyenne des Notes" class="passiv_star"> {{note}} ★ <small
                     style="color: black;">(XX avis)</small>
                 </a></h5>
-              <p id="Mesobjetsredir"></p>
+
             </div>
-          </div>
+          </div> -->
+
         </div>
 
-
+        <p id="Mesobjetsredir"></p>
       </div>
 
     </div>
@@ -116,7 +121,10 @@
 
               <div class="conteneur col-2" *ngFor="let o of objets">
                 <div class="card mt-2">
-                  <a routerLink="/modifier-objet" (click)="recupObjetService.setObjet(o)">
+                  <a *ngIf="onlyViewbyMySelf" routerLink="/modifier-objet" (click)="recupObjetService.setObjet(o)">
+                    <img class="card-img-top" src="{{ o.urlPhoto }}">
+                  </a>
+                  <a *ngIf="notViewbyMySelf || authService.isNotConnected()" routerLink="/objet" (click)="recupObjetService.setObjet(o)">
                     <img class="card-img-top" src="{{ o.urlPhoto }}">
                   </a>
                   <div class="card-block">
@@ -140,31 +148,6 @@
           </div>
         </div> <!-- FIN CARDS -->
 
-        <!--
-        <div class="mt-4 d-flex justify-content-center">
-          <nav aria-label="Page navigation example">
-            <ul class="pagination">
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                  <span class="sr-only">Previous</span>
-                </a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                  <span class="sr-only">Next</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-
-
-         -->
       </div>
 
     </div> <!--  Fin ligne 2 -->
@@ -200,21 +183,3 @@
 
   </div> <!-- fin container -->
 </div> <!-- fin marge -->
-<!--
-<div class="container">
-  <div class="col-2" style="z-index: 2">
-    <h1 id="MesLocations">Profilx</h1>
-  </div>
-  <div class="row">
-    <div class="col-10">
-      One of three columns
-    </div>
-  </div>
-</div>
-
-  <div class="row ligne1">
-<div class="col-2" style="z-index: 2">
-  <h1 id="MesLocations">Profilx</h1>
-</div>
-</div>
-Lien pour autres -->

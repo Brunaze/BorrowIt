@@ -23,4 +23,8 @@ export class UserService {
     return JSON.parse(User);
   }
 
+  getNote() {
+    let Note: any = localStorage.getItem('note');
+    return JSON.parse(Note);
+  }
 }

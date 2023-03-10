@@ -20,6 +20,7 @@ export class EmpruntsComponent implements OnInit {
   locPointeAnnulation: any;
   objets: any;
   locPayable: any;
+  accesAvis: any;
 
   constructor(public recupObjetService: RecupObjetService, private http: HttpClient, public route: Router, public authService: AuthService, public listeEmpruntVisible: ListEmpruntVisibleService, public userService: UserService, public avisLocation: AvisLocationService) { }
 
@@ -94,4 +95,17 @@ export class EmpruntsComponent implements OnInit {
       error: (err) => { console.log(err) }
     })
   }
+/*
+  checkAvisDejaDonne(id: any) {
+    this.http.get('http://localhost:8283/avis/location/' + id).subscribe({
+      next: (data) => {
+        if (data == null) {
+          this.accesAvis = false;
+        } else {
+          this.accesAvis = true;
+        }
+      },
+      error: (err) => (console.log(err))
+    })
+  }*/
 }

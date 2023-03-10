@@ -79,6 +79,11 @@
                                             data-toggle="modal" data-target="#modal">
                                             A Payer</button>
 
+                                        <!--<button type="button" class="btn btn-info"
+                                            *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'historique'"
+                                            (click)="avisLocation.setAvisLocation(loc); route.navigateByUrl('/avis')"
+                                            disabled>
+                                            Avis</button>-->
                                         <button type="button" class="btn btn-info"
                                             *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'historique'"
                                             (click)="avisLocation.setAvisLocation(loc); route.navigateByUrl('/avis')">
@@ -149,8 +154,10 @@
                                                 <span>CVV</span>
                                             </div>
                                         </div>
-                                        <div class="px-5 pay" *ngIf="locPayable != null"> <button class="btn btn-success btn-block">
-                                                Payer {{locPayable.objet.caution + getDiffDates(locPayable.dateFin, locPayable.dateDebut) * locPayable.objet.prixJour}}€
+                                        <div class="px-5 pay" *ngIf="locPayable != null"> <button
+                                                class="btn btn-success btn-block">
+                                                Payer {{locPayable.objet.caution + getDiffDates(locPayable.dateFin,
+                                                locPayable.dateDebut) * locPayable.objet.prixJour}}€
                                             </button>
                                         </div>
                                     </div>

@@ -23,9 +23,9 @@ export class AvisComponent implements OnInit {
   }
 
   sendAvis(com: any): void {
-    this.http.post('http://localhost:8283/signalement', { commentaire: com, note: this.note, location: this.avisLocation.getAvisLocation() }).subscribe({
+    this.http.post('http://localhost:8283/avis', { commentaire: com, note: this.note, location: this.avisLocation.getAvisLocation() }).subscribe({
       next: (data) => {
-        this.route.navigateByUrl('/profil');
+        this.route.navigateByUrl('/emprunts');
       },
       error: (err) => (console.log(err))
     })
@@ -40,4 +40,6 @@ export class AvisComponent implements OnInit {
       return null
     }
   }
+
+  
 }

@@ -26,14 +26,14 @@ const routes: Routes = [
   { path: 'profil', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'profil0', component: ProfilBisComponent },
   { path: 'star', component: StarRatingComponentComponent },
-  { path: 'emprunts', component: EmpruntsComponent },
+  { path: 'emprunts', component: EmpruntsComponent, canActivate: [AuthGuard] },
   { path: 'messagerie', component: MessagerieComponent, canActivate: [AuthGuard] },
   { path: 'locations', component: LocationsComponent, canActivate: [AuthGuard] },
   { path: 'abonnement', component: AbonnementComponent, canActivate: [AuthGuard] },
-  { path: 'administrateur', component: AdministrateurComponent },
-  { path: 'signalement', component: SignalementComponent },
-  { path: 'avis', component: AvisComponent },
-  { path: 'ajouter-objet', component: AjouterObjetComponent }
+  { path: 'administrateur', component: AdministrateurComponent, canActivate: [AuthGuard] },
+  { path: 'signalement', component: SignalementComponent, canActivate: [AuthGuard] },
+  { path: 'avis', component: AvisComponent, canActivate: [AuthGuard] },
+  { path: 'ajouter-objet', component: AjouterObjetComponent, canActivate: [AuthGuard] }
 
 ];
 

@@ -69,19 +69,34 @@
                     <i class="fas fa-chevron-circle-down fa-lg"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                    <li>
+                    <li *ngIf="this.route.url ==='/profil' ">
+                        <a class="dropdown-item" routerLink="profil"
+                            (click)="userservice.setUser(authService.getUserConnect())" style="font-weight: bold;">Mon
+                            Profil</a>
+                    </li>
+                    <li *ngIf="this.route.url !=='/profil' ">
                         <a class="dropdown-item" routerLink="profil"
                             (click)="userservice.setUser(authService.getUserConnect())" style="font-weight: bolder;">Mon
                             Profil</a>
                     </li>
 
-                    <li>
+                    <li *ngIf="this.route.url ==='/emprunts' ">
+                        <a class="dropdown-item" routerLink="emprunts" style="font-weight: bold;">Mes Emprunts</a>
+                    </li>
+                    <li *ngIf="this.route.url !=='/emprunts' ">
                         <a class="dropdown-item" routerLink="emprunts" style="font-weight: bolder;">Mes Emprunts</a>
                     </li>
-                    <li>
+                    <li *ngIf="this.route.url ==='/locations' ">
+                        <a class="dropdown-item" routerLink="locations" style="font-weight: bold;">Mes Locations</a>
+                    </li>
+                    <li *ngIf="this.route.url !=='/locations' ">
                         <a class="dropdown-item" routerLink="locations" style="font-weight: bolder;">Mes Locations</a>
                     </li>
-                    <li>
+                    <li *ngIf="this.route.url ==='/ajouter-objet' ">
+                        <a class="dropdown-item" routerLink="ajouter-objet" style="font-weight: bold;">Ajouter un
+                            Objet</a>
+                    </li>
+                    <li *ngIf="this.route.url !=='/ajouter-objet' ">
                         <a class="dropdown-item" routerLink="ajouter-objet" style="font-weight: bolder;">Ajouter un
                             Objet</a>
                     </li>

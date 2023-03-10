@@ -80,9 +80,7 @@
                     </a>
                     <div class="card-block">
                         <h4 class="card-title cursor-hover" routerLink="/objet">{{ o.nom }}</h4>
-                        <p class="card-descrip">
-                            {{ o.description }}
-                        </p>
+
                         <div class="left-bottom-card">
                             <a (click)="userservice.setUser(o.proprietaire); route.navigateByUrl('/profil')">
                                 <img class="card-img-bot" src="{{o.proprietaire.urlPhoto}}">
@@ -112,7 +110,9 @@
 
 
 <!-- FIN CARDS -->
+
 <!-- DEBUT NUMERO PAGE -->
+<!--
 <div class="mt-4 d-flex justify-content-center">
     <nav aria-label="Page navigation example">
         <ul class="pagination">
@@ -134,4 +134,5 @@
         </ul>
     </nav>
 </div>
+-->
 <!-- FIN NUMERO PAGE -->

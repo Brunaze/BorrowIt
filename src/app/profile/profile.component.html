@@ -116,7 +116,7 @@
 
               <div class="conteneur col-2" *ngFor="let o of objets">
                 <div class="card mt-2">
-                  <a routerLink="/modifier-objet" (click)="recupObjetService.setObjet(o)">
+                  <a routerLink="/objet" (click)="recupObjetService.setObjet(o)">
                     <img class="card-img-top" src="{{ o.urlPhoto }}">
                   </a>
                   <div class="card-block">

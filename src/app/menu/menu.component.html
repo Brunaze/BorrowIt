@@ -29,7 +29,8 @@
         <!-- Elements de droite -->
         <ul class="navbar-nav flex-row">
             <li class="mise-en-loc nav-item me-3 me-lg-1" *ngIf="this.route.url !=='/ajouter-objet' ">
-                <a class=" louer-objet nav-link d-sm-flex align-items-sm-center" routerLink="ajouter-objet">
+                <a class=" louer-objet nav-link d-sm-flex align-items-sm-center" data-toggle="modal"
+                    data-target="#modalLoginForm" routerLink="ajouter-objet">
                     Mettre mon objet en location
                 </a>
             </li>

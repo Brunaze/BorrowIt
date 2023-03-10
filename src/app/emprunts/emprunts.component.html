@@ -1,44 +1,46 @@
 <div class="ml-4 mr-4 mt-4 mb-5 log text-center">
     <div class="container justify-content-center">
         <div class="container justify-content-center mb-4">
-            <button type="button" class="btn btn-primary active"
+            <button type="button" class="btn  active" style="background-color: rgb(37, 37, 37); color: white;"
                 *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'demandeEffectuees'">Demandes envoyées</button>
-            <button type="button" class="btn btn-primary"
+            <button type="button" class="btn " style="background-color: rgb(133, 133, 133); color: white;"
                 *ngIf="listeEmpruntVisible.getListeEmpruntVisible() != 'demandeEffectuees'"
                 (click)="listeEmpruntVisible.setListeEmpruntVisible('demandeEffectuees'); locPointeAnnulation = null">Demandes
                 envoyées</button>
-            <button type="button" class="btn btn-primary active"
+            <button type="button" class="btn  active" style="background-color: rgb(37, 37, 37); color: white;"
                 *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'demandeAcceptees'">Demandes acceptées</button>
-            <button type="button" class="btn btn-primary"
+            <button type="button" class="btn" style="background-color: rgb(133, 133, 133); color: white;"
                 *ngIf="listeEmpruntVisible.getListeEmpruntVisible() != 'demandeAcceptees'"
                 (click)="listeEmpruntVisible.setListeEmpruntVisible('demandeAcceptees'); locPointeAnnulation = null">Demandes
                 acceptées</button>
-            <button type="button" class="btn btn-primary active"
+            <button type="button" class="btn active" style="background-color: rgb(37, 37, 37); color: white;"
                 *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'enCours'">Locations en cours</button>
-            <button type="button" class="btn btn-primary"
+            <button type="button" class="btn" style="background-color: rgb(133, 133, 133); color: white;"
                 *ngIf="listeEmpruntVisible.getListeEmpruntVisible() != 'enCours'"
                 (click)="listeEmpruntVisible.setListeEmpruntVisible('enCours'); locPointeAnnulation = null">Locations en
                 cours</button>
-            <button type="button" class="btn btn-primary active"
+            <button type="button" class="btn active" style="background-color: rgb(37, 37, 37); color: white;"
                 *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'historique'">Historique locations</button>
-            <button type="button" class="btn btn-primary"
+            <button type="button" class="btn" style="background-color: rgb(133, 133, 133); color: white;"
                 *ngIf="listeEmpruntVisible.getListeEmpruntVisible() != 'historique'"
                 (click)="listeEmpruntVisible.setListeEmpruntVisible('historique'); locPointeAnnulation = null">Historique
                 locations</button>
         </div>
 
         <div class="container">
-            <div class="row" *ngFor="let loc of emprunts">
+            <div class=" row" *ngFor="let loc of emprunts" style="justify-content: center;">
                 <span
                     *ngIf="(loc.valide && getComparaisonToday(loc) == 'future' && listeEmpruntVisible.getListeEmpruntVisible() == 'demandeAcceptees') || 
                     (!loc.valide && listeEmpruntVisible.getListeEmpruntVisible() == 'demandeEffectuees') || 
                     (loc.valide && (getComparaisonToday(loc) == 'enCours' || getComparaisonToday(loc) == 'enCoursFinie') && listeEmpruntVisible.getListeEmpruntVisible() == 'enCours') ||
                     (loc.valide && getComparaisonToday(loc) == 'historique' && listeEmpruntVisible.getListeEmpruntVisible() == 'historique')">
                     <div class="card mb-4" style="background-color: rgb(226, 226, 226);">
-                        <div class="card col-sm-12" style="width: 50rem; background-color: rgb(187, 187, 187);">
+                        <div class="card col-sm-12"
+                            style="width: 50rem; box-shadow: 1px 1px 3px 3px rgba(255, 205, 205, 0.925);">
                             <div class="row g-0">
                                 <div class="img-objet col-md-6">
-                                    <img src="{{ loc.objet.urlPhoto }}" class="card-img-top" alt="...">
+                                    <img src="{{ loc.objet.urlPhoto }}" routerLink="/objet"
+                                        (click)="recupObjetService.setObjet(loc.objet)" class="card-img-top" alt="...">
                                 </div>
                                 <div class="col-md-6">
                                     <div class="card-body">
@@ -60,9 +62,17 @@
                                         <button type="button" class="btn btn-danger"
                                             *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'demandeEffectuees'"
                                             (click)="locPointeAnnulation = loc">Annuler</button>
-                                        <button type="button" class="btn btn-danger"
+                                        <button type="button" class="btn"
                                             *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'demandeAcceptees'"
-                                            (click)="locPointeAnnulation = loc">Annuler</button>
+                                            (click)="locPointeAnnulation = loc">Annuler</button><button type="button" class="btn btn-info"
+                                            *ngIf="listeEmpruntVisible.getListeEmpruntVisible() != '' "
+                                            (click)="userService.setUser(loc.proprietaire); route.navigateByUrl('/profil')">
+                                            Voir Proprietaire</button>
+                                            <button type="button" class="btn "
+                                            style="background-color: rgb(37, 37, 37); color: white;"
+                                            *ngIf=" listeEmpruntVisible.getListeEmpruntVisible() !='' " (click)=" userservice.setUser(loc.objet.proprietaire);
+                                            route.navigateByUrl('/profil')">
+                                            Voir Proprietaire</button>
                                         <button type="button" class="btn btn-primary btn-rounded"
                                             *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'demandeAcceptees' && loc.payee"
                                             disabled>
@@ -71,10 +81,7 @@
                                             *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'demandeAcceptees' && !loc.payee"
                                             data-toggle="modal" data-target="#modal">
                                             A Payer</button>
-                                        <button type="button" class="btn btn-info"
-                                            *ngIf="listeEmpruntVisible.getListeEmpruntVisible() != '' "
-                                            (click)="userService.setUser(loc.objet.proprietaire); route.navigateByUrl('/profil');">
-                                            Voir Proprietaire</button>
+                                        
                                         <button type="button" class="btn btn-info"
                                             *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'historique'"
                                             (click)="avisLocation.setAvisLocation(loc); route.navigateByUrl('/avis')">
@@ -94,6 +101,7 @@
                             <button type="button" class="btn btn-info" (click)="locPointeAnnulation = null">Non</button>
                         </div>
 
+                        
                     </div>
                 </span>
             </div>
@@ -108,7 +116,6 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <div class="text-right"> <i class="fa fa-close close" data-dismiss="modal"></i> </div>
                 <div class="tabs mt-3">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation"> <a class="nav-link active" id="visa-tab"

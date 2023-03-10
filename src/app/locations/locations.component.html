@@ -61,12 +61,12 @@
                                             *ngIf="listeLocVisible.getListeLocVisible() == 'demandeAcceptees'"
                                             (click)="locPointeAnnulation = loc">Annuler</button>
                                         <button type="button" class="btn btn-danger"
-                                            *ngIf="listeLocVisible.getListeLocVisible() == 'enCours' || listeLocVisible.getListeLocVisible() == 'enCoursFinie'"
+                                            *ngIf="listeLocVisible.getListeLocVisible() == 'enCours' || listeLocVisible.getListeLocVisible() == 'enCoursFinie' || listeLocVisible.getListeLocVisible() == 'historique'"
                                             (click)="signalerUser.setUserSignaler(loc.locataire); route.navigateByUrl('/signalement')">
                                             Signaler</button>
                                         <button type="button" class="btn"
                                             style="background-color: rgb(37, 37, 37); color: white;"
-                                            *ngIf=" listeLocVisible.getListeLocVisible() !='' " (click)=" userservice.setUser(loc.objet.locataire);
+                                            *ngIf=" listeLocVisible.getListeLocVisible() !='' " (click)=" userservice.setUser(loc.locataire);
                                             route.navigateByUrl('/profil')">
                                             Voir Locataire</button>
                                     </div>

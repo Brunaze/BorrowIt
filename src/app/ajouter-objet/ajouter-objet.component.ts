@@ -16,17 +16,14 @@ export class AjouterObjetComponent implements OnInit {
   user: any;
   msgErr: any;
   constructor(public userservice: UserService, private route: Router, public authService: AuthService, private RecupObjetService: RecupObjetService, private http: HttpClient) { }
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+  ngOnInit(): void { }
 
-  setObjet(val: any): void {
-    this.http.post('http://localhost:8283/objet', val).subscribe({
+  ajouterObjet(type: any, titre: any, image: any, prix: any, caution: any, com: any): void {
+    this.http.post('http://localhost:8283/objet', { tag: type, nom: titre, description: com, caution: caution, prixJour: prix, urlPhoto: image, proprietaire: this.authService.getUserConnect() }).subscribe({
       next: (data) => {
-        this.objet = data;
+
       },
       error: (err) => (console.log(err))
     })
   }
-
 }

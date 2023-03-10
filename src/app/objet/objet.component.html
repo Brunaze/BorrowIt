@@ -15,7 +15,13 @@
                         <h5 class="card-title" style="font-weight: bold;">Prix journalier : <h5>{{ objet.prixJour }}
                                 €/jour</h5>
                         </h5>
-
+                        <div class="ml-1 mt-1">
+                          <br>
+                          <h5 class="card-title" style="font-weight: bold;">Date de mise en ligne :</h5>
+                          <strong style="color: grey;">
+                            Ajouté le {{ objet.dateCreation | date:'dd MMMM yyyy':'':'fr'}}
+                          </strong>
+                        </div>
                     </div>
                     <div class="card-bot-right">
                         <h5 class="card-title" style="font-weight: bold;">Caution : <h5>{{ objet.caution }} €</h5>

@@ -11,8 +11,8 @@ export class UserService {
   constructor(public route: Router) { }
 
 
-  setUser(objet: any) {
-    window.localStorage.setItem('usr', JSON.stringify(objet));
+  setUser(User: any) {
+    window.localStorage.setItem('usr', JSON.stringify(User)); // remettre objet  à la place de User si ça bug
     if (this.route.url == "/profil"){
       window.location.reload();
     }
@@ -22,4 +22,5 @@ export class UserService {
     let User: any = localStorage.getItem('usr');
     return JSON.parse(User);
   }
+
 }

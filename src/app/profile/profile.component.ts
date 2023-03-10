@@ -37,6 +37,10 @@ export class ProfileComponent implements OnInit {
       error: (err) => { console.error(err) }
     })
 
+    if (this.authService.getUserConnect().points == null) {
+      this.route.navigateByUrl('administrateur');
+    }
+
     /* Vérification si le compte connecté et regardé sont les mêmes */
     if (this.authService.getUserConnect().id != null) {
       if (this.authService.getUserConnect().id != this.userservice.getUser().id) {

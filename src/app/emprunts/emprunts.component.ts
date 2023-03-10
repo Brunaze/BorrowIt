@@ -28,6 +28,9 @@ export class EmpruntsComponent implements OnInit {
       this.listeEmpruntVisible.setListeEmpruntVisible('demandeEffectuees');
     }
     this.getListeLocNonValide()
+    if (this.authService.getUserConnect().points == null) {
+      this.route.navigateByUrl('administrateur');
+    }
   }
 
   getListeLocNonValide() {

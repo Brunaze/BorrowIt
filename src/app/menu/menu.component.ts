@@ -17,6 +17,8 @@ export class MenuComponent implements OnInit {
 
   user: any;
   msgErr: any;
+  objetsVisibles: any[] = new Array;
+  compteur: any;
 
   constructor(public route: Router, public authService: AuthService, private http: HttpClient, public rechercheObjet: RechercheService, public userservice: UserService) { }
 
@@ -61,10 +63,29 @@ export class MenuComponent implements OnInit {
   searchObjet(val: any): void {
     this.http.get('http://localhost:8283/objet/recherche/' + val).subscribe({
       next: (data) => {
-        this.rechercheObjet.setObjetRecherche(data);
+        //this.rechercheObjet.setObjetRecherche(data);
+        this.getListeObjets(data);
       },
       error: (err) => (console.log(err))
     })
   }
 
+  getListeObjets(data: any) {
+    this.compteur = -1;
+    for (let o of data) {
+      this.compteur = this.compteur + 1;
+      if (this.authService.getUserConnect() != null) {
+        if (this.authService.getUserConnect().id != o.proprietaire.id) {
+          this.objetsVisibles[this.compteur] = o;
+          continue;
+        }
+      } else {
+        this.objetsVisibles[this.compteur] = o;
+        continue;
+      }
+      this.compteur = this.compteur - 1;
+    }
+    this.rechercheObjet.setObjetRecherche(this.objetsVisibles);
+  }
 }
+

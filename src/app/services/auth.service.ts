@@ -35,7 +35,7 @@ export class AuthService {
 
   deconnexion() {
     localStorage.removeItem('userConnect');
-    window.location.reload;
+    window.location.reload();
   }
 
 }

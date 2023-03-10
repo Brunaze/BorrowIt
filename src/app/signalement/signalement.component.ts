@@ -13,7 +13,11 @@ export class SignalementComponent implements OnInit {
 
   constructor(public route: Router, public authService: AuthService, private http: HttpClient, public signalerUser: SignalerUserService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    if (this.authService.getUserConnect().points == null) {
+      this.route.navigateByUrl('administrateur');
+    }
+  }
 
   sendSignalement(type: any, com: any): void {
     this.http.post('http://localhost:8283/signalement', { typeSignalement: type, commentaire: com, clientSuspect: this.signalerUser.getUserSignaler(), clientSignaleur: this.authService.getUserConnect() }).subscribe({

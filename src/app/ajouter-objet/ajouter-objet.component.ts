@@ -16,7 +16,11 @@ export class AjouterObjetComponent implements OnInit {
   user: any;
   msgErr: any;
   constructor(public userservice: UserService, private route: Router, public authService: AuthService, private RecupObjetService: RecupObjetService, private http: HttpClient) { }
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    if (this.authService.getUserConnect().points == null) {
+      this.route.navigateByUrl('administrateur');
+    }
+  }
 
   ajouterObjet(type: any, titre: any, image: any, prix: any, caution: any, com: any): void {
     this.http.post('http://localhost:8283/objet', { tag: type, nom: titre, description: com, caution: caution, prixJour: prix, urlPhoto: image, proprietaire: this.authService.getUserConnect() }).subscribe({

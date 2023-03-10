@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'profil', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'profil0', component: ProfilBisComponent },
   { path: 'star', component: StarRatingComponentComponent },
-  { path: 'emprunts', component: EmpruntsComponent },
+  { path: 'emprunts', component: EmpruntsComponent, canActivate: [AuthGuard] },
   { path: 'messagerie', component: MessagerieComponent, canActivate: [AuthGuard] },
   { path: 'locations', component: LocationsComponent, canActivate: [AuthGuard] },
   { path: 'abonnement', component: AbonnementComponent, canActivate: [AuthGuard] },

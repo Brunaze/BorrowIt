@@ -27,6 +27,9 @@ export class AccueilComponent implements OnInit {
     if (this.rechercheObjet.getObjetRecherche() == null) {
       this.allObjets();
     }
+    if (this.authService.getUserConnect().points == null) {
+      this.route.navigateByUrl('administrateur');
+    }
   }
 
   allObjets(): void {
@@ -79,7 +82,7 @@ export class AccueilComponent implements OnInit {
         }
       } else {
         this.objetsVisibles[this.compteur] = o;
-          continue;
+        continue;
       }
       this.compteur = this.compteur - 1;
     }

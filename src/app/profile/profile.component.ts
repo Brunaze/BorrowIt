@@ -6,6 +6,7 @@ import { UserService } from '../services/user.service';
 import { RecupObjetService } from '../services/recup-objet.service';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { AbonnementService } from '../services/abonnement.service';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -21,8 +22,10 @@ export class ProfileComponent implements OnInit{
   user: any;
   msgErr: any;
   compteView: any;
+  abonn : any;
 
-constructor(private route: Router, public authService: AuthService, public recupObjetService: RecupObjetService, public userservice: UserService, private http: HttpClient) { }
+constructor(private route: Router, public authService: AuthService, public recupObjetService: RecupObjetService,
+  public userservice: UserService,  public abonnmentservice : AbonnementService, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.user = this.userservice.getUser();
@@ -39,6 +42,8 @@ constructor(private route: Router, public authService: AuthService, public recup
         }else{
           this.compteView = false;
         }
+
+    this.abonn = this.abonnmentservice.getAbonnement();
 
     }
 
@@ -74,18 +79,23 @@ objetid(val: any) {
   })
 }
 
-objetByTag(val: any) {
-  this.http.get('http://localhost:8283/objet/tag/' + val).subscribe({
-    next: (data) => {
-      this.objets = data;
 
+getAbonnementDate(idClient: any): void {
+  this.http.get('http://localhost:8283/abonnement/expirationClient/' + idClient).subscribe({
+    next: (data) => {
+      this.abonn = data;
     },
-    error: (err) => { console.log(err) }
+    error: (err) => (console.log(err))
   })
 }
 
-
-
-
+getAbonnement(idClient: any): void {
+  this.http.get('http://localhost:8283/abonnement/client/' + idClient).subscribe({
+    next: (data) => {
+      this.abonn = data;
+    },
+    error: (err) => (console.log(err))
+  })
+}
 
 }

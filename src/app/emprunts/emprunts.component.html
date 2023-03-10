@@ -28,7 +28,7 @@
         </div>
 
         <div class="container">
-            <div class=" row" *ngFor="let loc of emprunts" style="justify-content: center;">
+            <div class=" row" *ngFor="let loc of emprunts" style="justify-content: center;" (click)="locPayable = loc">
                 <span
                     *ngIf="(loc.valide && getComparaisonToday(loc) == 'future' && listeEmpruntVisible.getListeEmpruntVisible() == 'demandeAcceptees') || 
                     (!loc.valide && listeEmpruntVisible.getListeEmpruntVisible() == 'demandeEffectuees') || 
@@ -62,26 +62,23 @@
                                         <button type="button" class="btn btn-danger"
                                             *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'demandeEffectuees'"
                                             (click)="locPointeAnnulation = loc">Annuler</button>
-                                        <button type="button" class="btn"
+                                        <button type="button" class="btn btn-danger"
                                             *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'demandeAcceptees'"
-                                            (click)="locPointeAnnulation = loc">Annuler</button><button type="button" class="btn btn-info"
-                                            *ngIf="listeEmpruntVisible.getListeEmpruntVisible() != '' "
-                                            (click)="userService.setUser(loc.proprietaire); route.navigateByUrl('/profil')">
-                                            Voir Proprietaire</button>
-                                            <button type="button" class="btn "
+                                            (click)="locPointeAnnulation = loc">Annuler</button>
+                                        <button type="button" class="btn "
                                             style="background-color: rgb(37, 37, 37); color: white;"
-                                            *ngIf=" listeEmpruntVisible.getListeEmpruntVisible() !='' " (click)=" userservice.setUser(loc.objet.proprietaire);
-                                            route.navigateByUrl('/profil')">
-                                            Voir Proprietaire</button>
+                                            *ngIf=" listeEmpruntVisible.getListeEmpruntVisible() !='' "
+                                            (click)="userService.setUser(loc.objet.proprietaire); route.navigateByUrl('/profil')">
+                                            Voir Propriétaire</button>
                                         <button type="button" class="btn btn-primary btn-rounded"
                                             *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'demandeAcceptees' && loc.payee"
                                             disabled>
-                                            A Payer</button>
+                                            Payé</button>
                                         <button type="button" class="btn btn-primary btn-rounded"
                                             *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'demandeAcceptees' && !loc.payee"
                                             data-toggle="modal" data-target="#modal">
                                             A Payer</button>
-                                        
+
                                         <button type="button" class="btn btn-info"
                                             *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'historique'"
                                             (click)="avisLocation.setAvisLocation(loc); route.navigateByUrl('/avis')">
@@ -101,7 +98,7 @@
                             <button type="button" class="btn btn-info" (click)="locPointeAnnulation = null">Non</button>
                         </div>
 
-                        
+
                     </div>
                 </span>
             </div>
@@ -131,7 +128,8 @@
                                 <div class="text-center">
                                     <h5>Payer Location</h5>
                                 </div>
-                                <form #recupcbForm="ngForm" (ngSubmit)="postCarte(recupcbForm.value); payerLocation(1)">
+                                <form #recupcbForm="ngForm"
+                                    (ngSubmit)="postCarte(recupcbForm.value); payerLocation(locPayable.id)">
                                     <div class="form mt-3">
                                         <div class="inputbox"> <input ngModel="" type="text" name="nom"
                                                 class="form-control" required> <span>Nom du titulaire</span>
@@ -150,8 +148,8 @@
                                                 <span>CVV</span>
                                             </div>
                                         </div>
-                                        <div class="px-5 pay"> <button class="btn btn-success btn-block">
-                                                <p>Payer</p>
+                                        <div class="px-5 pay" *ngIf="locPayable != null"> <button class="btn btn-success btn-block">
+                                                Payer {{locPayable.objet.caution + getDiffDates(locPayable.dateFin, locPayable.dateDebut) * locPayable.objet.prixJour}}€
                                             </button>
                                         </div>
                                     </div>

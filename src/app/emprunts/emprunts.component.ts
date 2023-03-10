@@ -74,11 +74,11 @@ export class EmpruntsComponent implements OnInit {
 
   payerLocation(val: any): void {
     this.http.patch('http://localhost:8283/location/paiement/' + val, {
-      "description": "PATCH la validité de la location",
+      "description": "PATCH le paiement de la location",
     }).subscribe({})
     window.location.reload()
   }
-  
+
   objetid(val: any) {
     this.http.post('http://localhost:8283/utilisateur/objet/id', val).subscribe({
       next: (data) => {

@@ -19,7 +19,9 @@ export class EmpruntsComponent implements OnInit {
   diff: any;
   locPointeAnnulation: any;
   objets: any;
-  constructor(public recupObjetService: RecupObjetService, private http: HttpClient, public route: Router, public authService: AuthService, public listeEmpruntVisible: ListEmpruntVisibleService, public userservice: UserService, public avisLocation: AvisLocationService) { }
+  locPayable: any;
+
+  constructor(public recupObjetService: RecupObjetService, private http: HttpClient, public route: Router, public authService: AuthService, public listeEmpruntVisible: ListEmpruntVisibleService, public userService: UserService, public avisLocation: AvisLocationService) { }
 
   ngOnInit(): void {
     if (this.listeEmpruntVisible.getListeEmpruntVisible() == null) {
@@ -68,8 +70,15 @@ export class EmpruntsComponent implements OnInit {
       },
       error: (err) => { console.error(err) }
     })
-    this.route.navigateByUrl('');
   }
+
+  payerLocation(val: any): void {
+    this.http.patch('http://localhost:8283/location/paiement/' + val, {
+      "description": "PATCH le paiement de la location",
+    }).subscribe({})
+    window.location.reload()
+  }
+
   objetid(val: any) {
     this.http.post('http://localhost:8283/utilisateur/objet/id', val).subscribe({
       next: (data) => {

@@ -63,14 +63,17 @@
                                         <button type="button" class="btn btn-danger"
                                             *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'demandeAcceptees'"
                                             (click)="locPointeAnnulation = loc">Annuler</button>
-
                                         <button type="button" class="btn btn-primary btn-rounded"
-                                            *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'demandeAcceptees'"
+                                            *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'demandeAcceptees' && loc.payee"
+                                            disabled>
+                                            A Payer</button>
+                                        <button type="button" class="btn btn-primary btn-rounded"
+                                            *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'demandeAcceptees' && !loc.payee"
                                             data-toggle="modal" data-target="#modal">
                                             A Payer</button>
                                         <button type="button" class="btn btn-info"
                                             *ngIf="listeEmpruntVisible.getListeEmpruntVisible() != '' "
-                                            (click)="userService.setUser(loc.proprietaire); route.navigateByUrl('/profil')">
+                                            (click)="userService.setUser(loc.objet.proprietaire); route.navigateByUrl('/profil');">
                                             Voir Proprietaire</button>
                                         <button type="button" class="btn btn-info"
                                             *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'historique'"
@@ -91,18 +94,10 @@
                             <button type="button" class="btn btn-info" (click)="locPointeAnnulation = null">Non</button>
                         </div>
 
-                        <div class="card" style="background-color: rgb(226, 226, 226);"
-                            *ngIf="getComparaisonToday(loc) == 'enCoursFinie'">
-                            <p style="margin-top: 5px;">
-                                Date de rendu ?
-                            </p>
-
-                        </div>
                     </div>
                 </span>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -129,7 +124,7 @@
                                 <div class="text-center">
                                     <h5>Payer Location</h5>
                                 </div>
-                                <form #recupcbForm="ngForm" (ngSubmit)="postCarte(recupcbForm.value)">
+                                <form #recupcbForm="ngForm" (ngSubmit)="postCarte(recupcbForm.value); payerLocation(1)">
                                     <div class="form mt-3">
                                         <div class="inputbox"> <input ngModel="" type="text" name="nom"
                                                 class="form-control" required> <span>Nom du titulaire</span>
@@ -148,8 +143,9 @@
                                                 <span>CVV</span>
                                             </div>
                                         </div>
-                                        <div class="px-5 pay"> <button class="btn btn-success btn-block">Payer 4,99
-                                                €</button>
+                                        <div class="px-5 pay"> <button class="btn btn-success btn-block">
+                                                <p>Payer</p>
+                                            </button>
                                         </div>
                                     </div>
                                 </form>

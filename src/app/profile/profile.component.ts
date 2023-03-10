@@ -29,7 +29,6 @@ export class ProfileComponent implements OnInit {
     public userservice: UserService, public abonnmentservice: AbonnementService, private http: HttpClient) { }
 
   ngOnInit(): void {
-    console.log(this.authService.getUserConnect())
     this.user = this.userservice.getUser();
     this.http.get('http://localhost:8283/objet/listeObjetsClient/' + this.user.id).subscribe({
       next: (data) => {
@@ -39,7 +38,7 @@ export class ProfileComponent implements OnInit {
     })
 
     /* Vérification si le compte connecté et regardé sont les mêmes */
-    if (this.authService.getUserConnect() != null) {
+    if (this.authService.getUserConnect().id != null) {
       if (this.authService.getUserConnect().id != this.userservice.getUser().id) {
         this.compteView = true;
       } else {

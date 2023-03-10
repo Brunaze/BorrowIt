@@ -17,6 +17,8 @@ export class EmpruntsComponent implements OnInit {
   emprunts: any;
   diff: any;
   locPointeAnnulation: any;
+  locPayable: any;
+
   constructor(private http: HttpClient, public route: Router, public authService: AuthService, public listeEmpruntVisible: ListEmpruntVisibleService, public userService: UserService, public avisLocation: AvisLocationService) { }
 
   ngOnInit(): void {
@@ -66,6 +68,12 @@ export class EmpruntsComponent implements OnInit {
       },
       error: (err) => { console.error(err) }
     })
-    this.route.navigateByUrl('');
+  }
+
+  payerLocation(val: any): void {
+    this.http.patch('http://localhost:8283/location/paiement/' + val, {
+      "description": "PATCH la validité de la location",
+    }).subscribe({})
+    window.location.reload()
   }
 }

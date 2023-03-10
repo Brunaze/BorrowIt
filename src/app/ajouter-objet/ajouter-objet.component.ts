@@ -26,4 +26,29 @@ export class AjouterObjetComponent implements OnInit {
       error: (err) => (console.log(err))
     })
   }
+  connexion(val: any) {
+    this.http.post('http://localhost:8283/utilisateur/login', val).subscribe({
+      next: (data) => {
+        this.user = data;
+        if (this.user != null) {
+          this.authService.setUserConnect(this.user);
+          window.location.reload();
+        } else {
+          this.msgErr = 'Identifiant ou mot de passe incorrect';
+        }
+      },
+      error: (err) => { console.log(err) }
+    })
+  }
+  inscription(val: any) {
+    this.http.post('http://localhost:8283/client', val).subscribe({
+      next: (data) => {
+        window.location.reload();
+      },
+      error: (err) => { console.error(err) }
+    })
+  }
+  refresh(): void {
+    window.location.reload();
+  }
 }

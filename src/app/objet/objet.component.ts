@@ -45,7 +45,11 @@ export class ObjetComponent implements OnInit {
   }
 
   creerLocation(debut: Date, fin: Date) {
-    this.http.post('http://localhost:8283/location', { dateDebut: debut, dateFin: fin, objet: this.objet, locataire: this.authService.getUserConnect() }).subscribe({})
+    this.http.post('http://localhost:8283/location', { dateDebut: debut, dateFin: fin, objet: this.objet, locataire: this.authService.getUserConnect() }).subscribe({
+      next: (data) => {
+        this.route.navigateByUrl('emprunts');
+      }
+    })
   }
 
 

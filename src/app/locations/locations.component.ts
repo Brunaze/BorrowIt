@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { ListeLocVisibleService } from '../services/liste-loc-visible.service';
 import { SignalerUserService } from '../services/signaler-user.service';
+import { RecupObjetService } from '../services/recup-objet.service';
+import { RechercheService } from '../services/recherche.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-locations',
@@ -15,8 +18,9 @@ export class LocationsComponent implements OnInit {
   locations: any;
   diff: any;
   locPointeAnnulation: any;
+  objets: any;
 
-  constructor(private http: HttpClient, public signalerUser: SignalerUserService, public route: Router, public authService: AuthService, public listeLocVisible: ListeLocVisibleService) { }
+  constructor(public userservice: UserService, public recupObjetService: RecupObjetService, private http: HttpClient, public signalerUser: SignalerUserService, public rechercheObjet: RechercheService, public route: Router, public authService: AuthService, public listeLocVisible: ListeLocVisibleService) { }
 
   ngOnInit(): void {
     if (this.listeLocVisible.getListeLocVisible() == null) {
@@ -68,5 +72,18 @@ export class LocationsComponent implements OnInit {
     date = new Date(date)
     this.http.patch('http://localhost:8283/location/finReelle/' + id, date).subscribe({})
     window.location.reload()
+  }
+
+  objetid(val: any) {
+    this.http.post('http://localhost:8283/utilisateur/objet/id', val).subscribe({
+      next: (data) => {
+        this.objets = data;
+        if (this.objets != null) {
+          this.recupObjetService.setObjet(this.objets);
+          window.location.reload();
+        }
+      },
+      error: (err) => { console.log(err) }
+    })
   }
 }

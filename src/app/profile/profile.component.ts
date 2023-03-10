@@ -7,6 +7,7 @@ import { RecupObjetService } from '../services/recup-objet.service';
 import { formatDate, registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { AbonnementService } from '../services/abonnement.service';
+import { ThisReceiver } from '@angular/compiler';
 import { catchError, map, Observable, throwError } from 'rxjs';
 
 registerLocaleData(localeFr, 'fr');
@@ -32,8 +33,8 @@ export class ProfileComponent implements OnInit{
   formattedfinAbonn: any;
 
 
-constructor(private route: Router, public authService: AuthService, public recupObjetService: RecupObjetService,
-  public userservice: UserService,  public abonnmentservice : AbonnementService, private http: HttpClient) { }
+  constructor(private route: Router, public authService: AuthService, public recupObjetService: RecupObjetService,
+    public userservice: UserService, public abonnmentservice: AbonnementService, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.user = this.userservice.getUser();
@@ -77,39 +78,39 @@ constructor(private route: Router, public authService: AuthService, public recup
       }
 */
 
-    }
-
-
-getUserprofil(val: any): void {
-  this.http.get('http://localhost:8283/utilisateur', val).subscribe({
-    next: (data) => {
-      this.user = data;
-    },
-    error: (err) => (console.log(err))
-  })
-}
-
-allerVersElement(elementId: string): void {
-  const element = document.getElementById(elementId);
-  if (element) {
-    element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
   }
-}
 
-objetid(val: any) {
-  this.http.post('http://localhost:8283/utilisateur/objet/id', val).subscribe({
-    next: (data) => {
-      this.objets = data;
-      if (this.objets != null) {
-        this.recupObjetService.setObjet(this.objets);
-        window.location.reload();
-      } else {
-        this.msgErr = 'pas d objet';
-      }
-    },
-    error: (err) => { console.log(err) }
-  })
-}
+
+  getUserprofil(val: any): void {
+    this.http.get('http://localhost:8283/utilisateur', val).subscribe({
+      next: (data) => {
+        this.user = data;
+      },
+      error: (err) => (console.log(err))
+    })
+  }
+
+  allerVersElement(elementId: string): void {
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+    }
+  }
+
+  objetid(val: any) {
+    this.http.post('http://localhost:8283/utilisateur/objet/id', val).subscribe({
+      next: (data) => {
+        this.objets = data;
+        if (this.objets != null) {
+          this.recupObjetService.setObjet(this.objets);
+          window.location.reload();
+        } else {
+          this.msgErr = 'pas d objet';
+        }
+      },
+      error: (err) => { console.log(err) }
+    })
+  }
 
 /* Extrait la date de fin d'abonnement */
 getAbonnementDate(id : any) {

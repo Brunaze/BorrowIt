@@ -72,18 +72,17 @@
 <div class="ml-4 mr-4 mt-4 mb-5">
     <div class="container" style="max-width:max-content;">
         <div class="row">
-            <div class=" conteneur col-sm-2" *ngFor="let o of rechercheObjet.getObjetRecherche()">
+            <div class="conteneur col-sm-2" *ngFor="let o of rechercheObjet.getObjetRecherche()">
+                <!--<div class="conteneur col-sm-2" *ngFor="let o of getListeObjets()"></div>-->
                 <div class="card" style="border-radius: 15px;">
                     <a routerLink="/objet" (click)="recupObjetService.setObjet(o)">
                         <img class="card-img-top" src="{{ o.urlPhoto }}">
                     </a>
                     <div class="card-block">
                         <h4 class="card-title cursor-hover" routerLink="/objet">{{ o.nom }}</h4>
-                        <p class="card-descrip">
-                            {{ o.description }}
-                        </p>
+
                         <div class="left-bottom-card">
-                            <a routerLink="/profil" (click)="userservice.setUser(o.proprietaire)">
+                            <a (click)="userservice.setUser(o.proprietaire); route.navigateByUrl('/profil')">
                                 <img class="card-img-bot" src="{{o.proprietaire.urlPhoto}}">
                             </a>
                         </div>
@@ -101,10 +100,9 @@
 
                         </div>
                     </div>
+                    <br>
                 </div>
-                <br>
             </div>
-
         </div>
     </div>
 </div>
@@ -112,7 +110,9 @@
 
 
 <!-- FIN CARDS -->
+
 <!-- DEBUT NUMERO PAGE -->
+<!--
 <div class="mt-4 d-flex justify-content-center">
     <nav aria-label="Page navigation example">
         <ul class="pagination">
@@ -134,4 +134,5 @@
         </ul>
     </nav>
 </div>
+-->
 <!-- FIN NUMERO PAGE -->

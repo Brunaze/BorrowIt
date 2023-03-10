@@ -5,6 +5,7 @@ import { AuthService } from '../services/auth.service';
 import { AvisLocationService } from '../services/avis-location.service';
 import { ListEmpruntVisibleService } from '../services/list-emprunt-visible.service';
 import { UserService } from '../services/user.service';
+import { RecupObjetService } from '../services/recup-objet.service';
 
 
 @Component({
@@ -17,7 +18,10 @@ export class EmpruntsComponent implements OnInit {
   emprunts: any;
   diff: any;
   locPointeAnnulation: any;
-  constructor(private http: HttpClient, public route: Router, public authService: AuthService, public listeEmpruntVisible: ListEmpruntVisibleService, public userService: UserService, public avisLocation: AvisLocationService) { }
+  objets: any;
+  locPayable: any;
+
+  constructor(public recupObjetService: RecupObjetService, private http: HttpClient, public route: Router, public authService: AuthService, public listeEmpruntVisible: ListEmpruntVisibleService, public userService: UserService, public avisLocation: AvisLocationService) { }
 
   ngOnInit(): void {
     if (this.listeEmpruntVisible.getListeEmpruntVisible() == null) {
@@ -66,6 +70,25 @@ export class EmpruntsComponent implements OnInit {
       },
       error: (err) => { console.error(err) }
     })
-    this.route.navigateByUrl('');
+  }
+
+  payerLocation(val: any): void {
+    this.http.patch('http://localhost:8283/location/paiement/' + val, {
+      "description": "PATCH le paiement de la location",
+    }).subscribe({})
+    window.location.reload()
+  }
+
+  objetid(val: any) {
+    this.http.post('http://localhost:8283/utilisateur/objet/id', val).subscribe({
+      next: (data) => {
+        this.objets = data;
+        if (this.objets != null) {
+          this.recupObjetService.setObjet(this.objets);
+          window.location.reload();
+        }
+      },
+      error: (err) => { console.log(err) }
+    })
   }
 }

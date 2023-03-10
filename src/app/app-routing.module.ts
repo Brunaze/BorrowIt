@@ -30,11 +30,11 @@ const routes: Routes = [
   { path: 'messagerie', component: MessagerieComponent, canActivate: [AuthGuard] },
   { path: 'locations', component: LocationsComponent, canActivate: [AuthGuard] },
   { path: 'abonnement', component: AbonnementComponent, canActivate: [AuthGuard] },
-  { path: 'administrateur', component: AdministrateurComponent },
-  { path: 'signalement', component: SignalementComponent },
-  { path: 'avis', component: AvisComponent },
-  { path: 'ajouter-objet', component: AjouterObjetComponent },
-  { path: 'modifier-objet', component: ModifierObjetComponent }
+  { path: 'administrateur', component: AdministrateurComponent, canActivate: [AuthGuard] },
+  { path: 'signalement', component: SignalementComponent, canActivate: [AuthGuard] },
+  { path: 'avis', component: AvisComponent, canActivate: [AuthGuard] },
+  { path: 'ajouter-objet', component: AjouterObjetComponent, canActivate: [AuthGuard] },
+  { path: 'modifier-objet', component: ModifierObjetComponent, canActivate: [AuthGuard] }
 
 ];
 

@@ -1,4 +1,5 @@
 <div class="ml-4 mr-4 mt-4 mb-5 log text-center">
+    <p style="font-weight: bold; font-size: x-large;">Liste des objets empruntés</p>
     <div class="container justify-content-center">
         <div class="container justify-content-center mb-4">
             <button type="button" class="btn  active" style="background-color: rgb(37, 37, 37); color: white;"
@@ -79,6 +80,11 @@
                                             data-toggle="modal" data-target="#modal">
                                             A Payer</button>
 
+                                        <!--<button type="button" class="btn btn-info"
+                                            *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'historique'"
+                                            (click)="avisLocation.setAvisLocation(loc); route.navigateByUrl('/avis')"
+                                            disabled>
+                                            Avis</button>-->
                                         <button type="button" class="btn btn-info"
                                             *ngIf="listeEmpruntVisible.getListeEmpruntVisible() == 'historique'"
                                             (click)="avisLocation.setAvisLocation(loc); route.navigateByUrl('/avis')">
@@ -149,8 +155,10 @@
                                                 <span>CVV</span>
                                             </div>
                                         </div>
-                                        <div class="px-5 pay" *ngIf="locPayable != null"> <button class="btn btn-success btn-block">
-                                                Payer {{locPayable.objet.caution + getDiffDates(locPayable.dateFin, locPayable.dateDebut) * locPayable.objet.prixJour}}€
+                                        <div class="px-5 pay" *ngIf="locPayable != null"> <button
+                                                class="btn btn-success btn-block">
+                                                Payer {{locPayable.objet.caution + getDiffDates(locPayable.dateFin,
+                                                locPayable.dateDebut) * locPayable.objet.prixJour}}€
                                             </button>
                                         </div>
                                     </div>

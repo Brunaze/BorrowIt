@@ -15,7 +15,18 @@
 
 
         <!-- Elements du milieu // BARRE DE RECHERCHE AU CENTRE CAR MARGIN LEFT CI DESSOUS-->
-        <div class="navbar-nav flex-row d-none d-md-flex" style=" margin-left: 200px;" *ngIf="this.route.url ==='/'">
+        <div class="navbar-nav flex-row d-none d-md-flex" style=" margin-right: 100px;"
+            *ngIf="authService.isNotConnected() && this.route.url ==='/'">
+            <form class="input-group w-auto my-auto d-none d-sm-flex" #searchForm="ngForm"
+                (ngSubmit)="searchObjet(searchForm.value.saisie); route.navigateByUrl('')">
+                <input autocomplete="off" type="search" class="form-control rounded" placeholder="Rechercher"
+                    style="min-width: 125px;" id="barre-recherche" name="saisie" ngModel="" />
+                <span class="input-group-text border-0 d-none d-lg-flex"><i class="fas fa-search"></i></span>
+            </form>
+        </div>
+
+        <div class="navbar-nav flex-row d-none d-md-flex" style=" margin-left: 200px;"
+            *ngIf="authService.isConnected() && this.route.url ==='/'">
             <form class="input-group w-auto my-auto d-none d-sm-flex" #searchForm="ngForm"
                 (ngSubmit)="searchObjet(searchForm.value.saisie); route.navigateByUrl('')">
                 <input autocomplete="off" type="search" class="form-control rounded" placeholder="Rechercher"
@@ -28,7 +39,8 @@
 
         <!-- Elements de droite -->
         <ul class="navbar-nav flex-row">
-            <li class="mise-en-loc nav-item me-3 me-lg-1" *ngIf="this.route.url !=='/ajouter-objet' ">
+            <li class="mise-en-loc nav-item me-3 me-lg-1"
+                *ngIf="authService.isConnected() && this.route.url !=='/ajouter-objet' ">
                 <a class=" louer-objet nav-link d-sm-flex align-items-sm-center" routerLink="ajouter-objet">
                     Mettre mon objet en location
                 </a>

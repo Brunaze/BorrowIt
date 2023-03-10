@@ -69,7 +69,7 @@
 
                                         <button type="button" class="btn "
                                             style="background-color: rgb(37, 37, 37); color: white;"
-                                            *ngIf=" listeEmpruntVisible.getListeEmpruntVisible() !='' " (click)=" userservice.setUser(loc.objet.locataire);
+                                            *ngIf=" listeEmpruntVisible.getListeEmpruntVisible() !='' " (click)=" userservice.setUser(loc.objet.proprietaire);
                                             route.navigateByUrl('/profil')">
                                             Voir Proprietaire</button>
                                         <button type="button" class="btn btn-primary btn-rounded"

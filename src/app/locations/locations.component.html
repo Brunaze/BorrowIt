@@ -66,7 +66,7 @@
                                             Signaler</button>
                                         <button type="button" class="btn"
                                             style="background-color: rgb(37, 37, 37); color: white;"
-                                            *ngIf=" listeLocVisible.getListeLocVisible() !='' " (click)=" userservice.setUser(loc.objet.user);
+                                            *ngIf=" listeLocVisible.getListeLocVisible() !='' " (click)=" userservice.setUser(loc.objet.locataire);
                                             route.navigateByUrl('/profil')">
                                             Voir Locataire</button>
                                     </div>

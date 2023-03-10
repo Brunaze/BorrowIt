@@ -7,7 +7,6 @@ import { StarRatingComponentComponent } from './star-rating-component/star-ratin
 import { MessagerieComponent } from './messagerie/messagerie.component';
 import { LocationsComponent } from './locations/locations.component';
 import { ProfileComponent } from './profile/profile.component';
-import { ProfilBisComponent } from './profil-bis/profil-bis.component';
 import { AbonnementComponent } from './abonnement/abonnement.component';
 
 import { EmpruntsComponent } from './emprunts/emprunts.component';
@@ -24,7 +23,6 @@ const routes: Routes = [
   { path: 'objet', component: ObjetComponent },
   { path: '', component: AccueilComponent },
   { path: 'profil', component: ProfileComponent},
-  { path: 'profil0', component: ProfilBisComponent },
   { path: 'star', component: StarRatingComponentComponent },
   { path: 'emprunts', component: EmpruntsComponent, canActivate: [AuthGuard] },
   { path: 'messagerie', component: MessagerieComponent, canActivate: [AuthGuard] },

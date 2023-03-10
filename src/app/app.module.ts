@@ -14,7 +14,6 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { StarRatingComponentComponent } from './star-rating-component/star-rating-component.component';
 import { MessagerieComponent } from './messagerie/messagerie.component';
 import { LocationsComponent } from './locations/locations.component';
-import { ProfilBisComponent } from './profil-bis/profil-bis.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AbonnementComponent } from './abonnement/abonnement.component';
 import { AdministrateurComponent } from './administrateur/administrateur.component';
@@ -34,7 +33,6 @@ import { ModifierObjetComponent } from './modifier-objet/modifier-objet.componen
     StarRatingComponentComponent,
     MessagerieComponent,
     LocationsComponent,
-    ProfilBisComponent,
     ProfileComponent,
     AbonnementComponent,
     SignalementComponent,

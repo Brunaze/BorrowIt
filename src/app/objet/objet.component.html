@@ -16,11 +16,11 @@
                                 €/jour</h5>
                         </h5>
                         <div class="ml-1 mt-1">
-                          <br>
-                          <h5 class="card-title" style="font-weight: bold;">Date de mise en ligne :</h5>
-                          <strong style="color: grey;">
-                            Ajouté le {{ objet.dateCreation | date:'dd MMMM yyyy':'':'fr'}}
-                          </strong>
+                            <br>
+                            <h5 class="card-title" style="font-weight: bold;">Date de mise en ligne :</h5>
+                            <strong style="color: grey;">
+                                Ajouté le {{ objet.dateCreation | date:'dd MMMM yyyy':'':'fr'}}
+                            </strong>
                         </div>
                     </div>
                     <div class="card-bot-right">
@@ -78,7 +78,8 @@
                                 style="background-color: black; border-radius: 30px;">Louer</button>
                         </p>
                         <p class="log" *ngIf="authService.isNotConnected()">
-                            <a class="submit-btn" data-toggle="modal" data-target="#modalLoginForm">Louer</a>
+                            <button class="submit-btn" data-toggle="modal" data-target="#modalLoginForm"
+                                style="background-color: black; border-radius: 30px;">Louer</button>
                         </p>
                     </div>
                 </form>

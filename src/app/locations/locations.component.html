@@ -1,38 +1,41 @@
 <div class="ml-4 mr-4 mt-4 mb-5 log text-center">
     <div class="container justify-content-center">
         <div class="container justify-content-center mb-4">
-            <button type="button" class="btn btn-primary active"
+            <button type="button" class="btn active" style="background-color: rgb(37, 37, 37); color: white;"
                 *ngIf="listeLocVisible.getListeLocVisible() == 'demandeRecues'">Demandes reçues</button>
-            <button type="button" class="btn btn-primary"
+            <button type="button" class="btn" style="background-color: rgb(133, 133, 133); color: white;"
                 *ngIf="listeLocVisible.getListeLocVisible() != 'demandeRecues'"
                 (click)="listeLocVisible.setListeLocVisible('demandeRecues'); locPointeAnnulation = null">Demandes
                 reçues</button>
-            <button type="button" class="btn btn-primary active"
+            <button type="button" class="btn active" style="background-color: rgb(37, 37, 37); color: white;"
                 *ngIf="listeLocVisible.getListeLocVisible() == 'demandeAcceptees'">Demandes acceptées</button>
-            <button type="button" class="btn btn-primary"
+            <button type="button" class="btn" style="background-color: rgb(133, 133, 133); color: white;"
                 *ngIf="listeLocVisible.getListeLocVisible() != 'demandeAcceptees'"
                 (click)="listeLocVisible.setListeLocVisible('demandeAcceptees'); locPointeAnnulation = null">Demandes
                 acceptées</button>
-            <button type="button" class="btn btn-primary active"
+            <button type="button" class="btn active" style="background-color: rgb(37, 37, 37); color: white;"
                 *ngIf="listeLocVisible.getListeLocVisible() == 'enCours'">Locations en cours</button>
-            <button type="button" class="btn btn-primary" *ngIf="listeLocVisible.getListeLocVisible() != 'enCours'"
+            <button type="button" class="btn" style="background-color: rgb(133, 133, 133); color: white;"
+                *ngIf="listeLocVisible.getListeLocVisible() != 'enCours'"
                 (click)="listeLocVisible.setListeLocVisible('enCours'); locPointeAnnulation = null">Locations en
                 cours</button>
-            <button type="button" class="btn btn-primary active"
+            <button type="button" class="btn active" style="background-color: rgb(37, 37, 37); color: white;"
                 *ngIf="listeLocVisible.getListeLocVisible() == 'historique'">Historique locations</button>
-            <button type="button" class="btn btn-primary" *ngIf="listeLocVisible.getListeLocVisible() != 'historique'"
+            <button type="button" class="btn" style="background-color: rgb(133, 133, 133); color: white;"
+                *ngIf="listeLocVisible.getListeLocVisible() != 'historique'"
                 (click)="listeLocVisible.setListeLocVisible('historique'); locPointeAnnulation = null">Historique
                 locations</button>
         </div>
         <div class="container">
-            <div class="row" *ngFor="let loc of locations">
+            <div class="row" *ngFor="let loc of locations" style="justify-content: center;">
                 <span
                     *ngIf="(loc.valide && getComparaisonToday(loc) == 'future' && listeLocVisible.getListeLocVisible() == 'demandeAcceptees') || 
                     (!loc.valide && listeLocVisible.getListeLocVisible() == 'demandeRecues') || 
                     (loc.valide && (getComparaisonToday(loc) == 'enCours' || getComparaisonToday(loc) == 'enCoursFinie') && listeLocVisible.getListeLocVisible() == 'enCours') ||
                     (loc.valide && getComparaisonToday(loc) == 'historique' && listeLocVisible.getListeLocVisible() == 'historique')">
                     <div class="card mb-4" style="background-color: rgb(226, 226, 226);">
-                        <div class="card col-sm-12" style="width: 50rem; background-color: rgb(187, 187, 187);">
+                        <div class="card col-sm-12"
+                            style="width: 50rem; box-shadow: 1px 1px 3px 3px rgba(255, 205, 205, 0.925);">
                             <div class="row g-0">
                                 <div class="img-objet col-md-6">
                                     <img src="{{ loc.objet.urlPhoto }}" class="card-img-top" alt="...">
@@ -61,9 +64,11 @@
                                             *ngIf="listeLocVisible.getListeLocVisible() == 'enCours' || listeLocVisible.getListeLocVisible() == 'enCoursFinie'"
                                             (click)="signalerUser.setUserSignaler(loc.locataire); route.navigateByUrl('/signalement')">
                                             Signaler</button>
-                                        <button type="button" class="btn btn-info"
-                                            *ngIf="listeLocVisible.getListeLocVisible() != 'demandeRecues'">
-                                            Locataire</button>
+                                        <button type="button" class="btn"
+                                            style="background-color: rgb(37, 37, 37); color: white;"
+                                            *ngIf=" listeLocVisible.getListeLocVisible() !='' " (click)=" userservice.setUser(loc.objet.user);
+                                            route.navigateByUrl('/profil')">
+                                            Voir Locataire</button>
                                     </div>
                                 </div>
                             </div>
@@ -73,7 +78,6 @@
                                 (click)="validerLocation(loc.id)">Accepter</button>
                             <button type="button" class="btn btn-danger"
                                 (click)="refuserLocation(loc.id)">Refuser</button>
-                            <button type="button" class="btn btn-info">Locataire</button>
                         </div>
 
                         <div class="card" style="background-color: rgb(226, 226, 226);"

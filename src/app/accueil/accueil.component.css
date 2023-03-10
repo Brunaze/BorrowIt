@@ -2,7 +2,7 @@
 
     max-width: 400px;
     min-width: 230px;
-    min-height: fit-content;
+    margin-bottom: 20px;
 }
 
 /*.card {
@@ -45,10 +45,12 @@
 }
 
 .card-title {
-    font-size: larger;
+    font-size: large;
     height: 10px;
     font-weight: bold;
     margin-left: 10px;
+    margin-top: 5px;
+
 }
 
 

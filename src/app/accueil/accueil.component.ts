@@ -19,7 +19,7 @@ export class AccueilComponent implements OnInit {
   objetsVisibles: any[] = new Array;
   compteur: any;
 
-  constructor(public userservice: UserService, private http: HttpClient, private route: Router, public recupObjetService: RecupObjetService, public authService: AuthService, public rechercheObjet: RechercheService) {
+  constructor(public userservice: UserService, private http: HttpClient, public route: Router, public recupObjetService: RecupObjetService, public authService: AuthService, public rechercheObjet: RechercheService) {
 
   }
 
@@ -72,11 +72,16 @@ export class AccueilComponent implements OnInit {
     this.compteur = -1;
     for (let o of data) {
       this.compteur = this.compteur + 1;
-      if (this.authService.getUserConnect().id != o.proprietaire.id) {
-        this.objetsVisibles[this.compteur] = o;
+      if (this.authService.getUserConnect() != null) {
+        if (this.authService.getUserConnect().id != o.proprietaire.id) {
+          this.objetsVisibles[this.compteur] = o;
+          continue;
+        }
       } else {
-        this.compteur = this.compteur - 1;
+        this.objetsVisibles[this.compteur] = o;
+          continue;
       }
+      this.compteur = this.compteur - 1;
     }
     this.rechercheObjet.setObjetRecherche(this.objetsVisibles);
   }

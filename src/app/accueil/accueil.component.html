@@ -84,7 +84,7 @@
                             {{ o.description }}
                         </p>
                         <div class="left-bottom-card">
-                            <a routerLink="/profil" (click)="userservice.setUser(o.proprietaire)">
+                            <a (click)="userservice.setUser(o.proprietaire); route.navigateByUrl('/profil')">
                                 <img class="card-img-bot" src="{{o.proprietaire.urlPhoto}}">
                             </a>
                         </div>

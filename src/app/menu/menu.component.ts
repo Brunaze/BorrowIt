@@ -74,11 +74,16 @@ export class MenuComponent implements OnInit {
     this.compteur = -1;
     for (let o of data) {
       this.compteur = this.compteur + 1;
-      if (this.authService.getUserConnect().id != o.proprietaire.id) {
-        this.objetsVisibles[this.compteur] = o;
+      if (this.authService.getUserConnect() != null) {
+        if (this.authService.getUserConnect().id != o.proprietaire.id) {
+          this.objetsVisibles[this.compteur] = o;
+          continue;
+        }
       } else {
-        this.compteur = this.compteur - 1;
+        this.objetsVisibles[this.compteur] = o;
+        continue;
       }
+      this.compteur = this.compteur - 1;
     }
     this.rechercheObjet.setObjetRecherche(this.objetsVisibles);
   }

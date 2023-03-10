@@ -17,9 +17,12 @@ export class AdministrateurComponent implements OnInit {
   signalements: any;
   signalementsById: any;
   nbSignalement: any;
-  constructor(private http: HttpClient, public route: Router, private signalementService: ListeSignalementService) { }
+  constructor(private http: HttpClient, public route: Router, private signalementService: ListeSignalementService, public authService: AuthService) { }
 
   ngOnInit(): void {
+    if (this.authService.getUserConnect().points != null) {
+      this.route.navigateByUrl('');
+    }
     this.allUsers();
     this.allSignalements();
   }

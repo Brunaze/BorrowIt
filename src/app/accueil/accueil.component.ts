@@ -16,6 +16,8 @@ export class AccueilComponent implements OnInit {
   objets: any;
   numbers: any;
   msgErr: any;
+  objetsVisibles: any[] = new Array;
+  compteur: any;
 
   constructor(public userservice: UserService, private http: HttpClient, private route: Router, public recupObjetService: RecupObjetService, public authService: AuthService, public rechercheObjet: RechercheService) {
 
@@ -31,7 +33,9 @@ export class AccueilComponent implements OnInit {
     this.http.get('http://localhost:8283/objet').subscribe({
       next: (data) => {
         this.objets = data;
-        this.rechercheObjet.setObjetRecherche(data);
+        //this.rechercheObjet.setObjetRecherche(data);
+        this.getListeObjets(data);
+        window.location.reload();
       },
       error: (err) => { console.error(err) }
     })
@@ -56,10 +60,24 @@ export class AccueilComponent implements OnInit {
     this.http.get('http://localhost:8283/objet/tag/' + val).subscribe({
       next: (data) => {
         this.objets = data;
-        this.rechercheObjet.setObjetRecherche(data);
+        //this.rechercheObjet.setObjetRecherche(data);
+        this.getListeObjets(data);
+        window.location.reload();
       },
       error: (err) => { console.log(err) }
     })
   }
 
+  getListeObjets(data: any) {
+    this.compteur = -1;
+    for (let o of data) {
+      this.compteur = this.compteur + 1;
+      if (this.authService.getUserConnect().id != o.proprietaire.id) {
+        this.objetsVisibles[this.compteur] = o;
+      } else {
+        this.compteur = this.compteur - 1;
+      }
+    }
+    this.rechercheObjet.setObjetRecherche(this.objetsVisibles);
+  }
 }
